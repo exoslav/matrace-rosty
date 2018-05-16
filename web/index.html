@@ -15,87 +15,100 @@
 <body>
 	<header>
 		<div class="container">
-			<div class="logo-mobile">
-				<a href="/">
-					<img class="logo" src="./src/assets/img/logo-mobile.png" alt="logo matrace a rosty">
-				</a>
-			</div>
-
 			<div class="infobar">
 				<div class="infobar__opening-hours">
-					<i class="icon-time"></i>
+					<i class="icon icon-time"></i>
 					<strong>Otevírací doba:&nbsp;</strong>
 					<span>Po-Pá od&nbsp;9:00&nbsp;-&nbsp;do&nbsp;17:00 hod, So a Ne zavřeno</span>
 				</div>
 
 				<div class="infobar__right">
-					<div class="infobar__tel">
-						<i class="icon-phone"></i>
+					<div class="infobar__right__tel">
+						<i class="icon icon-phone"></i>
 						<a href="tel:+420 608 609 716">+420 608 609 716</a>
 					</div>
 
-					<div class="infobar__email">
-						<i class="icon-email"></i>
+					<div class="infobar__right__email">
+						<i class="icon icon-email"></i>
 						<a href="mailto:obchod@matrace-rosty.cz">obchod@matrace-rosty.cz</a>
 					</div>
 
-					<a class="infobar__fb" href="https://facebook.com/">
-						<i class="icon-fb-filled"></i>
+					<a class="infobar__right__fb" href="https://facebook.com/">
+						<i class="icon icon-fb-filled"></i>
 					</a>
 				</div>
 			</div>
 
-			<div class="header-interface">
-				<div class="logo-desktop">
-					<a href="/">
-						<img class="logo" src="./src/assets/img/logo.png" alt="logo matrace a rosty">
-					</a>
-				</div>
+      <div class="header-toolbar">
+        <div class="header-toolbar__logo-mobile">
+          <a href="/">
+            <img src="./src/assets/img/logo-mobile.png" alt="logo matrace a rosty">
+          </a>
+        </div>
 
-				<div class="header-interface__search">
-					<form>
-						<input type="" name="">
-						<button type="submit">
-							<i class="icon-zoom"></i>
-						</button>
-					</form>
-				</div>
+        <div class="header-toolbar__logo-desktop">
+          <a href="/">
+            <img src="./src/assets/img/logo.png" alt="logo matrace a rosty">
+          </a>
+        </div>
 
-				<a href="" class="header-interface__shopping-cart">
-					<i class="icon-shopping-cart"></i>
-				</a>
+        <div class="header-toolbar__search">
+          <form>
+            <input type="" name="">
+            <button type="submit">
+              <i class="icon icon-zoom"></i>
+            </button>
+          </form>
+        </div>
 
-				<button class="open-search">
-					<i class="icon-zoom"></i>
-					<span>Open search</span>
+        <a href="" class="header-toolbar__shopping-cart">
+          <div class="cart-wrap">
+						<span class="items-count">
+              <span>3</span>
+            </span>
+            <i class="icon icon-shopping-cart"></i>
+          </div>
+
+          <div class="price-wrap">
+            <strong class="basket-name">NÁKUPNÍ KOŠÍK</strong>
+            <strong class="basket-price">10&nbsp;025&nbsp;Kč</strong>
+          </div>
+        </a>
+      </div>
+
+			<div class="header-nav">
+				<button class="header-nav__open-search">
+					<i class="icon icon-zoom"></i>
 				</button>
 
-				<button class="open-mmenu">
-					<i class="icon-mmenu"></i>
+				<button class="header-nav__open-mmenu">
+					<i class="icon icon-mmenu"></i>
 					<span>MENU</span>
 				</button>
 
-				<nav id="main-nav">
-					<ul>
-						<li><a href="">ÚVODNÍ STRANA</a></li>
-						<li><a href="">ČLÁNKY</a></li>
-						<li><a href="">PARTNEŘI</a></li>
-						<li><a href="">KONTAKT</a></li>
-						<li><a href="">O NÁS</a></li>
-					</ul>
-				</nav>
+        <div class="main-nav-wrapper">
+          <nav id="main-nav">
+            <ul>
+              <li><a href="">ÚVODNÍ STRANA</a></li>
+              <li><a href="">ČLÁNKY</a></li>
+              <li><a href="">PARTNEŘI</a></li>
+              <li><a href="">KONTAKT</a></li>
+              <li><a href="">O NÁS</a></li>
+            </ul>
+          </nav>
 
-				<nav class="login-nav">
-					<ul>
-						<li class="login-nav__registration"><a href="">REGISTRACE</a></li>
-						<li class="login-nav__login">
-							<a href="">
-								<i class="icon-person"></i>
-								<span>PŘIHLÁŠENÍ</span>
-							</a>
-						</li>
-					</ul>
-				</nav>
+          <div class="check-in-block">
+            <a class="check-in-block__registration" href="">
+              <i class="icon icon-lock"></i>
+              <span>REGISTRACE</span>
+            </a>
+
+            <a class="check-in-block__login" href="">
+              <i class="icon icon-person"></i>
+              <span>PŘIHLÁŠENÍ</span>
+            </a>
+          </div>
+        </div>
 			</div>
 		</div>
 	</header>

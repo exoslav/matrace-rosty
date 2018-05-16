@@ -1,0 +1,127 @@
+.infobar {
+  display: none;
+}
+
+@media (min-width: 576px) {
+  .infobar {
+    display: block;
+    position: relative;
+    padding: 15px 0;
+    font-size: 13px;
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      border-bottom: 2px solid #dae5ec;
+    }
+
+    .icon {
+      color: $red;
+    }
+  }
+
+  .infobar__right {
+    @extend %clearfix;
+  }
+
+  .infobar__right__tel,
+  .infobar__right__email,
+  .infobar__opening-hours {
+    position: relative;
+    padding-left: 25px;
+
+    .icon {
+      position: absolute;
+      left: 0;
+      top: -4px;
+      font-size: 21px;
+    }
+  }
+
+  .infobar__opening-hours {
+    margin-bottom: 10px;
+
+    .icon {
+      font-size: 16px;
+    }
+  }
+
+  .infobar__right__tel,
+  .infobar__right__email {
+    float: left;
+    display: inline-block;
+
+    .icon {
+      font-size: 17px;
+    }
+  }
+
+  .infobar__right__tel {
+    margin-right: 10px;
+    font-weight: 900;
+
+    a {
+      color: $gray;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .infobar__right__email {
+    margin-right: 10px;
+  }
+
+  .infobar__right__fb {
+    display: inline-block;
+    position: absolute;
+    top: 37px;
+    margin-top: -5px;
+    text-decoration: none;
+
+    .icon {
+      font-size: 24px;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .infobar {
+    @extend %clearfix;
+
+    .infobar__right {
+      > div {
+        float: left;
+      }
+
+      .infobar__fb {
+        display: inline-block;
+        margin-top: -5px;
+        text-decoration: none;
+
+        i {
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .infobar {
+    overflow: hidden;
+
+    .infobar__opening-hours {
+      float: left;
+      margin-bottom: 0;
+    }
+
+    .infobar__right {
+      float: right;
+    }
+  }
+}

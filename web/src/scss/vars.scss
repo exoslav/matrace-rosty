@@ -1,18 +1,32 @@
 $red: #ac2e2e;
 $gray: #3b3b3b;
 
-.main-nav-mobile-item {
-	width: 54px;
-	height: 60px;
-	color: #fff;
-	background: $gray;
+%clearfix {
+  @extend .clearfix;
 }
 
-.centered-icon {
-	position:absolute;
-	top: 50%;
-	left: 50%;
-	-webkit-transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
+.nav-xs-item {
+  width: 54px;
+  height: 60px;
+  color: #fff;
+  background: $gray;
+
+  &:hover {
+    background: lighten($gray, 5%);
+  }
 }
+
+.responsive-img {
+  max-width: 100%;
+  height: auto;
+}
+
+@mixin centeredIcon($top) {
+	position: absolute;
+	top: $top;
+	right: 0;
+	left: 0;
+	margin: auto;
+  text-align: center;
+}
+
