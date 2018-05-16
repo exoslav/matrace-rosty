@@ -1,0 +1,258 @@
+header {
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e8eef1+0,ebeced+100 */
+	background: #e8eef1; /* Old browsers */
+	background: -moz-linear-gradient(top, #e8eef1 0%, #ebeced 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #e8eef1 0%,#ebeced 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #e8eef1 0%,#ebeced 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e8eef1', endColorstr='#ebeced',GradientType=0 ); /* IE6-9 */
+}
+
+%clearfix {
+	@extend .clearfix;
+}
+
+.logo-mobile {
+  padding: 15px 0;
+	text-align: center;
+	@extend .hide-from-xs-up;
+}
+
+.infobar {
+	display: none;
+
+	@media (min-width: 576px) {
+		display: block;
+		position: relative;
+		padding: 15px 23px 15px 0;
+		font-size: 15px;
+		font-size: 1.5rem;
+		border-bottom: 2px solid #dae5ec;
+		@extend %clearfix;
+
+		i {
+			color: $red;
+		}
+
+		.infobar__right,
+		.infobar__opening-hours {
+			float: left;
+		}
+
+		.infobar__opening-hours {
+			position: relative;
+			margin-bottom: 15px;
+	    padding-left: 28px;
+
+			i {
+				position: absolute;
+				top: calc(50% - 11px);
+				left: 0;
+				font-size: 20px;
+			}
+		}
+
+		.infobar__right {
+			> div {
+				float: left;
+			}
+
+			.infobar__tel {
+				position: relative;
+				padding: 0 36px 0 26px;
+				font-weight: 900;
+
+				i {
+			    position: absolute;
+			    left: 0;
+			    top: -4px;
+			    font-size: 21px;
+				}
+
+				a {
+					color: $gray;
+					text-decoration: none;
+
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+			}
+
+			.infobar__email {
+				position: relative;
+				padding: 0 20px 0 30px;
+				color: $red;
+
+				i {
+			    position: absolute;
+			    left: 0;
+			    top: -3px;
+					font-size: 20px;
+				}
+			}
+
+			.infobar__fb {
+				display: inline-block;
+				position: absolute;
+				right: 0;
+				top: calc(50% - 12px);
+				text-decoration: none;
+
+				i {
+					font-size: 24px;
+				}
+			}
+		}
+	}
+
+	@media (min-width: 992px) {
+		.infobar__opening-hours {
+			margin-bottom: 0;
+		}
+
+	  .infobar__right {
+	  	float: right;
+	  }
+	}
+}
+
+.header-interface {
+	position: relative;
+
+	.logo-desktop {
+		display: none;
+		float: left;
+		width: 35%;
+
+		@media (min-width: 576px) {
+		  display: block;
+		}
+	}
+
+	.header-interface__search {
+		position: absolute;
+		display: none;
+		width: 100%;
+
+		form {
+			box-shadow: 0px 2px 10px -5px $gray;
+			border-radius: 5px;
+
+			input, button {
+				height: 55px;
+			}
+
+			input {
+				float: left;
+				width: calc(100% - 60px);
+				padding: 10px 15px;
+				border: none;
+				border-top-left-radius: 5px;
+				border-bottom-left-radius: 5px;
+			}
+
+			button {
+				width: 60px;
+				border: none;
+				border-left: 1px solid #ececec;
+				border-top-right-radius: 5px;
+				border-bottom-right-radius: 5px;
+
+				i {
+					font-size: 28px;
+					color: $red;
+				}
+
+				&:hover {
+					background: $red;
+
+					i {
+						color: #fff;
+					}
+				}
+			}
+		}
+	}
+
+	.header-item {
+		position: absolute;
+		top: 0;
+		display: table;
+		text-align: center;
+		text-decoration: none;
+		z-index: 1;
+		@extend .main-nav-mobile-item;
+
+		&:hover {
+			background: darken(gray, 20%);
+		}
+
+		i {
+			font-size: 30px;
+			color: #fff;
+		  @extend .centered-icon;
+		}
+	}
+
+	.header-interface__shopping-cart {
+		right: 0;
+		@extend .header-item;
+	}
+
+	.open-search {
+		right: 54px;
+		border: none;
+		@extend .header-item;
+
+		span {
+			display: none;
+		}
+	}
+}
+
+
+/*
+	.header-interface__search {
+		float: left;
+		width: 360px;
+
+		form {
+			box-shadow: 0px 2px 10px -5px $gray;
+			border-radius: 5px;
+
+			input, button {
+				height: 55px;
+			}
+
+			input {
+				float: left;
+				width: calc(100% - 60px);
+				padding: 10px 15px;
+				border: none;
+				border-top-left-radius: 5px;
+				border-bottom-left-radius: 5px;
+			}
+
+			button {
+				width: 60px;
+				border: none;
+				border-left: 1px solid #ececec;
+				border-top-right-radius: 5px;
+				border-bottom-right-radius: 5px;
+
+				i {
+					font-size: 28px;
+					color: $red;
+				}
+
+				&:hover {
+					background: $red;
+
+					i {
+						color: #fff;
+					}
+				}
+			}
+		}
+	}
+	*/

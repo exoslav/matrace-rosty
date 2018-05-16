@@ -1,0 +1,17 @@
+html {
+	font-size: 10px;
+	font-family: 'Roboto', sans-serif;
+}
+
+body {
+	color: $gray;
+}
+
+a {
+	color: $red;
+	text-decoration: underline;
+
+	&:hover {
+		text-decoration: none;
+	}
+}

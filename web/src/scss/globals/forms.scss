@@ -1,0 +1,24 @@
+$border: #dfe6e9;
+
+input {
+	height: 40px;
+}
+
+input, textarea {
+	width: 100%;
+	padding: 5px 10px;
+	border: 1px solid #dfe6e9;
+	background: #fff;
+
+	&:focus {
+		border-color: darken($border, 20%);
+		outline: none;
+	}
+}
+
+button {
+	padding: 5px;
+	border: 1px solid #dfe6e9;
+	background: #fff;
+	cursor: pointer;
+}
