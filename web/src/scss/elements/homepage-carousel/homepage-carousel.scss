@@ -1,16 +1,69 @@
 #homepage-carousel {
-	overflow: hidden;
+  overflow: hidden;
+  height: 200px;
+
+  &.slick-dotted.slick-slider {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 768px) {
+    height: 300px;
+  }
+
+  @media (min-width: 992px) {
+    height: 360px;
+  }
+}
+
+.homepage-carousel-dots {
+  font-size: 0;
+  text-align: center;
+
+  .slick-dots {
+    position: relative;
+    bottom: auto;
+    overflow: hidden;
+    display: inline-block;
+    width: auto;
+
+    li {
+      float: left;
+      margin: 15px 3px;
+      border: 1px solid #bfd6e3;
+
+      &.slick-active:before {
+        content: '';
+        position: absolute;
+        width: calc(100% - 8px);
+        height: calc(100% - 8px);
+        top: 4px;
+        left: 4px;
+        background: $red;
+      }
+
+      button {
+        display: none;
+      }
+    }
+  }
 }
 
     .homepage-carousel__item {
-      display: table !important;
+      position: relative;
+      width: 100%;
       padding: 20px;
       height: 200px;
       float: left;
+      font-weight: 900;
+      text-transform: uppercase;
       background-size: cover;
 
       h2 {
 
+      }
+
+      @media (min-width: 768px) {
+        height: 300px;
       }
 
       @media (min-width: 992px) {
@@ -19,10 +72,38 @@
     }
 
         .homepage-carousel__item__description {
-          display: table-cell;
-          vertical-align: bottom;
+          position: absolute;
+          bottom: 18px;
+          left: 20px;
 
           h2 {
+            margin-bottom: 8px;
             color: #fff;
+            font-size: 20px;
+          }
+
+          a {
+            display: inline-block;
+            font-size: 14px;
+            text-decoration: none;
+            color: #fff;
+            background: $red;
+            @extend .clearfix;
+
+            span, .icon {
+              display: inline-block;
+              float: left;
+              padding: 13px 11px 12px 11px;
+            }
+
+            span {
+              padding-right: 24px;
+            }
+
+            .icon {
+              background: #9c2424;
+              padding-right: 13px;
+              transform: rotate(180deg);
+            }
           }
         }

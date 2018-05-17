@@ -28,7 +28,10 @@ $('document').ready(() => {
 	})
 
   $('#homepage-carousel').slick({
-  	fade: true
+  	fade: true,
+  	arrows: false,
+  	dots: true,
+  	appendDots: $('.homepage-carousel-dots')
   });
 
 })
