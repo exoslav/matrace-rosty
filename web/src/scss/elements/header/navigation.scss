@@ -19,6 +19,7 @@
     left: 0;
     width: 127px;
     height: 60px;
+    padding: 0;
     color: #fff;
     font-size: 15px;
     font-weight: 700;
@@ -53,13 +54,29 @@
 .main-nav-wrapper {
   background: $gray;
   @extend %clearfix;
+
+  @media (min-width: 768px) {
+    background: $red;
+  }
 }
 
   #main-nav {
     padding-top: 60px;
 
     ul {
+      &[data-opened='true'] {
+        display: block;
+      }
+
+      &[data-opened='false'] {
+        display: none;
+      }
+
       li {
+        &:last-child a:after {
+          display: none;
+        }
+
         a {
           position: relative;
           text-decoration: none;
@@ -87,11 +104,25 @@
       @extend %clearfix;
 
       ul {
+        display: block !important;
+
         li {
           float: left;
 
           &:last-child a:after {
-            display: none;
+            display: inline-block;
+          }
+
+          a {
+            &:after {
+              content: '';
+              width: 1px;
+              height: 15px;
+              top: auto;
+              right: 0;
+              bottom: auto;
+              left: auto;
+            }
           }
         }
       }

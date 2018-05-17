@@ -11,6 +11,10 @@
   &:hover {
     background: darken($color, 5%);
   }
+
+  @media (min-width: 1200px) {
+    padding: 24px 40px 20px 40px;
+  }
 }
 
 header {

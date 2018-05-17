@@ -13,7 +13,7 @@ module.exports = function (env) {
     },
     output: {
       path: path.join(__dirname, '/dist'),
-      filename: 'app.js'
+      filename: 'app.min.js'
     },
     mode: env === 'prod' ? 'production' : 'development',
     devtool: env === 'prod' ? 'source-map' : 'eval-source-map', // viz.: https://webpack.js.org/configuration/devtool/
@@ -41,7 +41,7 @@ module.exports = function (env) {
           }
         },
         {
-          test: /\.(scss|sass)$/,
+          test: /\.(css|scss|sass)$/,
           use: ExtractText.extract({
             "fallback": "style-loader",
             use: [
@@ -56,7 +56,7 @@ module.exports = function (env) {
           })
         },
         {
-          test: /\.(png|jpg|svg)$/,
+          test: /\.(png|jpg|svg|gif)$/,
           use: 'url-loader?limit=100000'
         },
         {

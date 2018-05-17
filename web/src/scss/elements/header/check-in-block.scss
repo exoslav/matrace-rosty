@@ -39,16 +39,34 @@
 
     @media (min-width: 992px) {
       width: auto;
+      height: auto;
       @include menuItem($gray);
-      padding-left: 45px;
+      padding-left: 43px;
 
       .icon {
-        left: 0;
+        left: 13px;
         right: auto;
+        font-size: 18px;
+        top: 17px;
       }
 
       span {
         display: block;
       }
+    }
+
+    @media (min-width: 1200px) {
+      padding-left: 43px;
+      padding-right: 27px;
+
+      .icon {
+        top: 21px;
+      }
+    }
+  }
+
+  .check-in-block__registration {
+    @media (min-width: 992px) {
+      border-right: 1px solid #555;
     }
   }
