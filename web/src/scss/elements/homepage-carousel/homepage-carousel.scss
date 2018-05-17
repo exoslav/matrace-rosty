@@ -1,3 +1,28 @@
 #homepage-carousel {
-	height: 360px;
+	overflow: hidden;
 }
+
+    .homepage-carousel__item {
+      display: table !important;
+      padding: 20px;
+      height: 200px;
+      float: left;
+      background-size: cover;
+
+      h2 {
+
+      }
+
+      @media (min-width: 992px) {
+        height: 360px;
+      }
+    }
+
+        .homepage-carousel__item__description {
+          display: table-cell;
+          vertical-align: bottom;
+
+          h2 {
+            color: #fff;
+          }
+        }
