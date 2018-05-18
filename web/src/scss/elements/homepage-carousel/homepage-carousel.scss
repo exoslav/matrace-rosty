@@ -1,4 +1,5 @@
 #homepage-carousel {
+  position: relative;
   overflow: hidden;
   height: 200px;
 
@@ -58,8 +59,15 @@
       text-transform: uppercase;
       background-size: cover;
 
-      h2 {
-
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgb(0,0,0);
+        background: linear-gradient(45deg, black -30%, rgba(255, 255, 255, 0) 65%);
       }
 
       @media (min-width: 768px) {
@@ -75,11 +83,17 @@
           position: absolute;
           bottom: 18px;
           left: 20px;
+          z-index: 1;
 
           h2 {
             margin-bottom: 8px;
             color: #fff;
             font-size: 20px;
+          }
+
+          p {
+            display: none;
+            width: 50%;
           }
 
           a {
@@ -104,6 +118,73 @@
               background: #9c2424;
               padding-right: 13px;
               transform: rotate(180deg);
+            }
+          }
+
+          @media (min-width: 768px) {
+            h2 {
+              position: relative;
+              padding-bottom: 16px;
+              font-size: 29px;
+
+              &:after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 30px;
+                height: 4px;
+                background: $red;
+              }
+            }
+
+            p {
+              display: block;
+              margin-bottom: 14px;
+              color: #fff;
+              text-transform: none;
+              font-weight: 400;
+              line-height: 1.25em;
+            }
+
+            a {
+              font-size: 15px;
+
+              span, .icon {
+                padding: 14px 30px 12px 11px;
+              }
+
+              .icon {
+                padding-right: 11px;
+                padding-left: 14px;
+              }
+            }
+          }
+
+          @media (min-width: 992px) {
+            h2 {
+              padding-bottom: 20px;
+              margin-bottom: 15px;
+              font-size: 34px;
+            }
+
+            a {
+              font-size: 15px;
+
+              span, .icon {
+                padding: 17px 33px 15px 14px;
+              }
+
+              .icon {
+                padding-right: 14px;
+                padding-left: 17px;
+              }
+            }
+          }
+
+          @media (min-width: 1200px) {
+            h2 {
+              font-size: 38px;
             }
           }
         }

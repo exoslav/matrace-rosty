@@ -13,143 +13,148 @@
 </head>
 
 <body>
-	<header>
-		<div class="container">
-			<div class="infobar">
-				<div class="infobar__opening-hours">
-					<i class="icon icon-time"></i>
-					<strong>Otevírací doba:&nbsp;</strong>
-					<span>Po-Pá od&nbsp;9:00&nbsp;-&nbsp;do&nbsp;17:00 hod, So a Ne zavřeno</span>
-				</div>
+  <div class="header-container">
+    <header>
+      <div class="container">
+        <div class="infobar">
+          <div class="infobar__opening-hours">
+            <i class="icon icon-time"></i>
+            <strong>Otevírací doba:&nbsp;</strong>
+            <span>Po-Pá od&nbsp;9:00&nbsp;-&nbsp;do&nbsp;17:00 hod, So a Ne zavřeno</span>
+          </div>
 
-				<div class="infobar__right">
-					<div class="infobar__right__tel">
-						<i class="icon icon-phone"></i>
-						<a href="tel:+420 608 609 716">+420 608 609 716</a>
-					</div>
+          <div class="infobar__right">
+            <div class="infobar__right__tel">
+              <i class="icon icon-phone"></i>
+              <a href="tel:+420 608 609 716">+420 608 609 716</a>
+            </div>
 
-					<div class="infobar__right__email">
-						<i class="icon icon-email"></i>
-						<a href="mailto:obchod@matrace-rosty.cz">obchod@matrace-rosty.cz</a>
-					</div>
+            <div class="infobar__right__email">
+              <i class="icon icon-email"></i>
+              <a href="mailto:obchod@matrace-rosty.cz">obchod@matrace-rosty.cz</a>
+            </div>
 
-					<a class="infobar__right__fb" href="https://facebook.com/">
-						<i class="icon icon-fb-filled"></i>
-					</a>
-				</div>
-			</div>
-
-      <div class="header-toolbar">
-        <div class="header-toolbar__logo-mobile">
-          <a href="/">
-            <img src="./src/assets/img/logo-mobile.png" alt="logo matrace a rosty">
-          </a>
+            <a class="infobar__right__fb" href="https://facebook.com/">
+              <i class="icon icon-fb-filled"></i>
+            </a>
+          </div>
         </div>
 
-        <div class="header-toolbar__logo-desktop">
-          <a href="/">
-            <img src="./src/assets/img/logo.png" alt="logo matrace a rosty">
-          </a>
-        </div>
+        <div class="header-toolbar">
+          <div class="header-toolbar__logo-mobile">
+            <a href="/">
+              <img src="./src/assets/img/logo-mobile.png" alt="logo matrace a rosty">
+            </a>
+          </div>
 
-        <div data-opened="false" class="header-toolbar__search">
-          <form>
-            <input type="" name="">
-            <button type="submit">
-              <i class="icon icon-zoom"></i>
-            </button>
-          </form>
-        </div>
+          <div class="header-toolbar__logo-desktop">
+            <a href="/">
+              <img src="./src/assets/img/logo.png" alt="logo matrace a rosty">
+            </a>
+          </div>
 
-        <a href="" class="header-toolbar__shopping-cart">
-          <div>
-            <div class="cart-wrap">
+          <div data-opened="false" class="header-toolbar__search">
+            <form>
+              <input type="" name="">
+              <button type="submit">
+                <i class="icon icon-zoom"></i>
+              </button>
+            </form>
+          </div>
+
+          <a href="" class="header-toolbar__shopping-cart">
+            <div>
+              <div class="cart-wrap">
               <span class="items-count">
                 <span>3</span>
               </span>
-              <i class="icon icon-shopping-cart"></i>
-            </div>
+                <i class="icon icon-shopping-cart"></i>
+              </div>
 
-            <div class="price-wrap">
-              <strong class="basket-name">NÁKUPNÍ KOŠÍK</strong>
-              <strong class="basket-price">10&nbsp;025&nbsp;Kč</strong>
+              <div class="price-wrap">
+                <strong class="basket-name">NÁKUPNÍ KOŠÍK</strong>
+                <strong class="basket-price">10&nbsp;025&nbsp;Kč</strong>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="header-nav">
+          <button class="header-nav__open-search">
+            <i class="icon icon-zoom"></i>
+          </button>
+
+          <button class="header-nav__open-mmenu">
+            <i class="icon icon-mmenu"></i>
+            <span>MENU</span>
+          </button>
+
+          <div class="main-nav-wrapper">
+            <nav id="main-nav">
+              <ul data-opened="false">
+                <li><a href="">ÚVODNÍ STRANA</a></li>
+                <li><a href="">ČLÁNKY</a></li>
+                <li><a href="">PARTNEŘI</a></li>
+                <li><a href="">KONTAKT</a></li>
+                <li><a href="">O NÁS</a></li>
+              </ul>
+            </nav>
+
+            <div class="check-in-block">
+              <a class="check-in-block__registration" href="">
+                <i class="icon icon-lock"></i>
+                <span>REGISTRACE</span>
+              </a>
+
+              <a class="check-in-block__login" href="">
+                <i class="icon icon-person"></i>
+                <span>PŘIHLÁŠENÍ</span>
+              </a>
             </div>
           </div>
-        </a>
+        </div>
       </div>
+    </header>
 
-			<div class="header-nav">
-				<button class="header-nav__open-search">
-					<i class="icon icon-zoom"></i>
-				</button>
-
-				<button class="header-nav__open-mmenu">
-					<i class="icon icon-mmenu"></i>
-					<span>MENU</span>
-				</button>
-
-        <div class="main-nav-wrapper">
-          <nav id="main-nav">
-            <ul data-opened="false">
-              <li><a href="">ÚVODNÍ STRANA</a></li>
-              <li><a href="">ČLÁNKY</a></li>
-              <li><a href="">PARTNEŘI</a></li>
-              <li><a href="">KONTAKT</a></li>
-              <li><a href="">O NÁS</a></li>
-            </ul>
-          </nav>
-
-          <div class="check-in-block">
-            <a class="check-in-block__registration" href="">
-              <i class="icon icon-lock"></i>
-              <span>REGISTRACE</span>
-            </a>
-
-            <a class="check-in-block__login" href="">
-              <i class="icon icon-person"></i>
-              <span>PŘIHLÁŠENÍ</span>
+    <section class="container">
+      <div id="homepage-carousel">
+        <div class="homepage-carousel__item" style="background-image: url('./src/public/carousel/carousel-1.jpg')">
+          <div class="homepage-carousel__item__description">
+            <h2>Krátký nadpis</h2>
+            <p>Lore ipsum dolor sit amet, consectetur adi[isicing elit, sed do euismod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <a href="/">
+              <span>ZOBRAZIT</span>
+              <i class="icon icon-arrow-left"></i>
             </a>
           </div>
         </div>
-			</div>
-		</div>
-	</header>
 
-  <section class="container">
-    <div id="homepage-carousel">
-      <div class="homepage-carousel__item" style="background-image: url('./src/public/carousel/carousel-1.jpg')">
-        <div class="homepage-carousel__item__description">
-          <h2>Krátký nadpis</h2>
-          <a href="/">
-            <span>ZOBRAZIT</span>
-            <i class="icon icon-arrow-left"></i>
-          </a>
+        <div class="homepage-carousel__item" style="background-image: url('./src/public/carousel/carousel-2.jpg')">
+          <div class="homepage-carousel__item__description">
+            <h2>Matrace levně</h2>
+            <p>Lore ipsum dolor sit amet, consectetur adi[isicing elit, sed do euismod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <a href="/">
+              <span>ZOBRAZIT</span>
+              <i class="icon icon-arrow-left"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="homepage-carousel__item" style="background-image: url('./src/public/carousel/carousel-3.jpg')">
+          <div class="homepage-carousel__item__description">
+            <h2>Další matrace</h2>
+            <p>Lore ipsum dolor sit amet, consectetur adi[isicing elit, sed do euismod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <a href="/">
+              <span>ZOBRAZIT</span>
+              <i class="icon icon-arrow-left"></i>
+            </a>
+          </div>
         </div>
       </div>
 
-      <div class="homepage-carousel__item" style="background-image: url('./src/public/carousel/carousel-2.jpg')">
-        <div class="homepage-carousel__item__description">
-          <h2>Matrace levně</h2>
-          <a href="/">
-            <span>ZOBRAZIT</span>
-            <i class="icon icon-arrow-left"></i>
-          </a>
-        </div>
-      </div>
-
-      <div class="homepage-carousel__item" style="background-image: url('./src/public/carousel/carousel-3.jpg')">
-        <div class="homepage-carousel__item__description">
-          <h2>Další matrace</h2>
-          <a href="/">
-            <span>ZOBRAZIT</span>
-            <i class="icon icon-arrow-left"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="homepage-carousel-dots"></div>
-  </section>
+      <div class="homepage-carousel-dots"></div>
+    </section>
+  </div>
 
   <h1>O nas</h1>
   <p>Lore ipsum dolor sit amet Lore ipsum dolor sit ametLore ipsum dolor sit ametLore ipsum dolor sit ametLore ipsum dolor sit ametLore ipsum dolor sit ametLore ipsum dolor sit ametLore ipsum dolor sit ametLore ipsum dolor sit ametLore ipsum dolor sit ametLore ipsum dolor sit ametLore ipsum dolor sit ametLore ipsum dolor sit ametLore ipsum dolor sit ametLore ipsum dolor sit ametLore ipsum dolor sit ametLore ipsum dolor sit ametLore ipsum dolor sit ametLore ipsum dolor sit ametLore ipsum dolor sit ametLore ipsum dolor sit ametLore ipsum dolor sit amet</p>
