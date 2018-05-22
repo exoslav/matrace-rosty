@@ -1,0 +1,45 @@
+@mixin firstLevelItem($color, $background) {
+  position: relative;
+  display: block;
+  padding: 17px 55px 16px 14px;
+  font-size: 15px;
+  line-height: 120%;
+  color: $color;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 2px solid #ebebeb;
+  background: $background;
+
+  &:hover {
+    background: darken($background, 5%);
+  }
+
+  &[data-open='true'] {
+    > .icon {
+      transform: rotate(180deg);
+      box-shadow: -1px -1px 5px -3px #000;
+    }
+  }
+
+  > .icon {
+    position: absolute;
+    top: calc(50% - .85em);
+    right: 13px;
+    margin: auto;
+    padding: .375em;
+    font-size: 16px;
+    vertical-align: middle;
+    color: #ac2e2e;
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: 1px 1px 5px -3px #000;
+    background: #fff;
+    cursor: pointer;
+
+    &:hover {
+      background: $red;
+      color: #fff;
+    }
+  }
+}

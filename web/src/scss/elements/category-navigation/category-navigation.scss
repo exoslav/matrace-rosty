@@ -1,0 +1,36 @@
+@import './category-navigation-mixins';
+
+#category-navigation {
+  nav {
+    @import './first-level';
+
+    &[data-open='true'] {
+    }
+  }
+
+  @media (min-width: 992px) {
+    width: 263px;
+    margin-right: 30px;
+
+    nav {
+      display: block !important;
+    }
+  }
+}
+
+.open-category-navigation {
+  @include firstLevelItem(#fff, $red);
+  width: 100%;
+  border: none;
+  text-align: left;
+  @extend .hide-from-md-up;
+
+  .icon {
+    right: 15px;
+
+    &:hover {
+      color: $red;
+      background: #fff;
+    }
+  }
+}

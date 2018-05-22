@@ -1,0 +1,35 @@
+.category-navigation__third-level {
+  display: none;
+
+  > ul {
+    > li {
+      &:last-child a {
+        border-bottom: none;
+      }
+
+      > a {
+        display: block;
+        position: relative;
+        padding: 7px 15px 8px 69px;
+        font-size: 15px;
+        font-weight: 700;
+        color: #c1c1c1;
+        text-decoration: underline;
+        background: #303030;
+
+        &:before {
+          content: '';
+          position: absolute;
+          left: 51px;
+          top: 12px;
+          width: 5px;
+          height: 5px;
+          margin-right: 4px;
+          display: block;
+          border-radius: 50%;
+          background: $red;
+        }
+      }
+    }
+  }
+}

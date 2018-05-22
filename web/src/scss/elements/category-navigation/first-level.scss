@@ -1,0 +1,25 @@
+.category-navigation__first-level {
+  display: none;
+
+  > ul {
+    border: 2px solid #ebebeb;
+
+    > li {
+      position: relative;
+
+      &:last-child a {
+        border-bottom: none;
+      }
+
+      > a {
+        @include firstLevelItem($gray, #f5f5f5);
+      }
+
+      @import './second-level';
+    }
+  }
+
+  @media (min-width: 992px) {
+    height: auto !important;
+  }
+}

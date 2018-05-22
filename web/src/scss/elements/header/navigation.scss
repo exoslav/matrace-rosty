@@ -64,11 +64,11 @@
     padding-top: 60px;
 
     ul {
-      &[data-opened='true'] {
+      &[data-open='true'] {
         display: block;
       }
 
-      &[data-opened='false'] {
+      &[data-open='false'] {
         display: none;
       }
 
