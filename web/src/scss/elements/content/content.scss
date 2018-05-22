@@ -1,0 +1,25 @@
+.content {
+  @extend %clearfix;
+}
+
+.content-left {
+  @media (min-width: 768px) {
+    width: 100%;
+  }
+
+  @media (min-width: 992px) {
+    float: left;
+    width: 293px;
+  }
+}
+
+.content-right {
+  @media (min-width: 768px) {
+    width: 100%;
+  }
+
+  @media (min-width: 992px) {
+    float: right;
+    width: calc(100% - 293px);
+  }
+}

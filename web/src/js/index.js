@@ -49,9 +49,6 @@ $('document').ready(() => {
     e.preventDefault()
   })
 
-//  let activeFirstLevel = null;
-//  let secondLevelHeight = 0;
-
   categoryNav.find('.category-navigation__first-level > ul > li > a > .icon').on('click', function() {
     const openedItem = $(this).parent()
     const secondLevel = $(this).parent().next('.category-navigation__second-level')
@@ -78,46 +75,24 @@ $('document').ready(() => {
     }
   })
 
-//  categoryNav.find('.category-navigation__first-level > ul > li > a > .icon').on('click', function() {
-//    const openedItem = $(this).parent()
-//  	const secondLevel = $(this).parent().next('.category-navigation__second-level')
-//    const secondLevelNav = secondLevel.find('> ul')
-//    activeFirstLevel = secondLevel;
-//    secondLevelHeight = secondLevelNav.outerHeight()
-//
-//    if (openedItem.attr('data-open') === 'true') {
-//      openedItem.attr('data-open', 'false')
-//      secondLevel.css({ height: 0 })
-//    } else {
-//      openedItem.attr('data-open', 'true')
-//      secondLevel.css({ height: secondLevelNav.outerHeight() })
-//    }
-//  })
-//
-//
-//
-//  categoryNav.find('.category-navigation__second-level__open-icon').on('click', function() {
-//    const openedItem = $(this).parent()
-//    const thirdLevel = $(this).parent().next('.category-navigation__third-level')
-//    const thirdLevelNav = thirdLevel.find('> ul')
-//
-//    if (openedItem.attr('data-open') === 'true') {
-//      openedItem.attr('data-open', 'false')
-//      $(this).closest('.category-navigation__second-level').css({ height: secondLevelHeight });
-//      thirdLevel.css({ height: 0 })
-//    } else {
-//      openedItem.attr('data-open', 'true');
-//      console.log(activeFirstLevel.find('> ul').outerHeight())
-//      activeFirstLevel.css({ height: activeFirstLevel.find('> ul').outerHeight() + thirdLevelNav.outerHeight() });
-//      thirdLevel.css({ height: thirdLevelNav.outerHeight() });
-//    }
-//  })
-
   $('#homepage-carousel').slick({
   	fade: true,
   	arrows: false,
   	dots: true,
   	appendDots: $('.homepage-carousel-dots')
+  })
+
+  const contentLeft = $('.content-left');
+  const contentRight = $('.content-right');
+
+  $(window).resize(() => {
+	  if (window.innerWidth < 992) {
+      contentRight.before(contentLeft);
+    }
+
+    if (window.innerWidth > 992) {
+      contentLeft.before(contentRight);
+    }
   })
 
 })

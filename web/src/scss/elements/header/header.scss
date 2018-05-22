@@ -18,12 +18,17 @@
 }
 
 .header-container {
+  margin-bottom: 21px;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e8eef1+0,ebeced+100 */
   background: #e8eef1; /* Old browsers */
   background: -moz-linear-gradient(top, #e8eef1 0%, #ebeced 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(top, #e8eef1 0%,#ebeced 100%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to bottom, #e8eef1 0%,#ebeced 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e8eef1', endColorstr='#ebeced',GradientType=0 ); /* IE6-9 */
+
+  @media (min-width: 992px) {
+    margin-bottom: 40px;
+  }
 }
 
 .header-item {
