@@ -4,9 +4,11 @@
 @import './globals/grid';
 @import './globals/global';
 @import './globals/forms';
+@import 'elements/mixins/product-item';
 @import 'elements/header/header-index';
 @import 'elements/homepage-carousel/homepage-carousel';
 @import 'elements/category-navigation/category-navigation';
 @import 'elements/footer/footer';
 @import 'elements/news-blog-posts-hp/news-blog-posts-hp';
 @import 'elements/content/content';
+@import 'elements/homepage-best-sellers/homepage-best-sellers';

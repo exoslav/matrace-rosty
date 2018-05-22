@@ -30,3 +30,20 @@ $gray: #3b3b3b;
   text-align: center;
 }
 
+@mixin paddedIcon($size, $color, $backgroundColor, $hoverColor, $hoverBackgroundColor) {
+  position: absolute;
+  top: calc(50% - .85em);
+  padding: .375em;
+  font-size: $size;
+  color: $color;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 1px 1px 5px -3px #000;
+  background: $backgroundColor;
+  cursor: pointer;
+
+  &:hover {
+    color: $hoverColor;
+    background: $hoverBackgroundColor;
+  }
+}
