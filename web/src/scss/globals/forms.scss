@@ -1,13 +1,37 @@
 $border: #dfe6e9;
 
-input {
+%clearfix {
+	@extend .clearfix;
+}
+
+@mixin inputGradient() {
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,f1f1f1+100 */
+	background: #ffffff; /* Old browsers */
+	background: -moz-linear-gradient(top, #ffffff 0%, #f1f1f1 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #ffffff 0%,#f1f1f1 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #ffffff 0%,#f1f1f1 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f1f1f1',GradientType=0 ); /* IE6-9 */
+}
+
+select {
+	cursor: pointer;
+}
+
+input, select {
 	height: 40px;
 }
 
-input, textarea {
+input[type="checkbox"] {
+	width: 20px;
+	height: 20px;
+}
+
+input, textarea, select {
 	width: 100%;
 	padding: 5px 10px;
-	border: 1px solid #dfe6e9;
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	border: 1px solid $border;
 	background: #fff;
 
 	&:focus {
@@ -18,7 +42,192 @@ input, textarea {
 
 button {
 	padding: 5px;
-	border: 1px solid #dfe6e9;
+	border: 1px solid $border;
 	background: #fff;
 	cursor: pointer;
 }
+
+label {
+	display: inline-block;
+	color: $gray;
+	font-size: 16px;
+	line-height: 29px;
+	cursor: pointer;
+}
+
+.general-form {
+	@media (min-width: 768px) {
+	  width: 615px;
+	  margin: 0 auto;
+	}
+}
+
+		.general-form__block {
+			padding: 15px;
+			margin-bottom: 38px;
+			background: #eef0f1;
+
+			@media (min-width: 576px) {
+				padding: 20px;
+
+				@extend %clearfix;
+			}
+
+			@media (min-width: 992px) {
+			  padding: 30px;
+			}
+		}
+
+		.general-form__header {
+			margin-bottom: .75em;
+			color: $gray;
+			font-size: 24px;
+			font-weight: 700;
+			line-height: 30px;
+			text-align: center;
+		}
+
+		.general-form__field {
+			margin-bottom: 12px;
+
+			@media (min-width: 576px) {
+				float: left;
+			  width: calc(50% - 10px);
+
+			  &:nth-of-type(odd) {
+			  	margin-right: 10px;
+			  }
+
+			  &:nth-of-type(even) {
+			  	margin-left: 10px;
+			  }
+			}
+
+			@media (min-width: 992px) {
+			  width: calc(50% - 15px);
+
+			  &:nth-of-type(odd) {
+			  	margin-right: 15px;
+			  }
+
+			  &:nth-of-type(even) {
+			  	margin-left: 15px;
+			  }
+			}
+		}
+
+				.general-form__checkbox-wrap {
+					display: inline-block;
+					position: relative;
+					width: 20px;
+					height: 20px;
+					margin: 0 12px 0 0;
+			    vertical-align: middle;
+			    border-radius: 1px;
+			    border: 1px solid $border;
+			    @include inputGradient();
+				}
+
+						.general-form__checkbox {
+					    opacity: 0;
+					    margin: 0;
+
+					    &:checked + .general-form__checkbox-icon {
+					    	display: block;
+					    }
+						}
+
+						.general-form__checkbox-icon {
+							display: none;
+					    position: absolute;
+					    top: 0;
+					    left: 0;
+					    width: 100%;
+					    height: 100%;
+
+					    &:before {
+							  content: '\2714';
+							  position: absolute;
+							  top: 0;
+							  right: 0;
+							  bottom: 0;
+							  left: 0;
+							  font-size: 13px;
+							  line-height: 20px;
+							  text-align: center;
+					    }
+						}
+
+						.general-form__checkbox-label {
+							vertical-align: middle;
+						}
+
+				.general-form__select-wrap {
+					position: relative;
+
+					&:after,
+					&:before {
+						content: '';
+						position: absolute;
+					}
+
+					&:before {
+						top: 1px;
+						right: 33px;
+						width: 1px;
+						height: calc(100% - 2px);
+						background: $border;
+					}
+
+					&:after {
+						top: calc(50% - 3px);
+						right: 12px;
+						width: 0;
+						height: 0;
+						border-style: solid;
+						border-width: 6px 5px 0 5px;
+						border-color: $gray transparent transparent transparent;
+					}
+				}
+
+						.general-form__select {
+							color: $gray;
+							font-size: 16px;
+							line-height: 29px;
+							z-index: 1;
+
+						  -webkit-appearance: none;
+						  -moz-appearance: none;
+
+							/* CAUTION: IE hackery ahead */
+							select::-ms-expand { 
+							    display: none; /* remove default arrow on ie10 and ie11 */
+							}
+
+							/* target Internet Explorer 9 to undo the custom arrow */
+							@media screen and (min-width:0\0) {
+							    select {
+							        background:none\9;
+							        padding: 5px\9;
+							    } 
+							}
+
+							@include inputGradient();
+						}
+
+				.general-form__submit-wrap {
+					@extend .clearfix;
+				}
+
+						.general-form__submit-button {
+							@include basicButton;
+
+							float: right;
+							padding: 0;
+							border: none;
+							outline: none;
+
+							> .icon {
+								transform: rotate(180deg);
+							}
+						}
