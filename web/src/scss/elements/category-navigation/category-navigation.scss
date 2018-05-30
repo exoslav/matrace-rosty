@@ -1,6 +1,8 @@
 @import './category-navigation-mixins';
 
 #category-navigation {
+  margin-bottom: 27px;
+  
   nav {
     @import './first-level';
 

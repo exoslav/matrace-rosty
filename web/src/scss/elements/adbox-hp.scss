@@ -1,0 +1,19 @@
+%responsive-img {
+  @extend .responsive-img;
+}
+
+#adbox-hp {
+	display: none;
+
+	@media (min-width: 992px) {
+	  display: block;
+
+	  a {
+	  	text-decoration: none;
+
+			img {
+				@extend %responsive-img;
+			}
+	  }
+	}
+}

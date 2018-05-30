@@ -15,15 +15,21 @@
     background: darken($background, 5%);
   }
 
-  &[data-open='true'] {
-    > .icon {
-      transform: rotate(180deg);
-      box-shadow: -1px -1px 5px -3px #000;
-    }
-  }
-
   > .icon {
     @include paddedIcon(16px, $red, #fff, #fff, $red);
     right: 13px;
+  }
+  
+  &[data-open='true'] {
+    color: #fff;
+    border-color: $red;
+    background: $red;
+
+    > .icon {
+      transform: rotate(180deg);
+      box-shadow: -1px -1px 5px -3px #000;
+      color: $red;
+      background: #fff;
+    }
   }
 }

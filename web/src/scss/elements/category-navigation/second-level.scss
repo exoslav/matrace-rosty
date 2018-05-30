@@ -22,6 +22,15 @@
         &:hover {
           background: darken(#3b3b3b, 5%);
         }
+
+        &[data-open='true'] {
+          border-color: #303030;
+          background: #303030;
+
+          .category-navigation__second-level__open-icon:after {
+            display: none;
+          }
+        }
       }
 
       @import './third-level';

@@ -47,3 +47,40 @@ $gray: #3b3b3b;
     background: $hoverBackgroundColor;
   }
 }
+
+@mixin basicButton($padding: 1em, $fontSize: 16px) {
+  & {
+    display: inline-block;
+    text-decoration: none;
+
+    &:hover {
+      > span {
+        background: darken($red, 5%);
+      }
+
+      > .icon {
+        background: darken(#9c2424, 5%);
+      }
+    }
+  }
+
+  > span, > .icon {
+    font-size: $fontSize;
+    color: #fff;
+    display: table-cell;
+  }
+
+  > span {
+    padding: $padding;
+    font-weight: 900;
+    text-transform: uppercase;
+    background: $red;
+  }
+
+  > .icon {
+    padding-left: $padding;
+    padding-right: $padding;
+    vertical-align: middle;
+    background: #9c2424;
+  }
+}
