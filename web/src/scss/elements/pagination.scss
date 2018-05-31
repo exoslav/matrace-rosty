@@ -1,0 +1,32 @@
+.pagination {
+	text-align: center;
+	
+	@extend .clearfix;
+
+	ol {
+		display: inline-block;
+
+		@extend .clearfix;
+
+		li {
+			float: left;
+
+			a {
+				padding: .40em .735em;
+				color: $gray;
+				font-size: 15px;
+				line-height: 30px;
+
+				&[data-active="true"] {
+					color: #fff;
+					text-decoration: none;
+					background: $gray;
+
+					&:hover {
+						background: darken($gray, 5%);
+					}
+				}
+			}
+		}
+	}
+}
