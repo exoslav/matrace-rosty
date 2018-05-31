@@ -17,6 +17,7 @@
       &:hover {
         position: relative;
         box-shadow: 0 0 0 2px $red;
+        z-index: 1;
 
         .product-item__description {
           color: $gray;
