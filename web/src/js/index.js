@@ -101,7 +101,6 @@ $('document').ready(() => {
   const contentRight = $('.content-right');
 
   const moveContents = () => {
-    console.log('moveContents');
     if (window.innerWidth < 992) {
       contentRight.before(contentLeft);
     }

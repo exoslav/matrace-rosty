@@ -1,18 +1,21 @@
 @import './reset';
 @import './vars';
 @import './icons/icons';
+
 @import './globals/grid';
 @import './globals/global';
 @import './globals/forms';
-@import 'elements/adbox-hp';
-@import 'elements/news-box-hp';
-@import 'elements/mixins/product-item';
-@import 'elements/header/header-index';
-@import 'elements/homepage-carousel/homepage-carousel';
-@import 'elements/category-navigation/category-navigation';
-@import 'elements/footer/footer';
-@import 'elements/news-blog-posts-hp/news-blog-posts-hp';
-@import 'elements/content/content';
-@import 'elements/homepage-best-sellers/homepage-best-sellers';
-@import 'elements/blog-posts-page';
-@import 'elements/pagination';
+
+@import 'components/adbox';
+@import 'components/product-item';
+@import 'components/header/header-index';
+@import 'components/category-navigation/category-navigation';
+@import 'components/footer';
+@import 'components/content';
+@import 'components/pagination';
+
+@import 'pages/homepage/homepage-news-box';
+@import 'pages/homepage/homepage-carousel';
+@import 'pages/homepage/homepage-best-sellers';
+@import 'pages/homepage/homepage-news-blog-posts';
+@import 'pages/blog-posts/blog-posts';

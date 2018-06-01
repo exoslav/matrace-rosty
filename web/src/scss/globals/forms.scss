@@ -17,8 +17,61 @@ select {
 	cursor: pointer;
 }
 
+.select {
+	position: relative;
+
+	&:after,
+	&:before {
+		content: '';
+		position: absolute;
+	}
+
+	&:before {
+		top: 1px;
+		right: 33px;
+		width: 1px;
+		height: calc(100% - 2px);
+		background: $border;
+	}
+
+	&:after {
+		top: calc(50% - 3px);
+		right: 12px;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 6px 5px 0 5px;
+		border-color: $gray transparent transparent transparent;
+	}
+}
+
+		.select__element {
+			color: $gray;
+			font-size: 16px;
+			line-height: 29px;
+			z-index: 1;
+
+			-webkit-appearance: none;
+			-moz-appearance: none;
+
+			/* CAUTION: IE hackery ahead */
+			&::-ms-expand {
+				display: none; /* remove default arrow on ie10 and ie11 */
+			}
+
+			/* target Internet Explorer 9 to undo the custom arrow */
+			@media screen and (min-width:0\0) {
+				& {
+					background:none\9;
+					padding: 5px\9;
+				}
+			}
+
+			@include inputGradient();
+		}
+
 input, select {
-	height: 40px;
+	min-height: 40px;
 }
 
 input[type="checkbox"] {
@@ -160,59 +213,6 @@ label {
 
 						.general-form__checkbox-label {
 							vertical-align: middle;
-						}
-
-				.general-form__select-wrap {
-					position: relative;
-
-					&:after,
-					&:before {
-						content: '';
-						position: absolute;
-					}
-
-					&:before {
-						top: 1px;
-						right: 33px;
-						width: 1px;
-						height: calc(100% - 2px);
-						background: $border;
-					}
-
-					&:after {
-						top: calc(50% - 3px);
-						right: 12px;
-						width: 0;
-						height: 0;
-						border-style: solid;
-						border-width: 6px 5px 0 5px;
-						border-color: $gray transparent transparent transparent;
-					}
-				}
-
-						.general-form__select {
-							color: $gray;
-							font-size: 16px;
-							line-height: 29px;
-							z-index: 1;
-
-						  -webkit-appearance: none;
-						  -moz-appearance: none;
-
-							/* CAUTION: IE hackery ahead */
-							select::-ms-expand { 
-							    display: none; /* remove default arrow on ie10 and ie11 */
-							}
-
-							/* target Internet Explorer 9 to undo the custom arrow */
-							@media screen and (min-width:0\0) {
-							    select {
-							        background:none\9;
-							        padding: 5px\9;
-							    } 
-							}
-
-							@include inputGradient();
 						}
 
 				.general-form__submit-wrap {
