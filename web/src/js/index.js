@@ -12,6 +12,21 @@ $('document').ready(() => {
 	const openCategoryNav = $('.open-category-navigation');
 	const categoryNav = $('#category-navigation > nav');
 
+  function debounce(func, wait, immediate) {
+    var timeout;
+    return function() {
+      var context = this, args = arguments;
+      var later = function() {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+    };
+  };
+
 	mmenuButton.on('click', () => {
 		if (mainNav.attr('data-open') === 'true') {
 			mainNav.attr('data-open', 'false');
@@ -85,14 +100,18 @@ $('document').ready(() => {
   const contentLeft = $('.content-left');
   const contentRight = $('.content-right');
 
-  $(window).resize(() => {
-	  if (window.innerWidth < 992) {
+  const moveContents = () => {
+    console.log('moveContents');
+    if (window.innerWidth < 992) {
       contentRight.before(contentLeft);
     }
 
     if (window.innerWidth > 992) {
       contentLeft.before(contentRight);
     }
-  })
+  };
+
+  moveContents();
+  $(window).resize(debounce(moveContents, 500));
 
 })

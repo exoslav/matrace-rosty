@@ -1,10 +1,18 @@
+%clearfix {
+	@extend .clearfix;
+}
+
 .best-sellers-hp {
 	margin-bottom: 40px;
-	
+
 	.best-sellers-hp__wrapper {
 		display: flex;
 		flex-wrap: wrap;
 		border: 1px solid #f3f3f3;
+
+		@media (min-width: 576px) {
+			@extend %clearfix;
+		}
 	}
 
 	.product-item {
@@ -12,9 +20,7 @@
 	  	width: 50%;
 	  	float: left;
 
-	    flex-grow: 0;
-	    flex-shrink: 0;
-	    flex-basis: 50%;
+			flex-grow: 1;
 
 	    &:nth-child(2n+1) {
 	      clear: left;
@@ -22,11 +28,9 @@
 	  }
 
 	  @media (min-width: 768px) {
-	  	width: 33.33333%;
+	  	width: 33%;
 
-	    flex-grow: 0;
-	    flex-shrink: 0;
-	    flex-basis: 33.33333%;
+			flex-grow: 1;
 
 	    &:nth-child(2n+1) {
 	      clear: none;
