@@ -17,6 +17,8 @@
 
   .header-toolbar__logo-mobile {
     text-align: center;
+    font-size: 0;
+    line-height: 0;
 
     a {
       display: inline-block;
@@ -40,11 +42,18 @@
 
   .header-toolbar__logo-desktop {
     display: none;
+    font-size: 0;
+    line-height: 0;
 
     @media (min-width: 992px) {
       display: block;
       float: left;
       max-width: 312px;
+
+      a {
+        font-size: 0;
+        display: inline-block;
+      }
 
       img {
         @extend %responsive-img;
@@ -182,6 +191,7 @@
       position: static;
       width: 218px;
       height: auto;
+      line-height: 1;
       background: none !important;
       @extend %clearfix;
 

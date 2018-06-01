@@ -1,0 +1,414 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="Matrace a rošty">
+  <meta name="author" content="Boris Valo a Martin Nikl">
+
+  <link rel="stylesheet" href="dist/styles.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,700,900" rel="stylesheet">
+</head>
+
+<body class="blog-posts">
+  <div class="header-container">
+    <header>
+      <div class="container">
+        <div class="infobar">
+          <div class="infobar__opening-hours">
+            <i class="icon icon-time"></i>
+            <strong>Otevírací doba:&nbsp;</strong>
+            <span>Po-Pá od&nbsp;9:00&nbsp;-&nbsp;do&nbsp;17:00 hod, So a Ne zavřeno</span>
+          </div>
+
+          <div class="infobar__right">
+            <div class="infobar__right__tel">
+              <i class="icon icon-phone"></i>
+              <a href="tel:+420 608 609 716">+420 608 609 716</a>
+            </div>
+
+            <div class="infobar__right__email">
+              <i class="icon icon-email"></i>
+              <a href="mailto:obchod@matrace-rosty.cz">obchod@matrace-rosty.cz</a>
+            </div>
+
+            <a class="infobar__right__fb" href="https://facebook.com/">
+              <i class="icon icon-fb-filled"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="header-toolbar">
+          <div class="header-toolbar__logo-mobile">
+            <a href="/">
+              <img src="./src/assets/img/logo-mobile.png" alt="logo matrace a rosty">
+            </a>
+          </div>
+
+          <div class="header-toolbar__logo-desktop">
+            <a href="/">
+              <img src="./src/assets/img/logo.png" alt="logo matrace a rosty">
+            </a>
+          </div>
+
+          <div data-open="false" class="header-toolbar__search">
+            <form>
+              <input type="" name="">
+              <button type="submit">
+                <i class="icon icon-zoom"></i>
+              </button>
+            </form>
+          </div>
+
+          <a href="" class="header-toolbar__shopping-cart">
+            <div>
+              <div class="cart-wrap">
+              <span class="items-count">
+                <span>3</span>
+              </span>
+                <i class="icon icon-shopping-cart"></i>
+              </div>
+
+              <div class="price-wrap">
+                <strong class="basket-name">NÁKUPNÍ KOŠÍK</strong>
+                <strong class="basket-price">10&nbsp;025&nbsp;Kč</strong>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="header-nav">
+          <button class="header-nav__open-search">
+            <i class="icon icon-zoom"></i>
+          </button>
+
+          <button class="header-nav__open-mmenu">
+            <i class="icon icon-mmenu"></i>
+            <span>MENU</span>
+          </button>
+
+          <div class="main-nav-wrapper">
+            <nav id="main-nav">
+              <ul data-open="false">
+                <li><a href="">ÚVODNÍ STRANA</a></li>
+                <li><a href="">ČLÁNKY</a></li>
+                <li><a href="">PARTNEŘI</a></li>
+                <li><a href="">KONTAKT</a></li>
+                <li><a href="">O NÁS</a></li>
+              </ul>
+            </nav>
+
+            <div class="check-in-block">
+              <a class="check-in-block__registration" href="">
+                <i class="icon icon-lock"></i>
+                <span>REGISTRACE</span>
+              </a>
+
+              <a class="check-in-block__login" href="">
+                <i class="icon icon-person"></i>
+                <span>PŘIHLÁŠENÍ</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <div class="container content">
+    <div class="content-right">
+      <h1>Jak vybírat matraci</h1>
+
+      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam id dolor. Pellentesque ipsum. Mauris tincidunt sem sed arcu. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis.</p>
+      <p>Nulla non lectus sed nisl molestie malesuada. Praesent id justo in neque elementum ultrices. Etiam dui sem, fermentum vitae, sagittis id, malesuada in, quam. Etiam quis quam. Curabitur ligula sapien, pulvinar a vestibulum quis, facilisis vel sapien. Morbi leo mi, nonummy eget tristique non, rhoncus non leo. Mauris suscipit, ligula sit amet pharetra semper, nibh ante cursus purus, vel sagittis velit mauris vel metus.</p>
+      <h2>Jak vybírat matraci</h2>
+      <ul class="public-content-list">
+        <li>Nullam faucibus mi quis velit. Morbi scelerisque luctus velit. <strong>Fusce nibh.</strong></li>
+        <li>Duis bibendum, lectus ut viverra rhoncus, dolor nunc faucibus libero, eget facilisis enim ipsum id lacus. In convallis. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Quisque porta. Pellentesque sapien.</strong></li>
+        <li>Aenean fermentum risus id tortor. Suspendisse nisl. Suspendisse sagittis ultrices augue. Ut tempus purus at lorem. Praesent id justo in neque elementum ultrices. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus.</li>
+      </ul>
+
+    </div>
+
+    <div class="content-left">
+      <div id="category-navigation">
+        <button data-open="false" class="open-category-navigation">
+          <span>Zobrazit kategorie</span>
+          <i class="icon icon-arrow-down"></i>
+        </button>
+
+        <nav data-open="false">
+          <div class="category-navigation__first-level">
+            <ul>
+              <li>
+                <a href="/">
+                  <span>Matrace skladem</span>
+                  <i class="icon icon-arrow-down"></i>
+                </a>
+              </li>
+
+              <li>
+                <a href="/">
+                  <span>Akce</span>
+                  <i class="icon icon-arrow-down"></i>
+                </a>
+              </li>
+
+              <li>
+                <a href="/">
+                  <span>Sedačka i pro spánek</span>
+                  <i class="icon icon-arrow-down"></i>
+                </a>
+              </li>
+
+              <li>
+                <a href="/">
+                  <span>Matrace</span>
+                  <i class="icon icon-arrow-down"></i>
+                </a>
+
+                <div class="category-navigation__second-level">
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <span class="category-navigation__second-level__open-icon">&nbsp;</span>
+                        <span>Extra line</span>
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="#">
+                        <span class="category-navigation__second-level__open-icon">&nbsp;</span>
+                        <span>Studené pěny</span>
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="#">
+                        <span class="category-navigation__second-level__open-icon">&nbsp;</span>
+                        <span>Pryžové</span>
+                      </a>
+
+                      <div class="category-navigation__third-level">
+                        <ul>
+                          <li>
+                            <a href="#">
+                              <span>Pružinové</span>
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="#">
+                              <span>Studené pěny</span>
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="#">
+                              <span>Pryžové</span>
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="#">
+                              <span>Extra line</span>
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="#">
+                              <span>Studené pěny</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+
+                    <li>
+                      <a href="#">
+                        <span class="category-navigation__second-level__open-icon">&nbsp;</span>
+                        <span>Extra line</span>
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="#">
+                        <span class="category-navigation__second-level__open-icon">&nbsp;</span>
+                        <span>Studené pěny</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <a href="/">
+                  <span>Rošty</span>
+                  <i class="icon icon-arrow-down"></i>
+                </a>
+              </li>
+
+              <li>
+                <a href="/">
+                  <span>Postele</span>
+                  <i class="icon icon-arrow-down"></i>
+                </a>
+              </li>
+
+              <li>
+                <a href="/">
+                  <span>Dětský nábytek</span>
+                  <i class="icon icon-arrow-down"></i>
+                </a>
+              </li>
+
+              <li>
+                <a href="/">
+                  <span>Lůžkoviny - přikrývky a polštáře</span>
+                  <i class="icon icon-arrow-down"></i>
+                </a>
+              </li>
+
+              <li>
+                <a href="/">
+                  <span>Matrace skladem</span>
+                  <i class="icon icon-arrow-down"></i>
+                </a>
+              </li>
+
+              <li>
+                <a href="/">
+                  <span>Akce</span>
+                  <i class="icon icon-arrow-down"></i>
+                </a>
+              </li>
+
+              <li>
+                <a href="/">
+                  <span>Sedačka i pro spánek</span>
+                  <i class="icon icon-arrow-down"></i>
+                </a>
+              </li>
+
+              <li>
+                <a href="/">
+                  <span>Matrace</span>
+                  <i class="icon icon-arrow-down"></i>
+                </a>
+              </li>
+
+
+              <li>
+                <a href="/">
+                  <span>Rošty</span>
+                  <i class="icon icon-arrow-down"></i>
+                </a>
+              </li>
+
+              <li>
+                <a href="/">
+                  <span>Matrace</span>
+                  <i class="icon icon-arrow-down"></i>
+                </a>
+              </li>
+
+              <li>
+                <a href="/">
+                  <span>Rošty</span>
+                  <i class="icon icon-arrow-down"></i>
+                </a>
+              </li>
+
+              <li>
+                <a href="/">
+                  <span>Postele</span>
+                  <i class="icon icon-arrow-down"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-block">
+        <h2>Informace</h2>
+        <ul>
+          <li>
+            <a href="">Obchodní podmínky</a>
+          </li>
+          <li>
+            <a href="">Mapa stránek</a>
+          </li>
+          <li>
+            <a href="">Obchodní partneři</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-block">
+        <h2>Rady a tipy</h2>
+        <ul>
+          <li>
+            <a href="">Články</a>
+          </li>
+          <li>
+            <a href="">Aktuality</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-block">
+        <h2>Kontakt</h2>
+        <div class="footer-block__contact">
+          <div class="footer-block__contact__left">
+            <h3>Kamenná prodejna</h3>
+            <p>
+              Stránského 2a<br>
+              616 00 Brno - Žabovřesky<br>
+              <a href="">zobrazit na mapě</a>
+            </p>
+          </div>
+
+          <div class="footer-block__contact__right">
+            <h3>Otevírací doba</h3>
+            <p>
+              Po-Pá od 9:00 - do 17:00 hod<br>
+              So a Ne zavřeno
+            </p>
+          </div>
+
+          <div class="footer-block__contact__bottom">
+            <ul>
+              <li class="footer-block__contact__bottom__tel">
+                <a href="">+ 420 608 609 716</a>
+              </li>
+              <li>
+                <a href="">obchod@matrace-rosty.cz</a>
+              </li>
+              <li>
+                <a class="footer-block__contact__bottom__fb" href="https://facebook.com/">
+                  <i class="icon icon-fb-filled"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>©2009-2018 Matrace a rošty</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="dist/app.min.js"></script>
+</body>
+</html>
