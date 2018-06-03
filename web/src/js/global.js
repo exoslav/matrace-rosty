@@ -3,6 +3,7 @@ import 'slick-carousel';
 import styles from '../scss/main.scss'
 import sstyles from 'slick-carousel/slick/slick.css';
 import ssstyles from 'slick-carousel/slick/slick-theme.css';
+import lightBoxStyles from 'lightBox2/src/css/lightbox.css';
 
 $('document').ready(() => {
 	const mainNav = $('#main-nav > ul');

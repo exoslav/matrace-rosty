@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var ExtractText = require('extract-text-webpack-plugin');
+var renameOutputPlugin = require('rename-output-webpack-plugin');
 
 module.exports = function (env) {
   console.log('<-- MATRACE-ROSTY startup... -->');
@@ -9,17 +10,18 @@ module.exports = function (env) {
 
   var config = {
     entry: {
-      'global': './src/js/index.js'
+      'global': './src/js/global.js',
+      'blog-posts-detail': './src/js/blog-posts-detail.js'
     },
     output: {
       path: path.join(__dirname, '/dist'),
-      filename: 'app.min.js'
+      filename: '[name].min.js'
     },
     mode: env === 'prod' ? 'production' : 'development',
     devtool: env === 'prod' ? 'source-map' : 'eval-source-map', // viz.: https://webpack.js.org/configuration/devtool/
     plugins: [
       new ExtractText({
-        filename: 'styles.min.css',
+        filename: '[name].min.css',
         disable: false,
         allChunks: true
       })

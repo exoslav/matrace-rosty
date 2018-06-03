@@ -1,0 +1,161 @@
+.basket-right-content,
+.basket-addresses-forms {
+	@media (min-width: 768px) {
+	  width: calc(50% - 10px);
+	}
+
+	@media (min-width: 992px) {
+		width: calc(50% - 15px);
+	}
+}
+
+.basket-addresses-forms {
+	@media (min-width: 768px) {
+		float: left;
+	}
+
+	.general-form__field {
+		margin-bottom: 15px;
+	}
+}
+
+.basket-right-content {
+	@media (min-width: 768px) {
+		float: right;
+	}
+}
+
+.general-form__block {
+	margin-bottom: 20px;
+	padding: 22px 15px;
+
+	@media (min-width: 992px) {
+		margin-bottom: 30px;
+		padding: 22px 30px 8px;
+	}
+}
+
+.delivery-slots {
+	.general-form__header {
+		margin-bottom: 10px;
+	}
+
+	li:last-child .delivery-slot:after {
+		display: none;
+	}
+}
+
+.basket-terms-row {
+	clear: both;
+	margin-bottom: 20px;
+
+	@media (min-width: 992px) {
+		overflow: hidden;
+		margin-bottom: 35px;
+	}
+}
+
+.basket-terms {
+	float: right;
+	margin-bottom: 15px;
+
+	@media (min-width: 992px) {
+		float: left;
+		margin-bottom: 0;
+	}
+}
+
+.total-to-pay {
+	clear: both;
+	text-align: right;
+
+	@media (min-width: 992px) {
+		float: right;
+		clear: none;
+	}
+}
+
+		.total-to-pay__text {
+			font-size: 16px;
+			line-height: 30px;
+			font-weight: 700;
+			color: #555;
+		}
+
+		.total-to-pay__price {
+			font-size: 22px;
+			line-height: 30px;
+			font-weight: 700;
+			color: #1da72d;
+		}
+
+.basket-submit {
+	@media (min-width: 992px) {
+		clear: both;
+	}
+}
+
+.continue-shopping {
+	float: left;
+	width: calc(100% - 170px);
+
+	@media (min-width: 992px) {
+		width: auto;
+	}
+
+	a {
+		position: relative;
+		float: left;
+		margin-top: 10px;
+		padding-left: 20px;
+		font-size: 16px;
+		line-height: 18px;
+		font-weight: 300;
+		color: $gray;
+
+		&:before,
+		&:after {
+			content: '';
+			position: absolute;
+			top: calc(50% - 5px);
+			left: 0;
+			width: 10px;
+			height: 10px;
+			transform: rotate(45deg);
+		}
+
+		&:before {
+			background: #fff;
+			left: 1px;
+			z-index: 1;
+		}
+
+		&:after {
+			background: $gray;
+		}
+	}
+}
+
+.basket-submit-button {
+	float: right;
+	padding: 10px;
+	width: 170px;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 120%;
+	color: #fff;
+	font-family: 'Roboto', sans-serif;
+	text-transform: uppercase;
+	border: none;
+	background: $red;
+
+	&:hover {
+		background: darken($red, 5%);
+	}
+
+	@media (min-width: 992px) {
+		width: auto;
+		padding: 16px 30px;
+		line-height: 30px;
+	}
+}

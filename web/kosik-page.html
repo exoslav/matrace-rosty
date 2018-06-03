@@ -1,0 +1,514 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="Matrace a rošty">
+  <meta name="author" content="Boris Valo a Martin Nikl">
+
+  <link rel="stylesheet" href="dist/global.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,700,900" rel="stylesheet">
+</head>
+
+<body>
+  <div class="header-container">
+    <header>
+      <div class="container">
+        <div class="infobar">
+          <div class="infobar__opening-hours">
+            <i class="icon icon-time"></i>
+            <strong>Otevírací doba:&nbsp;</strong>
+            <span>Po-Pá od&nbsp;9:00&nbsp;-&nbsp;do&nbsp;17:00 hod, So a Ne zavřeno</span>
+          </div>
+
+          <div class="infobar__right">
+            <div class="infobar__right__tel">
+              <i class="icon icon-phone"></i>
+              <a href="tel:+420 608 609 716">+420 608 609 716</a>
+            </div>
+
+            <div class="infobar__right__email">
+              <i class="icon icon-email"></i>
+              <a href="mailto:obchod@matrace-rosty.cz">obchod@matrace-rosty.cz</a>
+            </div>
+
+            <a class="infobar__right__fb" href="https://facebook.com/">
+              <i class="icon icon-fb-filled"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="header-toolbar">
+          <div class="header-toolbar__logo-mobile">
+            <a href="/">
+              <img src="./src/assets/img/logo-mobile.png" alt="logo matrace a rosty">
+            </a>
+          </div>
+
+          <div class="header-toolbar__logo-desktop">
+            <a href="/">
+              <img src="./src/assets/img/logo.png" alt="logo matrace a rosty">
+            </a>
+          </div>
+
+          <div data-open="false" class="header-toolbar__search">
+            <form>
+              <input type="" name="">
+              <button type="submit">
+                <i class="icon icon-zoom"></i>
+              </button>
+            </form>
+          </div>
+
+          <a href="" class="header-toolbar__shopping-cart">
+            <div>
+              <div class="cart-wrap">
+              <span class="items-count">
+                <span>3</span>
+              </span>
+                <i class="icon icon-shopping-cart"></i>
+              </div>
+
+              <div class="price-wrap">
+                <strong class="basket-name">NÁKUPNÍ KOŠÍK</strong>
+                <strong class="basket-price">10&nbsp;025&nbsp;Kč</strong>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="header-nav">
+          <button class="header-nav__open-search">
+            <i class="icon icon-zoom"></i>
+          </button>
+
+          <button class="header-nav__open-mmenu">
+            <i class="icon icon-mmenu"></i>
+            <span>MENU</span>
+          </button>
+
+          <div class="main-nav-wrapper">
+            <nav id="main-nav">
+              <ul data-open="false">
+                <li><a href="">ÚVODNÍ STRANA</a></li>
+                <li><a href="">ČLÁNKY</a></li>
+                <li><a href="">PARTNEŘI</a></li>
+                <li><a href="">KONTAKT</a></li>
+                <li><a href="">O NÁS</a></li>
+              </ul>
+            </nav>
+
+            <div class="check-in-block">
+              <a class="check-in-block__registration" href="">
+                <i class="icon icon-lock"></i>
+                <span>REGISTRACE</span>
+              </a>
+
+              <a class="check-in-block__login" href="">
+                <i class="icon icon-person"></i>
+                <span>PŘIHLÁŠENÍ</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <div class="container content">
+    <h1>Nákupní košík</h1>
+
+    <form id="basket-form">
+      <table class="basket">
+        <thead class="basket__head">
+          <tr class="basket__head-row">
+            <th class="basket__head-cell basket__head-product">produkt</th>
+            <th class="basket__head-cell basket__head-amount">počet</th>
+            <th class="basket__head-cell basket__head-price">cena za ks</th>
+            <th class="basket__head-cell basket__head-price-total">cena celkem</th>
+            <th class="basket__head-cell basket__head-remove">&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody class="basket__body">
+          <tr class="basket__body-row basket__product">
+            <td class="basket__body-cell basket__product-about">
+              <img class="basket__product-img" src="./src/public/products/bed-1.png">
+              <a class="basket__product-title" href="#">
+                <strong>Dvojlůžko FILIP Buk 180 - VÝPRODEJ</strong>
+              </a>
+              <p class="basket__product-description"><span>Varianta:</span> 180x200cm, <span>Vzorník:</span> kaštan, <span>Čalounění:</span> kaštan, <span>Moření:</span> Buk, <span>Vzorník:</span> kaštan, <span>Čalounění:</span> kaštan, <span>Moření:</span> Buk</p>
+            </td>
+            <td class="basket__body-cell basket__product-amount">
+              <input type="number" value="1" min="1" name="product-total">
+            </td>
+            <td class="basket__body-cell basket__product-price-per-item">25 050 Kč</td>
+            <td class="basket__body-cell basket__product-total-price">25 050 Kč</td>
+            <td class="basket__body-cell basket__product-remove">
+              <a href="#">
+                <i class="icon icon-cancel"></i>
+              </a>
+            </td>
+          </tr>
+          <tr class="basket__body-row basket__product">
+            <td class="basket__body-cell basket__product-about">
+              <img class="basket__product-img" src="./src/public/products/bed-1.png">
+              <a class="basket__product-title" href="#">
+                <strong>Dvojlůžko FILIP Buk 180 - VÝPRODEJ</strong>
+              </a>
+              <p class="basket__product-description"><span>Varianta:</span> 180x200cm, <span>Vzorník:</span> kaštan, <span>Čalounění:</span> kaštan, <span>Moření:</span> Buk, <span>Vzorník:</span> kaštan, <span>Čalounění:</span> kaštan, <span>Moření:</span> Buk</p>
+            </td>
+            <td class="basket__body-cell basket__product-amount">
+              <input type="number" value="1" min="1" name="product-total">
+            </td>
+            <td class="basket__body-cell basket__product-price-per-item">25 050 Kč</td>
+            <td class="basket__body-cell basket__product-total-price">25 050 Kč</td>
+            <td class="basket__body-cell basket__product-remove">
+              <a href="#">
+                <i class="icon icon-cancel"></i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot class="basket__foot">
+          <tr class="basket__foot-row">
+            <td class="basket__foot-cell basket_foot__empty">&nbsp;</td>
+            <td class="basket__foot-cell basket_foot__empty">&nbsp;</td>
+            <td class="basket__foot-cell basket_foot__empty">&nbsp;</td>
+            <td colspan="4" class="basket__foot-cell basket_foot__total-price-label">
+              <div>
+                <span class="basket_foot__total-price-dph">Cena za zboží bez DPH:</span><br>
+                <span>Cena za zboží:</span>
+              </div>
+            </td>
+            <td class="basket__foot-cell basket_foot__total-price-amount">
+              <span class="basket_foot__total-price-dph">229 Kč</span><br>
+              <span>290 Kč</span>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <div class="basket-addresses-forms">
+        <div class="general-form general-form--wide">
+          <div class="general-form__block">
+            <h3 class="general-form__header">Fakturační adresa</h3>
+           <div class="general-form__field general-form__field--wide">
+             <label>Jméno *</label>
+             <input type="text" name="firstname">
+           </div>
+
+           <div class="general-form__field general-form__field--wide">
+             <label>Příjmení *</label>
+             <input type="text" name="lastname">
+           </div>
+
+           <div class="general-form__field general-form__field--wide">
+             <label>E-mail *</label>
+             <input type="email" name="email">
+           </div>
+
+           <div class="general-form__field general-form__field--wide">
+             <label>Telefon *</label>
+             <input type="text" name="phone">
+           </div>
+
+           <div class="general-form__field general-form__field--wide">
+             <label>Ulice a č.p. *</label>
+             <input type="text" name="street">
+           </div>
+
+           <div class="general-form__field general-form__field--wide">
+             <label>Obec *</label>
+             <input type="text" name="town">
+           </div>
+
+           <div class="general-form__field general-form__field--wide">
+             <label>PSČ *</label>
+             <input type="text" name="postcode">
+           </div>
+
+           <div class="general-form__field general-form__field--wide">
+             <label>Stát *</label>
+            <div class="select">
+              <select name="country" id="basket-form-form-country" class="select__element">
+                <option value="cr">Česká repupblika</option>
+                <option value="sk">Slovenská republika</option>
+                <option value="de">Německo</option>
+                <option value="at">Rakousko</option>
+              </select>
+            </div>
+           </div>
+
+            <div class="general-form__field">
+              <div class="checkbox">
+                <div class="checkbox__decoy">
+                  <input class="checkbox__element" type="checkbox" name="company" id="basket-form-form-company">
+                  <span class="checkbox__icon"></span>
+                </div>
+              </div>
+              
+              <label class="checkbox__label" for="basket-form-form-company">Nakupuji na firmu</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="general-form__block">
+          <h3 class="general-form__header">Dodací adresa</h3>
+
+          <div class="general-form__field general-form__field--wide">
+            <div class="checkbox">
+              <div class="checkbox__decoy">
+                <input class="checkbox__element" type="checkbox" name="delivery-address" id="basket-form-delivery-address">
+                <span class="checkbox__icon"></span>  
+              </div>
+            </div>
+            
+            <label class="checkbox__label" for="basket-form-delivery-address">Dodací adresa je stejná jako fakturační</label>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="basket-right-content">
+        <div class="delivery-slots general-form__block">
+          <h3 class="general-form__header">Doprava</h3>
+
+          <ul>
+            <li>
+              <div class="general-form__field general-form__field--wide delivery-slot">
+                <div class="radio delivery-slot__radio">
+                  <div class="radio__decoy">
+                    <input class="radio__element" type="radio" name="delivery-slot" value="1" id="basket-form-delivery-slot-ceska-posta-dobirka">
+                    <span class="radio__icon"></span>
+                  </div>  
+                </div>
+                
+                <label class="radio__label" for="basket-form-delivery-slot-ceska-posta-dobirka">
+                  <div>
+                    <div class="delivery-slot__text">
+                      <strong class="delivery-slot__title">Česká pošta - Dobírka</strong>
+                      <p class="delivery-slot__description">Při objednání zboží v celkové hodnotě více než 8000,- Kč je tento typ dopravy zdarma.</p>     
+                    </div>
+                    <div class="delivery-slot__price">
+                      149 Kč
+                    </div>
+                  </div>
+                </label>
+              </div>
+            </li>
+
+            <li>
+              <div class="general-form__field general-form__field--wide delivery-slot">
+                <div class="radio delivery-slot__radio">
+                  <div class="radio__decoy">
+                    <input class="radio__element" type="radio" name="delivery-slot" value="2" id="basket-form-delivery-slot-ceska-posta-prevod">
+                    <span class="radio__icon"></span>
+                  </div>
+                </div>
+                
+                <label class="radio__label" for="basket-form-delivery-slot-ceska-posta-prevod">
+                  <div>
+                    <div class="delivery-slot__text">
+                      <strong class="delivery-slot__title">Česká pošta - Převod</strong>
+                      <p class="delivery-slot__description">Při objednání zboží v celkové hodnotě více než 8000,- Kč je tento typ dopravy zdarma.</p>     
+                    </div>
+                    <div class="delivery-slot__price">
+                      129 Kč
+                    </div>
+                  </div>
+                </label>
+              </div>
+            </li>
+
+            <li>
+              <div class="general-form__field general-form__field--wide delivery-slot">
+                <div class="radio delivery-slot__radio">
+                  <div class="radio__decoy">
+                    <input class="radio__element" type="radio" name="delivery-slot" value="3" id="basket-form-delivery-slot-gls-dobirka">
+                    <span class="radio__icon"></span>
+                  </div>
+                </div>
+                
+                <label class="radio__label" for="basket-form-delivery-slot-gls-dobirka">
+                  <div>
+                    <div class="delivery-slot__text">
+                      <strong class="delivery-slot__title">GLS - dobírka</strong>
+                      <p class="delivery-slot__description">Při objednání zboží v celkové hodnotě více než 8000,- Kč je tento typ dopravy zdarma.</p>     
+                    </div>
+                    <div class="delivery-slot__price">
+                      119 Kč
+                    </div>
+                  </div>
+                </label>
+              </div>
+            </li>
+
+            <li>
+              <div class="general-form__field general-form__field--wide delivery-slot">
+                <div class="radio delivery-slot__radio">
+                  <div class="radio__decoy">
+                    <input class="radio__element" type="radio" name="delivery-slot" value="4" id="basket-form-delivery-slot-gls-prevod">
+                    <span class="radio__icon"></span>
+                  </div>
+                </div>
+                
+                <label class="radio__label" for="basket-form-delivery-slot-gls-prevod">
+                  <div>
+                    <div class="delivery-slot__text">
+                      <strong class="delivery-slot__title">GLS - převod</strong>
+                      <p class="delivery-slot__description">Při objednání zboží v celkové hodnotě více než 8000,- Kč je tento typ dopravy zdarma.</p>     
+                    </div>
+                    <div class="delivery-slot__price">
+                      149 Kč
+                    </div>
+                  </div>
+                </label>
+              </div>
+            </li>
+
+            <li>
+              <div class="general-form__field general-form__field--wide delivery-slot">
+                <div class="radio delivery-slot__radio">
+                  <div class="radio__decoy">
+                    <input class="radio__element" type="radio" name="delivery-slot" value="5" id="basket-form-delivery-slot-osobni-odber">
+                    <span class="radio__icon"></span>
+                  </div>
+                </div>
+                
+                <label class="radio__label" for="basket-form-delivery-slot-osobni-odber">
+                  <div>
+                    <div class="delivery-slot__text">
+                      <strong class="delivery-slot__title">Osobní odběr</strong>   
+                    </div>
+                    <div class="delivery-slot__price">
+                      0 Kč
+                    </div>
+                  </div>
+                </label>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="general-form__block">
+          <div class="general-form__field general-form__field--wide">
+            <label for="note">Vaše poznámka k objednávce:</label>
+            <textarea id="note" name="note"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="basket-terms-row">
+        <div class="basket-terms">
+          <div class="general-form__field general-form__field--wide">
+            <div class="checkbox">
+              <div class="checkbox__decoy">
+                <input class="checkbox__element" type="checkbox" name="terms" id="basket-form-terms">
+                <span class="checkbox__icon"></span>  
+              </div>
+            </div>
+            
+            <label class="checkbox__label" for="basket-form-terms">
+              Souhlasím s <a href="#">obchodními podmínkami.</a>
+            </label>
+          </div>
+        </div>
+
+        <div class="total-to-pay">
+          <span class="total-to-pay__text">Celkem k úhradě:</span>
+          <span class="total-to-pay__price">25 990 Kč</span>
+        </div>
+      </div>
+
+      <div class="basket-submit">
+        <div class="continue-shopping">
+          <a href="#">Pokračovat v nákupu</a>
+        </div>
+
+        <button class="basket-submit-button" type="submit">
+          odeslat objednávku
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-block">
+        <h2>Informace</h2>
+        <ul>
+          <li>
+            <a href="">Obchodní podmínky</a>
+          </li>
+          <li>
+            <a href="">Mapa stránek</a>
+          </li>
+          <li>
+            <a href="">Obchodní partneři</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-block">
+        <h2>Rady a tipy</h2>
+        <ul>
+          <li>
+            <a href="">Články</a>
+          </li>
+          <li>
+            <a href="">Aktuality</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-block">
+        <h2>Kontakt</h2>
+        <div class="footer-block__contact">
+          <div class="footer-block__contact__left">
+            <h3>Kamenná prodejna</h3>
+            <p>
+              Stránského 2a<br>
+              616 00 Brno - Žabovřesky<br>
+              <a href="">zobrazit na mapě</a>
+            </p>
+          </div>
+
+          <div class="footer-block__contact__right">
+            <h3>Otevírací doba</h3>
+            <p>
+              Po-Pá od 9:00 - do 17:00 hod<br>
+              So a Ne zavřeno
+            </p>
+          </div>
+
+          <div class="footer-block__contact__bottom">
+            <ul>
+              <li class="footer-block__contact__bottom__tel">
+                <a href="">+ 420 608 609 716</a>
+              </li>
+              <li>
+                <a href="">obchod@matrace-rosty.cz</a>
+              </li>
+              <li>
+                <a class="footer-block__contact__bottom__fb" href="https://facebook.com/">
+                  <i class="icon icon-fb-filled"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>©2009-2018 Matrace a rošty</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="dist/global.min.js"></script>
+</body>
+</html>

@@ -5,6 +5,7 @@
 @import './globals/grid';
 @import './globals/global';
 @import './globals/forms';
+@import './globals/tables';
 
 @import 'components/adbox';
 @import 'components/product-item';
@@ -13,9 +14,14 @@
 @import 'components/footer';
 @import 'components/content';
 @import 'components/pagination';
+@import 'components/public-content/listings';
 
 @import 'pages/homepage/homepage-news-box';
 @import 'pages/homepage/homepage-carousel';
 @import 'pages/homepage/homepage-best-sellers';
 @import 'pages/homepage/homepage-news-blog-posts';
 @import 'pages/blog-posts/blog-posts';
+@import 'pages/blog-posts-detail/blog-posts-detail';
+@import 'pages/basket/basket-page';
+@import 'pages/basket/basket-table';
+@import 'pages/basket/delivery-slot';
