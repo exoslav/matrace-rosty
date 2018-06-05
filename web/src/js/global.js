@@ -5,6 +5,9 @@ import sstyles from 'slick-carousel/slick/slick.css';
 import ssstyles from 'slick-carousel/slick/slick-theme.css';
 import lightBoxStyles from 'lightBox2/src/css/lightbox.css';
 
+import * as modals from './modals';
+import loginForm from './login-form';
+
 $('document').ready(() => {
 	const mainNav = $('#main-nav > ul');
 	const mmenuButton = $('.header-nav__open-mmenu');
@@ -114,4 +117,8 @@ $('document').ready(() => {
   moveContents();
   $(window).resize(debounce(moveContents, 500));
 
-})
+  $('.check-in-block__login').on('click', function(e) {
+    e.preventDefault();
+    modals.open(loginForm);
+  });
+});

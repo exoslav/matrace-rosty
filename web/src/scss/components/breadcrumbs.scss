@@ -1,0 +1,68 @@
+.breadcrumbs {
+  display: none;
+  @extend .clearfix;
+
+  @media (min-width: 992px) {
+    display: block;
+    padding: 13px 0;
+  }
+}
+
+    .icon-home {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 16px;
+      height: 16px;
+      margin: auto;
+      font-size: 16px;
+      color: $gray;
+    }
+
+
+    .breadcrumbs__item {
+      position: relative;
+      float: left;
+      padding-right: 28px;
+
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        top: calc(50% - 2px);
+        right: 13px;
+        width: 7px;
+        height: 7px;
+        transform: rotate(45deg);
+      }
+
+      &:before {
+        background: #f1f3f4;
+        right: 14px;
+        z-index: 1;
+      }
+
+      &:after {
+        background: #000;
+      }
+
+      &:first-child {
+        padding-left: 26px;
+      }
+
+      &:last-child {
+        padding-right: 0;
+
+        &:before,
+        &:after {
+          display: none;
+        }
+      }
+    }
+
+        .breadcrumbs__link {
+          font-size: 15px;
+          line-height: 120%;
+          color: $gray;
+        }
