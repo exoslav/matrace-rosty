@@ -19,16 +19,16 @@ export const open = content => {
   const modal = {
     id: modalId,
     content: $(`
-      <div class="modal">
+      <div class="modal modal-${modalId}">
         <div class="modal__content">${content}</div>
       </div>)
     `),
-    close: (modalId) => closeModal(modalId)
+    close: (modalId) => close(modalId)
   };
 
   modals.push(modal);
 
   $(modal.content).appendTo($('body'));
-  $(modal.content).find('.modal__close').on('click', (modalId) => modal.close(modalId));
+  $(modal.content).find('.modal__close').on('click', () => modal.close(modalId));
 }
 

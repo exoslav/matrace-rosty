@@ -85,3 +85,42 @@ $gray: #3b3b3b;
     background: #9c2424;
   }
 }
+
+@mixin closeButton($color: #787878, $width: 2px, $height: 14px) {
+  & {
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    width: 14px;
+    height: 14px;
+    text-indent: -999999px;
+    border: 0;
+
+    &:hover:after,
+    &:hover:before {
+      background: darken($color, 5%);
+    }
+  }
+
+  &:after,
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: $width;
+    height: $height;
+    margin: auto;
+    background: $color;
+  }
+
+  &:before {
+    transform: rotate(45deg);
+  }
+
+  &:after {
+    transform: rotate(-45deg);
+  }
+}

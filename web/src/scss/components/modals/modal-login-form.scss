@@ -1,0 +1,80 @@
+.modal-login-form {
+	max-width: 360px;
+	margin: 0 auto;
+
+	label {
+		line-height: 30px;
+	}
+
+	input	{
+		min-height: 51px;
+	}
+
+	.general-form__field {
+		margin-bottom: 19px;
+	}
+}
+
+
+
+.modal-login-form__footer {
+	text-align: center;
+}
+
+		.modal-login-form__submit {
+			display: block;
+			width: 100%;
+			margin-bottom: 33px;
+			padding: 15px;
+			color: #fff;
+			font-size: 18px;
+			font-weight: 700;
+			line-height: 24px;
+			text-transform: uppercase;
+			background: $red;
+
+			&:hover {
+				background: darken($red, 5%);
+			}
+
+			@media (min-width: 992px) {
+			  float: right;
+			  width: 180px;
+			  margin-bottom: 68px;
+			}
+		}
+
+		.modal-login-form__sign-up,
+		.modal-login-form__forgotten-password {
+			color: $gray;
+			font-size: 16px;
+			line-height: 120%;
+		}
+
+		.modal-login-form__forgotten-password {
+			display: inline-block;
+			margin-bottom: 14px;
+
+			@media (min-width: 992px) {
+			  float: left;
+			  margin-top: 20px;
+			}
+		}
+
+		.modal-login-form__sign-up {
+			a {
+				color: $gray;
+			}
+
+			span {
+				display: block;
+			}
+
+			@media (min-width: 992px) {
+			  clear: both;
+
+			  span {
+			  	float: right;
+			  }
+			}
+		}

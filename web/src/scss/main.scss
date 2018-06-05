@@ -16,7 +16,8 @@
 @import 'components/pagination';
 @import 'components/public-content/listings';
 @import 'components/breadcrumbs';
-@import 'components/modals';
+@import 'components/modals/modals';
+@import 'components/modals/modal-login-form';
 
 @import 'pages/homepage/homepage-news-box';
 @import 'pages/homepage/homepage-carousel';
