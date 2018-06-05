@@ -1,7 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
 var ExtractText = require('extract-text-webpack-plugin');
-var renameOutputPlugin = require('rename-output-webpack-plugin');
 
 module.exports = function (env) {
   console.log('<-- MATRACE-ROSTY startup... -->');
