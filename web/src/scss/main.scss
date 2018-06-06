@@ -2,6 +2,10 @@
 @import './vars';
 @import './icons/icons';
 
+@import './externals/jquery-ui.css';
+@import './externals/jquery-ui.structure.css';
+@import './externals/jquery-ui.theme.css';
+
 @import './globals/grid';
 @import './globals/global';
 @import './globals/forms';
@@ -28,3 +32,4 @@
 @import 'pages/basket/basket-page';
 @import 'pages/basket/basket-table';
 @import 'pages/basket/delivery-slot';
+@import 'pages/categories';

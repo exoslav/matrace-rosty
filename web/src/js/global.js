@@ -8,7 +8,7 @@ import lightBoxStyles from 'lightBox2/src/css/lightbox.css';
 import * as modals from './modals';
 import loginForm from './login-form';
 
-$('document').ready(() => {
+$('document').ready(function() {
 	const mainNav = $('#main-nav > ul');
 	const mmenuButton = $('.header-nav__open-mmenu');
 	const openSearchButton = $('.header-nav__open-search');
@@ -29,9 +29,9 @@ $('document').ready(() => {
       timeout = setTimeout(later, wait);
       if (callNow) func.apply(context, args);
     };
-  };
+  }
 
-	mmenuButton.on('click', () => {
+	mmenuButton.on('click', function() {
 		if (mainNav.attr('data-open') === 'true') {
 			mainNav.attr('data-open', 'false');
 		} else {
@@ -39,7 +39,7 @@ $('document').ready(() => {
 		}
 	})
 
-	openSearchButton.on('click', () => {
+	openSearchButton.on('click', function() {
 		if (searchBar.attr('data-open') === 'true') {
 			searchBar.attr('data-open', 'false')
 		} else {
@@ -104,7 +104,7 @@ $('document').ready(() => {
   const contentLeft = $('.content-left');
   const contentRight = $('.content-right');
 
-  const moveContents = () => {
+  const moveContents = function() {
     if (window.innerWidth < 992) {
       contentRight.before(contentLeft);
     }
