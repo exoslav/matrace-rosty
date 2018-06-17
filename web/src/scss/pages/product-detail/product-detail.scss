@@ -1,0 +1,138 @@
+$imageBorder: 1px solid #e2e2e2;
+
+%clearfix {
+	@extend .clearfix;
+}
+
+.product-detail {
+	@media (min-width: 768px) {
+		@extend %clearfix;
+	}
+}
+		.product-detail__product-slider {
+			overflow: hidden;
+
+			@media (min-width: 768px) {
+			  width: 456px;
+			  float: left;
+			  padding-right: 20px;
+			}
+
+					.product-detail__slider-item {
+						border: 1px solid #e2e2e2;
+
+						a {
+							display: block;
+							
+							img {
+								@extend .responsive-img;
+							}
+						}
+					}
+
+					.slick-dots {
+						position: static;
+
+						li {
+							display: table;
+							float: left;
+							margin: 0 8px 8px 0;
+							height: 67px;
+							width: 67px;
+
+							a {
+								display: table-cell;
+								vertical-align: middle;
+								padding: 5px;
+								border: $imageBorder;
+
+								&:hover {
+									border-color: $red;
+								}
+
+								img {
+									max-width: 100%;
+									height: auto;
+								}
+							}
+						}
+					}
+		}
+
+		.product-detail__image-big {
+			border: $imageBorder;
+			@extend .responsive-img;
+		}
+
+		.product-detail__image-big {
+			display: block;
+			margin-bottom: 15px;
+
+			@media (min-width: 992px) {
+			  float: left;
+			}
+		}
+
+		.product-detail__info {
+			overflow: hidden;
+			margin-bottom: 22px;
+
+			> p {
+				margin-bottom: .55em;
+				line-height: 120%;
+				@extend %clearfix;
+			}
+		}
+		
+				.product-detail__info-title {
+					width: 145px;
+					float: left;
+				}
+
+				.product-detail__info-content {
+					width: calc(100% - 150px);
+					float: left;
+				}
+
+		.product-detail__button {
+			width: 100%;
+			margin-bottom: 18px;
+			padding: 15px 24px;
+			color: #fff;
+			font-size: 18px;
+			font-weight: 700;
+			line-height: 24px;
+			text-transform: uppercase;
+			font-family: 'Roboto', sans-serif;
+			border: none;
+			background: $red;
+
+			&:hover {
+				background-color: darken($red, 5%);
+			}
+
+			span {
+				position: relative;
+				padding-right: 21px;
+
+				&:after {
+			    content: '';
+			    position: absolute;
+			    top: 0;
+			    right: 0;
+			    bottom: 0;
+			    width: 0;
+			    height: 0;
+			    margin: auto;
+			    border-style: solid;
+			    border-width: 7px 6.5px 0 6.5px;
+			    border-color: #ffffff transparent transparent transparent;
+				}
+			}
+
+			@media (min-width: 768px) {
+				float: right;
+			  width: auto;
+			  min-width: 360px;
+			}
+		}

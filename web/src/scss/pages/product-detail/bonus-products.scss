@@ -1,0 +1,139 @@
+
+.bonus-products {
+	.slick-list {
+		@media (min-width: 1200px) {
+		  width: 844px;
+		}
+
+		.slick-track {
+	    display: flex;
+	    float: left;
+
+	    .slick-slide {
+	      display: flex;
+	      height: auto;
+	      align-items: center; //optional
+	      justify-content: center; //optional
+
+	      > div {
+	      	height: 100%;
+	      }
+	  	}
+		}
+	}
+
+	.slick-arrow {
+		position: absolute;
+		top: -43px;
+		right: 0;
+		left: auto;
+		width: 30px;
+		height: 30px;
+		border: 1px solid #ececec;
+		background: #f8f8f8;
+		transform: none;
+		z-index: 1;
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			margin: auto;
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 5px 0 5px 6px;
+			border-color: transparent transparent transparent #3b3b3b;
+			opacity: 1;
+		}
+
+		&.slick-prev {
+			right: 32px;
+			transform: rotate(180deg);
+		}
+	}
+}
+
+
+		.bonus-products__title {
+			margin-bottom: 8px;
+			font-size: 22px;
+			line-height: 34px;
+		}
+
+		.bonus-products__list {
+
+		}
+
+				.bonus-products__item {
+					float: left;
+
+					> div {
+						display: table;
+						height: 100%;
+					}
+				}
+
+						.bonus-products__link {
+							display: table-cell;
+							position: relative;
+							height: 100%;
+							padding: 13px 8px;
+							vertical-align: middle;
+							text-decoration: none;
+							text-align: center;
+							border: 2px solid #f3f3f3;
+
+							&:after,
+							&:before {
+								display: none;
+								content: '';
+								position: absolute;
+								top: -2px;
+								width: 1px;
+								height: calc(100% + 4px);
+								background: #f3f3f3;
+							}
+
+							&:after {
+								right: -2px;
+							}
+
+							&:before {
+								left: -2px;
+							}
+
+							&:hover {
+								border-color: $red;
+								z-index: 1;
+
+								&:after,
+								&:before {
+									background: $red;
+								}
+							}
+						}
+
+								.bonus-products__image {
+									width: 100%;
+									height: auto;
+								}
+
+								.bonus-products__item__title {
+									display: block;
+									color: $gray;
+									font-size: 14px;
+									font-weight: 900;
+									line-height: 30px;
+								}
+
+								.bonus-products__item__price {
+									display: block;
+									color: #1da72d;
+									font-size: 16px;
+									font-weight: 900;
+									line-height: 120%;
+								}

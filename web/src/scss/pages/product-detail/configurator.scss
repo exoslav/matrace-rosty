@@ -1,0 +1,170 @@
+.configurator__row {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin-bottom: 30px;
+}
+
+		.configurator__option-wrap {
+			flex-basis: calc(50% - 14px);
+		}
+
+				.configurator__option {
+					display: flex;
+					align-items: center;
+					position: relative;
+					width: 100%;
+					padding: 10px 15px;
+					text-align: left;
+					color: $gray;
+					font-size: 15px;
+					font-weight: 700;
+					line-height: 30px;
+					border: 2px solid #ebebeb;
+					border-radius: 5px;
+					/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,f5f5f5+100 */
+					background: #ffffff; /* Old browsers */
+					background: -moz-linear-gradient(top, #ffffff 0%, #f5f5f5 100%); /* FF3.6-15 */
+					background: -webkit-linear-gradient(top, #ffffff 0%,#f5f5f5 100%); /* Chrome10-25,Safari5.1-6 */
+					background: linear-gradient(to bottom, #ffffff 0%,#f5f5f5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+					filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f5f5f5',GradientType=0 ); /* IE6-9 */
+				}
+						.configurator__option-selected__img {
+					    position: absolute;
+					    top: 0;
+					    bottom: 0;
+					    left: 12px;
+							width: 33px;
+					    margin: auto;
+						}
+
+						.configurator__option-selected__title {
+							flex: 1;
+							margin-left: 40px;
+						}
+
+						.configurator__option-selected__price {
+							color: #1da72d;
+							font-weight: 700;
+						}
+
+				.configurator__option-label {
+					color: $gray;
+					font-size: 15px;
+					font-weight: 700;
+				}
+
+		.configurator__table {
+			width: 100%;
+			margin-top: 24px;
+			padding: 15px;
+			background: #ebebeb;
+		}
+
+				.configurator__categories {
+					display: flex;
+					flex-wrap: wrap;
+					margin-bottom: 6px;
+				}
+
+						.configurator__category {
+							margin: 0 9px 9px 0;
+						}
+
+								.configurator__category-link {
+									display: block;
+									padding: 5px 20px;
+									color: #959595;
+									font-size: 15px;
+									line-height: 30px;
+									font-weight: 400;
+									text-decoration: none;
+									border: 1px solid #ababab;
+								}
+
+								.configurator__category-link--active {
+									color: #fff;
+									background: $gray;
+									border-color: $gray;
+								}
+
+				.configurator__items {
+					max-height: 370px;
+					padding: 15px;
+					overflow: auto;
+					background: #fff;
+				}
+
+						.configurator__item  {
+							float: left;
+							width: 70px;
+							text-align: center;
+							margin-left: 15px;
+
+							&:hover {
+								.configurator__item-img {
+									border-color: #fff;
+									box-shadow: 0 0 10px -1px #333;
+								}
+
+								.configurator__item-link {
+									text-decoration: underline;
+								}
+							}
+						}
+
+								.configurator__item-link {
+									display: block;
+									color: #292929;
+									font-size: 16px;
+									font-weight: 600;
+									line-height: 120%;
+									text-decoration: none;
+								}
+
+										.configurator__item-img {
+											border-radius: 5px;
+											border: 2px solid transparent;
+										}
+
+				.configurator__footer {
+					display: flex;
+					align-items: center;
+					margin-top: 15px;
+				}
+
+						.configurator__selected-block {
+							display: flex;
+							flex: 1;
+							align-items: center;
+							color: $gray;
+							font-size: 15px;
+							font-weight: 700;
+							line-height: 30px;
+						}
+
+								.configurator__selected-item {
+									display: flex;
+									align-items: center;
+									margin-left: 10px;
+								}
+
+										.configurator__selected-item-image {
+											width: 40px;
+											border: 2px solid #fff;
+											border-radius: 5px;
+										}
+
+										.configurator__selected-item-title {
+											margin-left: 10px;
+										}
+
+				.configurator__submit {
+					min-width: 210px;
+					color: #fff;
+					font-size: 16px;
+					line-height: 30px;
+					font-weight: 700;
+					text-transform: uppercase;
+					background: $gray;
+				}

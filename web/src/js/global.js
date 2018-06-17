@@ -7,6 +7,7 @@ import lightBoxStyles from 'lightBox2/src/css/lightbox.css';
 
 import * as modals from './modals';
 import loginForm from './login-form';
+import initConfigurator from './product-detail/configurator';
 
 $('document').ready(function() {
 	const mainNav = $('#main-nav > ul');
@@ -101,6 +102,59 @@ $('document').ready(function() {
   	appendDots: $('.homepage-carousel-dots')
   })
 
+  $('.bonus-products__list').slick({
+    dots: false,
+    arrows: true,
+    infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    adaptiveHeight: true,
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 4,
+          adaptiveHeight: true
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3,
+          adaptiveHeight: true
+        }
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 2,
+          adaptiveHeight: true
+        }
+      }
+      // You can unslick at a given breakpoint now by adding:
+      // settings: "unslick"
+      // instead of a settings object
+    ]
+  });
+
+  $('.product-detail__product-slider').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      customPaging: function(slick, i) {
+          var thumb = $(slick.$slides[i]).find('.product-detail__slider-item').data('thumb');
+          console.log(slick.$slides[i])
+          return '<a><img src="'+thumb+'"></a>';
+      },
+      arrows: true,
+      fade: false,
+      dots: true,
+      nextArrow: '<button type="button" class="slick-next"></button>',
+      prevArrow: '<button type="button" class="slick-prev"></button>'
+  });
+
+
+
+
   const contentLeft = $('.content-left');
   const contentRight = $('.content-right');
 
@@ -121,4 +175,6 @@ $('document').ready(function() {
     e.preventDefault();
     modals.open(loginForm);
   });
+
+  initConfigurator()
 });
