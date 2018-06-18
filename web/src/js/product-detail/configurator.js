@@ -1,27 +1,50 @@
 import $ from 'jquery'
 import mockData from './configurator-mock'
 import Table from './Table'
+import TableWithCategories from './TableWithCategories'
 
 const tableStore = []
 
-const handleOptionClick = (self, categories, row, optionId) => {
+const handleOptionClick = (self, optionItem, row) => {
   tableStore.map(Table => Table.hideTable())
+
   $('.configurator__option').each((index, item) => {
-    if (parseInt($(item).attr('data-option-id')) !== optionId) {
+    if (parseInt($(item).attr('data-option-id')) !== optionItem.id) {
       $(item).attr('data-open-table', 'false')
     }
   })
 
   if (self.attr('data-initialized') === 'false') {
     self.attr('data-initialized', 'true')
-    const TableItem = new Table(categories, row, self, optionId)
 
-    TableItem.init()
+    if (optionItem.hasCategories) {
+      const button = self
+      const { categories, id } = optionItem
+      const tableOpts = { categories, id, row, button }
 
-    tableStore.push(TableItem)
+      const TableItem = new TableWithCategories(tableOpts)
+
+      TableItem.init()
+
+      tableStore.push(TableItem)
+    } else {
+      const button = self
+      const { items, id } = optionItem
+      const tableOpts = { items, id, row, button }
+
+      const TableItem = new Table(tableOpts)
+
+      TableItem.init()
+
+      tableStore.push(TableItem)
+    }
+
   }
 
-  const currentTable = tableStore.filter(table => table.getTableId() === optionId)[0]
+  const currentTable = tableStore.filter(table => {
+    console.log(table, table.getTableId(), optionItem.id)
+    return table.getTableId() === optionItem.id
+  })[0]
 
   if (self.attr('data-open-table') === 'false') {
     self.attr('data-open-table', 'true')
@@ -45,16 +68,13 @@ const renderOptionLabel = (optionItem) => {
 }
 
 const renderOptionItem = (optionItem, row) => {
-  const categories = optionItem.categories
-  const optionId = optionItem.id
-
   const button = $(`
-    <button type="button" href="#" class="configurator__option" data-initialized="false" data-open-table="false" data-option-id="${optionId}">
+    <button type="button" href="#" class="configurator__option" data-initialized="false" data-open-table="false" data-option-id="${optionItem.id}">
       <span>Vyberte</span>
     </button>
   `)
 
-  button.on('click', () => handleOptionClick(button, categories, row, optionId))
+  button.on('click', () => handleOptionClick(button, optionItem, row))
 
   return button
 }
