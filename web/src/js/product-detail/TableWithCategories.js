@@ -1,32 +1,38 @@
 import $ from 'jquery'
 
-const TableWithCategories = function({ categories, id, row, button }) {
+export const CATEGORIES_TABLE = 'CATEGORIES_TABLE'
+
+const TableWithCategories = function({ categories, id, button }) {
+  this.type = CATEGORIES_TABLE
   this.categories = categories || []
   this.activeCategory = 1
-  this.activeItem = null
+  this.activeItemId = null
   this.tableId = id
 
   this.template = $('<div class="configurator__table" />')
   
+  this.isVisible = false;
+
   this.showTable = () => {
     this.template.show()
+    this.isVisible = true
   }
 
   this.hideTable = () => {
     this.template.hide()
-  }
-
-  this.getTableId = () => {
-    return this.tableId
+    this.isVisible = false
   }
 
   this.getActiveCategory = () => {
     return this.categories.filter(category => category.id === this.activeCategory)[0]
   }
 
+  this.getActiveItem = () => {
+    return this.getActiveCategory().items.filter(item => this.activeItemId === item.id)[0]
+  }
+
   this.attachEvents = () => {
     this.template.find('.configurator__submit').on('click', () => {
-      button.attr('data-open-table', 'false')
       this.hideTable()
     })
   }
@@ -38,14 +44,6 @@ const TableWithCategories = function({ categories, id, row, button }) {
     this.renderFooter()
 
     this.attachEvents()
-
-    this.template.appendTo(row)
-
-    console.log(this)
-  }
-
-  this.getActiveItem = () => {
-    return this.items.filter(item => item.id === this.activeItem)[0]
   }
 
   this.updateSelected = (selectedItem) => {
@@ -54,7 +52,7 @@ const TableWithCategories = function({ categories, id, row, button }) {
       <span class="configurator__selected-item-title">${selectedItem.title}</span>
     `)
 
-    this.template.find('.configurator__selected-price').html(`+&nbsp;${this.getActiveCategory().categoryPrice}&nbsp;Kč`)
+    this.template.find('.configurator__selected-price').html(`+&nbsp;${this.getActiveItem().price ? this.getActiveItem().price : this.getActiveCategory().defaultPrice}&nbsp;Kč`)
   }
 
   this.handleCategoryClick = (e, categoryId) => {
@@ -72,15 +70,17 @@ const TableWithCategories = function({ categories, id, row, button }) {
   this.handleItemClick = (e, item) => {
     e.preventDefault()
 
-    this.activeItem = item.id
+    this.activeItemId = item.id
 
     button.html(`
       <img class="configurator__option-selected__img" src="${item.imgSrc}" alt="${item.title}" />
       <span class="configurator__option-selected__title">${item.title}</span>
-      <span class="configurator__option-selected__price">+&nbsp;${this.getActiveCategory().categoryPrice}&nbsp;Kč</span>
+      <span class="configurator__option-selected__price">+&nbsp;${this.getActiveItem().price ? this.getActiveItem().price : this.getActiveCategory().defaultPrice}&nbsp;Kč</span>
     `)
 
     this.updateSelected(item)
+
+    $(window).trigger('tableWithCategories.handleItemClick', this)
   }
 
   this.renderCategories = () => {
@@ -101,7 +101,7 @@ const TableWithCategories = function({ categories, id, row, button }) {
     const items = this.categories.filter(category => category.id === this.activeCategory)[0].items
 
     items.map((item) => {
-      const listItem = $(`<li class="configurator__item ${item.id === this.activeItem ? 'configurator__item--active' : ''}" />`)
+      const listItem = $(`<li class="configurator__item ${item.id === this.activeItemId ? 'configurator__item--active' : ''}" />`)
 
       const itemLink = $(`
         <a class="configurator__item-link" href="#">
@@ -109,6 +109,7 @@ const TableWithCategories = function({ categories, id, row, button }) {
             <img class="configurator__item-img" src="${item.imgSrc}" alt="${item.title}" />
           </div>
           <div class="configurator__item-title">${item.title}</div>
+          ${item.price ? '<div class="configurator__item-price">' + item.price + '&nbsp;Kč</div>' : ''}
         </a>
       `)
 

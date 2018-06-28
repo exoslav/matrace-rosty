@@ -1,29 +1,27 @@
 import $ from 'jquery'
 
-export const SIMPLE_TABLE = 'SIMPLE_TABLE'
-
-const Table = function({ items, id, button }) {
-  this.type = SIMPLE_TABLE
+const Table = function({ items, id, row, button }) {
   this.items = items || []
-  this.activeItemId = items.filter(item => item.selectedOnDefault)[0]
+  this.activeItem = null
   this.tableId = id
 
   this.template = $('<div class="configurator__table" />')
   
-  this.isVisible = false;
-
   this.showTable = () => {
     this.template.show()
-    this.isVisible = true
   }
 
   this.hideTable = () => {
     this.template.hide()
-    this.isVisible = false
+  }
+
+  this.getTableId = () => {
+    return this.tableId
   }
 
   this.attachEvents = () => {
     this.template.find('.configurator__submit').on('click', () => {
+      button.attr('data-open-table', 'false')
       this.hideTable()
     })
   }
@@ -34,10 +32,14 @@ const Table = function({ items, id, button }) {
     this.renderFooter()
 
     this.attachEvents()
+
+    this.template.appendTo(row)
+
+    console.log(this)
   }
 
   this.getActiveItem = () => {
-    return this.items.filter(item => item.id === this.activeItemId)[0]
+    return this.items.filter(item => item.id === this.activeItem)[0]
   }
 
   this.updateSelected = (selectedItem) => {
@@ -52,7 +54,7 @@ const Table = function({ items, id, button }) {
   this.handleItemClick = (e, item) => {
     e.preventDefault()
 
-    this.activeItemId = item.id
+    this.activeItem = item.id
 
     button.html(`
       <img class="configurator__option-selected__img" src="${item.imgSrc}" alt="${item.title}" />
@@ -61,13 +63,11 @@ const Table = function({ items, id, button }) {
     `)
 
     this.updateSelected(item)
-
-    $(window).trigger('tableWithCategories.handleItemClick', this)
   }
 
   this.renderItems = () => {
     this.items.map((item) => {
-      const listItem = $(`<li class="configurator__item ${item.id === this.activeItemId ? 'configurator__item--active' : ''}" />`)
+      const listItem = $(`<li class="configurator__item ${item.id === this.activeItem ? 'configurator__item--active' : ''}" />`)
 
       const itemLink = $(`
         <a class="configurator__item-link" href="#">

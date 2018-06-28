@@ -1,10 +1,21 @@
 import $ from 'jquery'
-import mockData from './configurator-mock'
-import Table from './Table'
-import TableWithCategories from './TableWithCategories'
+import mockOptions1 from './configurator-option-1-mock'
+import mockOptions2 from './configurator-option-2-mock'
+import mockOptions3 from './configurator-option-3-mock'
+import mockOptions4 from './configurator-option-4-mock'
+import Table, { SIMPLE_TABLE } from './Table'
+import TableWithCategories, { CATEGORIES_TABLE } from './TableWithCategories'
 
 const tableStore = []
 
+const mockData = [
+  mockOptions1,
+  mockOptions2,
+  mockOptions3,
+  mockOptions4
+]
+
+/*
 const handleOptionClick = (self, optionItem, row) => {
   tableStore.map(Table => Table.hideTable())
 
@@ -54,74 +65,100 @@ const handleOptionClick = (self, optionItem, row) => {
     currentTable.hideTable()
   }
 }
+*/
 
-const renderOptionWrap = () => {
-  return $('<div class="configurator__option-wrap" data-open="false" />')
-}
+const renderOptions = (data, clickedEl) => {
+  tableStore.map(Table => Table.tableId !== data.id ? Table.hideTable() : null)
 
-const renderOptionLabel = (optionItem) => {
-  const label = $(`<span class="configurator__option-label">${optionItem.title}</span>`)
+  const isTableInitialized = tableStore.filter(Table => Table.tableId === data.id)[0]
 
-  // label.on('click', () => handleOptionClick())
+  if (!isTableInitialized) {
+    let TableItem = null
 
-  return label
-}
+    if (data.categories) {
+      const tableOpts = {
+        id: data.id,
+        categories: data.categories,
+        row: null,
+        button: $(clickedEl)
+      }
 
-const renderOptionItem = (optionItem, row) => {
-  const button = $(`
-    <button type="button" href="#" class="configurator__option" data-initialized="false" data-open-table="false" data-option-id="${optionItem.id}">
-      <span>Vyberte</span>
-    </button>
-  `)
+      TableItem = new TableWithCategories(tableOpts)
+    } else {
+      const tableOpts = {
+        id: data.id,
+        items: data.items,
+        button: $(clickedEl)
+      }
 
-  button.on('click', () => handleOptionClick(button, optionItem, row))
-
-  return button
-}
-
-const renderConfigurator = data => {
-  const block = $('<div class="configurator"><h2>Konfigurator</h2></div>')
-
-  let configuratorRow = $('<div class="configurator__row" />')
-
-  data.map((item, index) => {
-    if (index % 2 === 0) {
-      configuratorRow = $('<div class="configurator__row" />')
+      TableItem = new Table(tableOpts)
     }
 
-    const optionWrap = renderOptionWrap()
-    const optionItem = renderOptionItem(item, configuratorRow)
-    const optionLabel = renderOptionLabel(item)
+    TableItem.init()
+    TableItem.template.appendTo($(clickedEl).closest('.configurator__row'))
+    TableItem.showTable()
 
-    optionWrap.appendTo(configuratorRow)
-    optionLabel.appendTo(optionWrap)
-    optionItem.appendTo(optionWrap)
-    configuratorRow.appendTo(block)
-  })
+    tableStore.push(TableItem)
+  } else {
+    const CurrentTable = tableStore.filter(Table => Table.tableId === data.id)[0]
 
-  block.appendTo($('.configurator-wrapper'))
+    CurrentTable.isVisible
+      ? CurrentTable.hideTable()
+      : CurrentTable.showTable()
+    
+  }
 }
 
 const initConfigurator = () => {
-  $('.product-detail__button').on('click', function() {
-    const PRODUCT_DETAIL_CONFIGURATOR = 'some url'
+  const cachedData = []
 
-    renderConfigurator(mockData)
+  $('.configurator__option').on('click', function() {
+    const self = this
+    const PRODUCT_DETAIL_CONFIGURATOR = 'url'
+    const optionData = {
+      productId: parseInt($(self).attr('data-product-id')),
+      optionId: parseInt($(self).attr('data-option-id'))
+    }
 
-    /*
-    $.ajax({
-      method: 'GET',
-      url: PRODUCT_DETAIL_CONFIGURATOR,
-      data: { productId: 123 }
-    })
-      .done(function(data) {
-        renderConfigurator(data)
+    let currentData = null
+    const dataExists = cachedData.filter(dataItem => dataItem.id === optionData.optionId)[0]
+
+    if (dataExists) {
+      /*
+      $.ajax({
+        method: 'GET',
+        url: PRODUCT_DETAIL_CONFIGURATOR,
+        data: {
+          productId: optionData.productId,
+          optionId: optionData.optionId
+        }
       })
-      .fail(function() {
-        alert( "error" );
-      })
-    */
+        .done(function(data) {
+          renderOptions(data, self)
+        })
+        .fail(function() {
+          alert( "error" );
+        })
+      */
+      currentData = dataExists
+    } else {
+      currentData = mockData.filter(mockedDataItem => mockedDataItem.id === optionData.optionId)[0]
+    }
+
+    renderOptions(currentData, self)
   })
+
+  $(window).on('tableWithCategories.handleItemClick', function (e, Table) {
+    let value = ''
+    if (Table.type === SIMPLE_TABLE) {
+      value = `optionId=${Table.getActiveItem().id}`
+    } else if (Table.type === CATEGORIES_TABLE) {
+      value = `category=${Table.getActiveCategory().id}&optionId=${Table.getActiveItem().id}`
+    }
+    
+    $('.product-detail-hidden-form').find(`input[name='option-id-${Table.tableId}']`).val(value)
+  });
+
 }
 
 export default initConfigurator
