@@ -15,57 +15,7 @@ const mockData = [
   mockOptions4
 ]
 
-/*
-const handleOptionClick = (self, optionItem, row) => {
-  tableStore.map(Table => Table.hideTable())
-
-  $('.configurator__option').each((index, item) => {
-    if (parseInt($(item).attr('data-option-id')) !== optionItem.id) {
-      $(item).attr('data-open-table', 'false')
-    }
-  })
-
-  if (self.attr('data-initialized') === 'false') {
-    self.attr('data-initialized', 'true')
-
-    if (optionItem.hasCategories) {
-      const button = self
-      const { categories, id } = optionItem
-      const tableOpts = { categories, id, row, button }
-
-      const TableItem = new TableWithCategories(tableOpts)
-
-      TableItem.init()
-
-      tableStore.push(TableItem)
-    } else {
-      const button = self
-      const { items, id } = optionItem
-      const tableOpts = { items, id, row, button }
-
-      const TableItem = new Table(tableOpts)
-
-      TableItem.init()
-
-      tableStore.push(TableItem)
-    }
-
-  }
-
-  const currentTable = tableStore.filter(table => {
-    console.log(table, table.getTableId(), optionItem.id)
-    return table.getTableId() === optionItem.id
-  })[0]
-
-  if (self.attr('data-open-table') === 'false') {
-    self.attr('data-open-table', 'true')
-    currentTable.showTable()
-  } else {
-    self.attr('data-open-table', 'false')
-    currentTable.hideTable()
-  }
-}
-*/
+let priceStorage = []
 
 const renderOptions = (data, clickedEl) => {
   tableStore.map(Table => Table.tableId !== data.id ? Table.hideTable() : null)
@@ -109,8 +59,50 @@ const renderOptions = (data, clickedEl) => {
   }
 }
 
+const updateHiddenFormData = (inputId, value) => {
+  $('.product-detail-hidden-form').find(`input[name='option-id-${inputId}']`).val(value)
+}
+
+const updateTotalPrice = (optionId, currentPrice) => {
+  priceStorage = priceStorage.map((item) => {
+    if (item.optionId === optionId) {
+      return {
+        ...item,
+        price: currentPrice
+      }
+    }
+
+    return { ...item }
+  })
+
+  const totalPrice = priceStorage.reduce((prev, curr) => {
+    return {
+      price: prev.price + curr.price
+    }
+  }, { price: 0 }).price
+
+  $('.product-detail-total-price__value').text(totalPrice)
+}
+
+const setDefaultPriceOnLoad = () => {
+  const elements = $('button[data-option-id]')
+
+  elements.each(function() {
+    if ($(this).attr('data-default-value')) {
+      priceStorage.push({
+        optionId: parseInt($(this).attr('data-option-id')),
+        price: parseInt($(this).attr('data-default-value'))
+      })
+    }
+  })
+}
+
 const initConfigurator = () => {
   const cachedData = []
+
+  setDefaultPriceOnLoad()
+
+  console.log(priceStorage)
 
   $('.configurator__option').on('click', function() {
     const self = this
@@ -124,6 +116,8 @@ const initConfigurator = () => {
     const dataExists = cachedData.filter(dataItem => dataItem.id === optionData.optionId)[0]
 
     if (dataExists) {
+      currentData = dataExists
+    } else {
       /*
       $.ajax({
         method: 'GET',
@@ -140,9 +134,19 @@ const initConfigurator = () => {
           alert( "error" );
         })
       */
-      currentData = dataExists
-    } else {
+
+      const shouldAddToPriceStorage = priceStorage.filter(item => item.optionId === optionData.optionId)[0]
+
+      if (!shouldAddToPriceStorage) {
+        priceStorage.push({
+          optionId: optionData.optionId,
+          price: 0
+        })
+      }
+
       currentData = mockData.filter(mockedDataItem => mockedDataItem.id === optionData.optionId)[0]
+
+      cachedData.push(currentData)
     }
 
     renderOptions(currentData, self)
@@ -151,14 +155,20 @@ const initConfigurator = () => {
   $(window).on('tableWithCategories.handleItemClick', function (e, Table) {
     let value = ''
     if (Table.type === SIMPLE_TABLE) {
-      value = `optionId=${Table.getActiveItem().id}`
+      value = `selectedItemId=${Table.getActiveItem().id}`
     } else if (Table.type === CATEGORIES_TABLE) {
-      value = `category=${Table.getActiveCategory().id}&optionId=${Table.getActiveItem().id}`
+      value = `selectedCategoryId=${Table.getActiveCategory().id}&selectedItemId=${Table.getActiveItem().id}`
     }
-    
-    $('.product-detail-hidden-form').find(`input[name='option-id-${Table.tableId}']`).val(value)
-  });
 
+    const itemPrice = Table.getActiveItem().price
+      ? Table.getActiveItem().price
+      : Table.getActiveCategory().defaultPrice
+
+    updateHiddenFormData(Table.tableId, value)
+    updateTotalPrice(Table.tableId, itemPrice)
+
+    console.log(priceStorage)
+  });
 }
 
 export default initConfigurator
