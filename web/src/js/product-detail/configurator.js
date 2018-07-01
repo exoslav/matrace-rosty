@@ -106,7 +106,7 @@ const initConfigurator = () => {
 
   $('.configurator__option').on('click', function() {
     const self = this
-    const PRODUCT_DETAIL_CONFIGURATOR = 'url'
+    const PRODUCT_DETAIL_CONFIGURATOR = 'http://matrace.1sys.cz/api/attribute/get-variants/'
     const optionData = {
       productId: parseInt($(self).attr('data-product-id')),
       optionId: parseInt($(self).attr('data-option-id'))
@@ -116,24 +116,19 @@ const initConfigurator = () => {
     const dataExists = cachedData.filter(dataItem => dataItem.id === optionData.optionId)[0]
 
     if (dataExists) {
-      currentData = dataExists
+      renderOptions(dataExists, self)
     } else {
-      /*
       $.ajax({
         method: 'GET',
-        url: PRODUCT_DETAIL_CONFIGURATOR,
-        data: {
-          productId: optionData.productId,
-          optionId: optionData.optionId
-        }
+        url: `${PRODUCT_DETAIL_CONFIGURATOR}${optionData.optionId}`
       })
         .done(function(data) {
-          renderOptions(data, self)
+          const parsedData = JSON.parse(data)
+          renderOptions(parsedData, self)
         })
         .fail(function() {
           alert( "error" );
         })
-      */
 
       const shouldAddToPriceStorage = priceStorage.filter(item => item.optionId === optionData.optionId)[0]
 
@@ -148,8 +143,6 @@ const initConfigurator = () => {
 
       cachedData.push(currentData)
     }
-
-    renderOptions(currentData, self)
   })
 
   $(window).on('tableWithCategories.handleItemClick', function (e, Table) {
