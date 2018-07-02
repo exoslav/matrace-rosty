@@ -61,15 +61,8 @@ $('document').ready(function() {
       }
     })
 
-	categoryNav.find('.category-navigation__first-level > ul > li > a').on('click', function(e) {
-		e.preventDefault()
-	})
-
-  categoryNav.find('.category-navigation__second-level > ul > li > a').on('click', function(e) {
+  categoryNav.find('.category-navigation__first-level > ul > li > a > .icon').on('click', function(e) {
     e.preventDefault()
-  })
-
-  categoryNav.find('.category-navigation__first-level > ul > li > a > .icon').on('click', function() {
     const openedItem = $(this).parent()
     const secondLevel = $(this).parent().next('.category-navigation__second-level')
 
@@ -82,7 +75,8 @@ $('document').ready(function() {
     }
   })
 
-  categoryNav.find('.category-navigation__second-level__open-icon').on('click', function() {
+  categoryNav.find('.category-navigation__second-level__open-icon').on('click', function(e) {
+    e.preventDefault()
     const openedItem = $(this).parent()
     const thirdLevel = $(this).parent().next('.category-navigation__third-level')
 

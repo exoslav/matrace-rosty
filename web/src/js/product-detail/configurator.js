@@ -17,6 +17,9 @@ const mockData = [
 
 let priceStorage = []
 
+const TYPE_VARIANT = 'variant'
+const TYPE_ATTRIBUTE = 'attribute'
+
 const renderOptions = (data, clickedEl) => {
   tableStore.map(Table => Table.tableId !== data.id ? Table.hideTable() : null)
 
@@ -102,54 +105,56 @@ const initConfigurator = () => {
 
   setDefaultPriceOnLoad()
 
-  console.log(priceStorage)
-
   $('.configurator__option').on('click', function() {
     const self = this
-    const PRODUCT_DETAIL_CONFIGURATOR = 'url'
+
+    const type = $(this).attr('data-type') === TYPE_VARIANT
+      ? TYPE_VARIANT
+      : TYPE_ATTRIBUTE
+
     const optionData = {
       productId: parseInt($(self).attr('data-product-id')),
-      optionId: parseInt($(self).attr('data-option-id'))
+      optionId: type === TYPE_VARIANT
+        ? $(self).attr('data-option-id')
+        : parseInt($(self).attr('data-option-id'))
     }
+
+    const TYPE_VARIANT_URL = 'http://matrace.1sys.cz/api/product/get-price-variants/'
+    const TYPE_ATTRIBUTE_URL = 'http://matrace.1sys.cz/api/attribute/get-variants/'
+    const URL = type === TYPE_VARIANT
+      ? `${TYPE_VARIANT_URL}${optionData.productId}`
+      : `${TYPE_ATTRIBUTE_URL}${optionData.optionId}`
 
     let currentData = null
     const dataExists = cachedData.filter(dataItem => dataItem.id === optionData.optionId)[0]
 
     if (dataExists) {
-      currentData = dataExists
+      renderOptions(dataExists, self)
     } else {
-      /*
       $.ajax({
         method: 'GET',
-        url: PRODUCT_DETAIL_CONFIGURATOR,
-        data: {
-          productId: optionData.productId,
-          optionId: optionData.optionId
-        }
+        url: URL
       })
         .done(function(data) {
           renderOptions(data, self)
+
+          const shouldAddToPriceStorage = priceStorage.filter(item => item.optionId === optionData.optionId)[0]
+
+          if (!shouldAddToPriceStorage) {
+            priceStorage.push({
+              optionId: optionData.optionId,
+              price: 0
+            })
+          }
+
+          cachedData.push(data)
         })
         .fail(function() {
           alert( "error" );
         })
-      */
-
-      const shouldAddToPriceStorage = priceStorage.filter(item => item.optionId === optionData.optionId)[0]
-
-      if (!shouldAddToPriceStorage) {
-        priceStorage.push({
-          optionId: optionData.optionId,
-          price: 0
-        })
-      }
-
-      currentData = mockData.filter(mockedDataItem => mockedDataItem.id === optionData.optionId)[0]
-
-      cachedData.push(currentData)
     }
 
-    renderOptions(currentData, self)
+    // renderOptions(currentData, self)
   })
 
   $(window).on('tableWithCategories.handleItemClick', function (e, Table) {
