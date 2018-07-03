@@ -2,7 +2,7 @@ import $ from 'jquery'
 
 export const CATEGORIES_TABLE = 'CATEGORIES_TABLE'
 
-const TableWithCategories = function({ categories, id, button }) {
+const TableWithCategories = function({ categories, id }) {
   this.type = CATEGORIES_TABLE
   this.categories = categories || []
   this.activeCategory = 1
@@ -71,13 +71,6 @@ const TableWithCategories = function({ categories, id, button }) {
     e.preventDefault()
 
     this.activeItemId = item.id
-
-    button.html(`
-      <img class="configurator__option-selected__img" src="${item.imgSrc}" alt="${item.title}" />
-      <span class="configurator__option-selected__title">${item.title}</span>
-      <span class="configurator__option-selected__price">+&nbsp;${this.getActiveItem().price ? this.getActiveItem().price : this.getActiveCategory().defaultPrice}&nbsp;Kč</span>
-    `)
-
     this.updateSelected(item)
 
     $(window).trigger('tableWithCategories.handleItemClick', this)

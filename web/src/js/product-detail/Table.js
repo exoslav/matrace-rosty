@@ -1,12 +1,14 @@
 import $ from 'jquery'
+import { oneLineTrim } from 'common-tags';
 
 export const SIMPLE_TABLE = 'SIMPLE_TABLE'
 
-const Table = function({ items, id, button }) {
+const Table = function({ items, id, arrowDirection }) {
   this.type = SIMPLE_TABLE
   this.items = items || []
   this.activeItemId = items.filter(item => item.selectedOnDefault)[0]
   this.tableId = id
+  this.arrowDirection = arrowDirection || 'center'
 
   this.template = $('<div class="configurator__table" />')
   
@@ -14,11 +16,13 @@ const Table = function({ items, id, button }) {
 
   this.showTable = () => {
     this.template.show()
+    this.template.addClass('configurator__table--visible')
     this.isVisible = true
   }
 
   this.hideTable = () => {
     this.template.hide()
+    this.template.removeClass('configurator__table--visible')
     this.isVisible = false
   }
 
@@ -32,7 +36,7 @@ const Table = function({ items, id, button }) {
     this.renderBody()
     this.renderItems()
     this.renderFooter()
-
+    this.template.addClass(`configurator__table-arrow configurator__table-arrow--${this.arrowDirection}`)
     this.attachEvents()
   }
 
@@ -57,17 +61,6 @@ const Table = function({ items, id, button }) {
     e.preventDefault()
 
     this.activeItemId = item.id
-
-    const imgElement = item.imgSrc
-      ? `<img class="configurator__option-selected__img" src="${item.imgSrc}" alt="${item.title}" />`
-      : ''
-
-    button.html(`
-      ${imgElement}
-      <span class="configurator__option-selected__title">${item.title}</span>
-      <span class="configurator__option-selected__price">+&nbsp;${item.price}&nbsp;Kč</span>
-    `)
-
     this.updateSelected(item)
 
     $(window).trigger('tableWithCategories.handleItemClick', this)
@@ -75,21 +68,23 @@ const Table = function({ items, id, button }) {
 
   this.renderItems = () => {
     this.items.map((item) => {
-      const listItem = $(`<li class="configurator__item ${item.id === this.activeItemId ? 'configurator__item--active' : ''}" />`)
+      const listItem = $(oneLineTrim
+        `<li class="configurator__item ${item.id === this.activeItemId ? 'configurator__item--active' : ''}" />`
+      )
 
       const imgElement = item.imgSrc
-        ? `
+        ? oneLineTrim`
           <div class="configurator__item-img-wrap">
             <img class="configurator__item-img" src="${item.imgSrc}" alt="${item.title}" />
           </div>
          `
         : ''
 
-      const itemLink = $(`
+      const itemLink = $(oneLineTrim`
         <a class="configurator__item-link" href="#">
           ${imgElement}
           <div class="configurator__item-title">${item.title}</div>
-          <span class="configurator__item-price">${item.price}&nbspKč</span>
+          ${item.price ? '<span class="configurator__item-price">' + item.price + '&nbspKč</span>' : ''}
         </a>
       `)
 

@@ -5,6 +5,7 @@ import mockOptions3 from './configurator-option-3-mock'
 import mockOptions4 from './configurator-option-4-mock'
 import Table, { SIMPLE_TABLE } from './Table'
 import TableWithCategories, { CATEGORIES_TABLE } from './TableWithCategories'
+import { oneLineTrim } from 'common-tags';
 
 const tableStore = []
 
@@ -20,45 +21,60 @@ let priceStorage = []
 const TYPE_VARIANT = 'variant'
 const TYPE_ATTRIBUTE = 'attribute'
 
-const renderOptions = (data, clickedEl) => {
+const renderOptions = (data, optionItem) => {
   tableStore.map(Table => Table.tableId !== data.id ? Table.hideTable() : null)
 
   const isTableInitialized = tableStore.filter(Table => Table.tableId === data.id)[0]
 
+  let optionItemPosition = 0
+
+  $('.configurator__option').each((index, item) => {
+    if (item === optionItem) {
+      optionItemPosition = index + 1
+    }
+  })
+
   if (!isTableInitialized) {
     let TableItem = null
 
+    const defaultOptions = {
+      id: data.id,
+      arrowDirection: optionItemPosition % 2 === 0
+        ? 'right' : 'left'
+    }
+
     if (data.categories) {
       const tableOpts = {
-        id: data.id,
-        categories: data.categories,
-        row: null,
-        button: $(clickedEl)
+          ...defaultOptions,
+        categories: data.categories
       }
 
       TableItem = new TableWithCategories(tableOpts)
     } else {
       const tableOpts = {
-        id: data.id,
-        items: data.items,
-        button: $(clickedEl)
+        ...defaultOptions,
+        items: data.items
       }
 
       TableItem = new Table(tableOpts)
     }
 
     TableItem.init()
-    TableItem.template.appendTo($(clickedEl).closest('.configurator__row'))
+    TableItem.template.appendTo($(optionItem).closest('.configurator__row'))
+    TableItem.template.addClass(`configurator__table--position-${optionItemPosition}`)
     TableItem.showTable()
 
     tableStore.push(TableItem)
   } else {
     const CurrentTable = tableStore.filter(Table => Table.tableId === data.id)[0]
 
-    CurrentTable.isVisible
-      ? CurrentTable.hideTable()
-      : CurrentTable.showTable()
-    
+    if (CurrentTable.isVisible) {
+      CurrentTable.template.removeClass(`configurator__table--position-${optionItemPosition}`)
+      CurrentTable.hideTable()
+    } else {
+      CurrentTable.template.addClass(`configurator__table--position-${optionItemPosition}`)
+      CurrentTable.showTable()
+    }
   }
 }
 
@@ -108,6 +124,10 @@ const initConfigurator = () => {
   $('.configurator__option').on('click', function() {
     const self = this
 
+    let itemIndex = 0
+
+    const loader = $('<div class="configurator__option-loader"></div>')
+
     const type = $(this).attr('data-type') === TYPE_VARIANT
       ? TYPE_VARIANT
       : TYPE_ATTRIBUTE
@@ -131,11 +151,14 @@ const initConfigurator = () => {
     if (dataExists) {
       renderOptions(dataExists, self)
     } else {
+      loader.appendTo(self)
+
       $.ajax({
         method: 'GET',
         url: URL
       })
         .done(function(data) {
+          loader.remove()
           renderOptions(data, self)
 
           const shouldAddToPriceStorage = priceStorage.filter(item => item.optionId === optionData.optionId)[0]
@@ -150,14 +173,33 @@ const initConfigurator = () => {
           cachedData.push(data)
         })
         .fail(function() {
+          loader.remove()
           alert( "error" );
         })
     }
-
-    // renderOptions(currentData, self)
   })
 
   $(window).on('tableWithCategories.handleItemClick', function (e, Table) {
+    const activeItem = Table.getActiveItem()
+    const optionElement = $(`[data-option-id="${Table.tableId}"]`)
+    const itemHasImage = !!activeItem.imgSrc
+
+    const imgElement = itemHasImage
+      ? `<img class="configurator__option-selected__img" src="${activeItem.imgSrc}" alt="${activeItem.title}" />`
+      : ''
+
+    optionElement.html(oneLineTrim`
+      ${imgElement}
+      <span class="${
+        itemHasImage
+          ? 'configurator__option-selected__title--offset-left'
+          : 'configurator__option-selected__title'}
+      ">
+        ${activeItem.title}
+      </span>
+      <span class="configurator__option-selected__price">+&nbsp;${activeItem.price}&nbsp;Kč</span>
+    `)
+
     let value = ''
     if (Table.type === SIMPLE_TABLE) {
       value = `selectedItemId=${Table.getActiveItem().id}`
@@ -165,7 +207,7 @@ const initConfigurator = () => {
       value = `selectedCategoryId=${Table.getActiveCategory().id}&selectedItemId=${Table.getActiveItem().id}`
     }
 
-    const itemPrice = Table.getActiveItem().price
+    const itemPrice = Table.getActiveItem().price !== null
       ? Table.getActiveItem().price
       : Table.getActiveCategory().defaultPrice
 
