@@ -258,10 +258,7 @@
          </div>
       </div>
 
-      <div class="product-detail-total-price">
-        <span class="product-detail-total-price__label">Total price:</span>
-        <span class="product-detail-total-price__value">2383</span>
-      </div>
+
 
       <form class="product-detail-hidden-form">
         <input hidden type="text" name="product-id" value="4957">
@@ -269,6 +266,26 @@
         <input hidden type="text" name="option-id-2" value="0">
         <input hidden type="text" name="option-id-3" value="0">
         <input hidden type="text" name="option-id-4" value="0">
+
+        <div class="product-detail-hidden-form__visible-part">
+          <div class="product-detail-hidden-form__summary">
+            <div class="product-detail-hidden-form__total-price-block">
+              <span class="product-detail-hidden-form__total-price">2383</span>
+              <span class="product-detail-hidden-form__total-price-label">Kč</span>
+            </div>
+
+            <div class="product-detail-hidden-form__total-items">
+              <input id="total-items" type="text" name="total-items" value="1">
+              <label for="total-items">Ks</label>
+            </div>
+          </div>
+
+          <button class="product-detail-hidden-form__submit" type="submit">
+            <i class="icon icon-shopping-basket"></i>
+            <span>Vložit do košíku</span>
+          </button>      
+        </div>
+
       </form>
     </div>
 

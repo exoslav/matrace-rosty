@@ -7,6 +7,7 @@ import Table, { SIMPLE_TABLE } from './Table'
 import TableWithCategories, { CATEGORIES_TABLE } from './TableWithCategories'
 import { oneLineTrim } from 'common-tags';
 
+const errorMessage = []
 const tableStore = []
 
 const mockData = [
@@ -21,26 +22,35 @@ let priceStorage = []
 const TYPE_VARIANT = 'variant'
 const TYPE_ATTRIBUTE = 'attribute'
 
+const getOptionItemPosition = (optionItems, currentOptionItem) => {
+  let position = 0
+
+  optionItems.each((index, item) => {
+    if (item === currentOptionItem) {
+      position = index + 1
+    }
+  })
+
+  return position
+}
+
+const getArrowDirection = (optionItemPosition) => {
+  return optionItemPosition % 2 === 0
+    ? 'right' : 'left'
+}
+
 const renderOptions = (data, optionItem) => {
   tableStore.map(Table => Table.tableId !== data.id ? Table.hideTable() : null)
 
   const isTableInitialized = tableStore.filter(Table => Table.tableId === data.id)[0]
-
-  let optionItemPosition = 0
-
-  $('.configurator__option').each((index, item) => {
-    if (item === optionItem) {
-      optionItemPosition = index + 1
-    }
-  })
+  const optionItemPosition = getOptionItemPosition($('.configurator__option'), optionItem)
 
   if (!isTableInitialized) {
     let TableItem = null
 
     const defaultOptions = {
       id: data.id,
-      arrowDirection: optionItemPosition % 2 === 0
-        ? 'right' : 'left'
+      arrowDirection: getArrowDirection()
     }
 
     if (data.categories) {
@@ -116,6 +126,34 @@ const setDefaultPriceOnLoad = () => {
   })
 }
 
+const renderErrorMessage = (optionItem, optionItemPosition, errorMsg) => {
+  const rowElement = $(optionItem).closest('.configurator__row')
+  const ERROR_MESSAGE = 'Nastala neočekávaná chyba, nebylo možné načíst položky. Zkuste to prosím znovu.'
+
+  const message = $(oneLineTrim`<div 
+      class="
+        configurator__error-message 
+        configurator__error-message--position-${optionItemPosition} 
+        configurator__error-message__arrow 
+        configurator__error-message__arrow--${getArrowDirection(optionItemPosition)}"
+    >
+      ${ERROR_MESSAGE}
+    </div>`)
+    
+    message.appendTo(rowElement)
+
+    errorMsg.push(message)
+}
+
+const removeErrorMessage = (messages) => {
+  if (messages.length <= 0) {
+    return
+  }
+  
+  $(messages[0]).remove()
+  messages.splice(0, 1)
+}
+
 const initConfigurator = () => {
   const cachedData = []
 
@@ -123,34 +161,28 @@ const initConfigurator = () => {
 
   $('.configurator__option').on('click', function() {
     const self = this
-
-    let itemIndex = 0
-
     const loader = $('<div class="configurator__option-loader"></div>')
-
     const type = $(this).attr('data-type') === TYPE_VARIANT
       ? TYPE_VARIANT
       : TYPE_ATTRIBUTE
-
     const optionData = {
       productId: parseInt($(self).attr('data-product-id')),
       optionId: type === TYPE_VARIANT
         ? $(self).attr('data-option-id')
         : parseInt($(self).attr('data-option-id'))
     }
-
     const TYPE_VARIANT_URL = 'http://matrace.1sys.cz/api/product/get-price-variants/'
     const TYPE_ATTRIBUTE_URL = 'http://matrace.1sys.cz/api/attribute/get-variants/'
     const URL = type === TYPE_VARIANT
       ? `${TYPE_VARIANT_URL}${optionData.productId}`
       : `${TYPE_ATTRIBUTE_URL}${optionData.optionId}`
-
-    let currentData = null
     const dataExists = cachedData.filter(dataItem => dataItem.id === optionData.optionId)[0]
 
     if (dataExists) {
+      removeErrorMessage(errorMessage)
       renderOptions(dataExists, self)
     } else {
+      $(self).addClass('configurator__option--loading')
       loader.appendTo(self)
 
       $.ajax({
@@ -159,6 +191,8 @@ const initConfigurator = () => {
       })
         .done(function(data) {
           loader.remove()
+          removeErrorMessage(errorMessage)
+          $(self).removeClass('configurator__option--loading')
           renderOptions(data, self)
 
           const shouldAddToPriceStorage = priceStorage.filter(item => item.optionId === optionData.optionId)[0]
@@ -173,8 +207,11 @@ const initConfigurator = () => {
           cachedData.push(data)
         })
         .fail(function() {
+          removeErrorMessage(errorMessage)
+          const optionItemPosition = getOptionItemPosition($('.configurator__option'), self)
           loader.remove()
-          alert( "error" );
+          $(self).removeClass('configurator__option--loading')
+          renderErrorMessage(self, optionItemPosition, errorMessage)
         })
     }
   })

@@ -33,7 +33,7 @@
 					align-items: center;
 					position: relative;
 					width: 100%;
-					padding: 10px 15px;
+					padding: 10px 57px 10px 15px;
 					text-align: left;
 					color: $gray;
 					font-size: 15px;
@@ -47,7 +47,39 @@
 					background: -webkit-linear-gradient(top, #ffffff 0%,#f5f5f5 100%); /* Chrome10-25,Safari5.1-6 */
 					background: linear-gradient(to bottom, #ffffff 0%,#f5f5f5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 					filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f5f5f5',GradientType=0 ); /* IE6-9 */
+
+					&:after,
+					&:before {
+						content: '';
+						position: absolute;
+					}
+
+					&:after {
+						right: 40px;
+						top: 0;
+						width: 2px;
+						height: 100%;
+						background: #ebebeb;
+					}
+
+					&:before {
+				    top: auto;
+				    right: 15px;
+				    bottom: auto;
+				    width: 0;
+				    height: 0;
+				    border-style: solid;
+				    border-width: 6px 5px 0 5px;
+				    border-color: #ac2e2e transparent transparent transparent;
+					}
 				}
+
+				.configurator__option--loading {
+					&:before {
+						display: none;
+					}
+				}
+
 						.configurator__option-selected__img {
 					    position: absolute;
 					    top: 0;
@@ -79,14 +111,14 @@
 
 				.configurator__option-loader {
 						position: absolute;
-						right: 15px;
+						right: 6px;
 						top: auto;
 						bottom: auto;
-						border: 4px solid #ebebeb;
+						border: 3px solid #ebebeb;
 						border-radius: 50%;
-						border-top: 4px solid $red;
-						width: 30px;
-						height: 30px;
+						border-top: 3px solid $red;
+						width: 27px;
+						height: 27px;
 						-webkit-animation: spin 2s linear infinite;
 						animation: spin 2s linear infinite;
 
@@ -106,7 +138,8 @@
 						}
 				}
 
-		.configurator__table {
+		.configurator__table,
+		.configurator__error-message {
 			position: relative;
 			width: 100%;
 			margin-bottom: 20px;
@@ -119,11 +152,13 @@
 			}
 		}
 
+		.configurator__error-message,
 		.configurator__table--visible {
 			order: 3;
 		}
 
-		.configurator__table--position-1 {
+		.configurator__table--position-1,
+		.configurator__error-message--position-1 {
 			order: 1;
 
 			@media (min-width: 576px) {
@@ -294,4 +329,42 @@
 					font-weight: 700;
 					text-transform: uppercase;
 					background: $gray;
+				}
+
+				.configurator__error-message {
+					padding: 15px;
+					color: $red;
+					font-weight: 700;
+				}
+
+				.configurator__error-message__arrow:before {
+					content: '';
+					position: absolute;
+					width: 0;
+					height: 0;
+					border-style: solid;
+					border-width: 0 16.5px 10px 16.5px;
+					border-color: transparent transparent #ebebeb transparent;
+				}
+
+				.configurator__error-message__arrow--left:before,
+				.configurator__error-message__arrow--right:before {
+					top: -10px;
+					right: 0;
+					left: 0;
+					margin: auto;
+				}
+
+				.configurator__error-message__arrow--left:before {
+					@media (min-width: 576px) {
+						right: auto;
+						left: calc(25% - 10px);
+					}
+				}
+
+				.configurator__error-message__arrow--right:before {
+					@media (min-width: 576px) {
+						right: calc(25% - 10px);
+						left: auto;
+					}
 				}

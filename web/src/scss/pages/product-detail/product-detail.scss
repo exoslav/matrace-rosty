@@ -136,3 +136,65 @@ $imageBorder: 1px solid #e2e2e2;
 			  min-width: 360px;
 			}
 		}
+
+		.product-detail-hidden-form__visible-part {
+			padding-top: 18px;
+			border-top: 1px solid #ebebeb;
+		}
+
+				.product-detail-hidden-form__summary {
+					display: flex;
+					align-items: center;
+					margin-bottom: 18px;
+				}
+
+						.product-detail-hidden-form__total-price-block {
+							flex: 1;
+							padding-right: 30px;
+							text-align: right;
+						}
+
+								.product-detail-hidden-form__total-price,
+								.product-detail-hidden-form__total-price-label {
+									font-size: 22px;
+									line-height: 30px;
+									font-weight: 700;
+									color: #1da72d;
+								}
+
+						.product-detail-hidden-form__total-items {
+							input {
+								width: 51px;
+								height: 51px;
+								text-align: center;
+							}
+
+							label {
+								padding-left: 8px;
+								color: #3b3b3b;
+							}
+						}
+
+		.product-detail-hidden-form__submit {
+			display: flex;
+			align-items: center;
+      justify-content: center;
+			width: 100%;
+			padding: 17px 29px 15px 36px;
+			font-size: 18px;
+			font-weight: 700;
+			line-height: 30px;
+			color: #fff;
+			text-transform: uppercase;
+			background: $red;
+			border: none;
+
+			i {
+				margin-right: 16px;
+				font-size: 24px;
+			}
+
+			&:hover {
+				background-color: darken($red, 5%);
+			}
+		}
