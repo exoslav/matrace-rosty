@@ -1,22 +1,10 @@
 import $ from 'jquery'
-import mockOptions1 from './configurator-option-1-mock'
-import mockOptions2 from './configurator-option-2-mock'
-import mockOptions3 from './configurator-option-3-mock'
-import mockOptions4 from './configurator-option-4-mock'
 import Table, { SIMPLE_TABLE } from './Table'
 import TableWithCategories, { CATEGORIES_TABLE } from './TableWithCategories'
 import { oneLineTrim } from 'common-tags';
 
 const errorMessage = []
 const tableStore = []
-
-const mockData = [
-  mockOptions1,
-  mockOptions2,
-  mockOptions3,
-  mockOptions4
-]
-
 let priceStorage = []
 
 const TYPE_VARIANT = 'variant'

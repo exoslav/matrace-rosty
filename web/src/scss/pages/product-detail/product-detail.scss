@@ -18,31 +18,52 @@ $imageBorder: 1px solid #e2e2e2;
 			  padding-right: 20px;
 			}
 
+			.slick-list {
+				margin-bottom: 10px;
+
+				.slick-track {
+					display: flex;
+
+					.slick-slide {
+						height: auto;
+
+						a, div {
+							height: 100%;
+						}
+					}
+				}
+			}
+
 					.product-detail__slider-item {
 						border: 1px solid #e2e2e2;
 
 						a {
-							display: block;
+					    display: flex;
+					    align-items: center;
+					    padding: 15px;
 							
 							img {
 								@extend .responsive-img;
+								margin: 0 auto;
 							}
 						}
 					}
 
 					.slick-dots {
+						display: flex;
+						align-items: center;
 						position: static;
+						bottom: auto;
 
 						li {
-							display: table;
-							float: left;
+							display: flex;
 							margin: 0 8px 8px 0;
 							height: 67px;
 							width: 67px;
 
 							a {
-								display: table-cell;
-								vertical-align: middle;
+								display: flex;
+								align-items: center;
 								padding: 5px;
 								border: $imageBorder;
 
