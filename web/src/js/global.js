@@ -1,5 +1,7 @@
 import $ from 'jquery';
 import 'slick-carousel';
+import lightBox2 from 'lightBox2';
+
 import styles from '../scss/main.scss'
 import sstyles from 'slick-carousel/slick/slick.css';
 import ssstyles from 'slick-carousel/slick/slick-theme.css';
@@ -168,6 +170,14 @@ $('document').ready(function() {
   $('.check-in-block__login').on('click', function(e) {
     e.preventDefault();
     modals.open(loginForm);
+  });
+
+  $("a[href^=\\#]").click(function(e) {
+    e.preventDefault();
+    const dest = $(this).attr('href');
+    $('html,body').animate({
+      scrollTop: $(dest).offset().top
+    }, 'slow');
   });
 
   initConfigurator()

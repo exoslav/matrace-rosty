@@ -64,6 +64,7 @@ $imageBorder: 1px solid #e2e2e2;
 							a {
 								display: flex;
 								align-items: center;
+								overflow: hidden;
 								padding: 5px;
 								border: $imageBorder;
 
@@ -124,6 +125,8 @@ $imageBorder: 1px solid #e2e2e2;
 			font-weight: 700;
 			line-height: 24px;
 			text-transform: uppercase;
+			text-align: center;
+			text-decoration: none;
 			font-family: 'Roboto', sans-serif;
 			border: none;
 			background: $red;
