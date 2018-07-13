@@ -10,7 +10,6 @@ module.exports = function (env) {
   var config = {
     entry: {
       'global': './src/js/global.js',
-      'blog-posts-detail': './src/js/blog-posts-detail.js',
       'categories': './src/js/categories.js'
     },
     output: {
