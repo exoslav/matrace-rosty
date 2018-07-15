@@ -1,27 +1,35 @@
 import $ from 'jquery'
+import { oneLineTrim } from 'common-tags';
 
-const Table = function({ items, id, row, button }) {
+export const SIMPLE_TABLE = 'SIMPLE_TABLE'
+
+const Table = function({ items, id, arrowDirection }) {
+  this.type = SIMPLE_TABLE
   this.items = items || []
-  this.activeItem = null
+  this.activeItemId = items.filter(item => item.selectedOnDefault)[0]
   this.tableId = id
+  this.arrowDirection = arrowDirection || 'center'
 
-  this.template = $('<div class="configurator__table" />')
+  this.CLASSNAME_ACTIVE = 'configurator__item--active'
+
+  this.template = $(`<div class="configurator__table configurator__table-id-${this.tableId}" />`)
   
+  this.isVisible = false;
+
   this.showTable = () => {
     this.template.show()
+    this.template.addClass('configurator__table--visible')
+    this.isVisible = true
   }
 
   this.hideTable = () => {
     this.template.hide()
-  }
-
-  this.getTableId = () => {
-    return this.tableId
+    this.template.removeClass('configurator__table--visible')
+    this.isVisible = false
   }
 
   this.attachEvents = () => {
     this.template.find('.configurator__submit').on('click', () => {
-      button.attr('data-open-table', 'false')
       this.hideTable()
     })
   }
@@ -30,52 +38,66 @@ const Table = function({ items, id, row, button }) {
     this.renderBody()
     this.renderItems()
     this.renderFooter()
-
+    this.template.addClass(`configurator__table-arrow configurator__table-arrow--${this.arrowDirection}`)
     this.attachEvents()
-
-    this.template.appendTo(row)
-
-    console.log(this)
   }
 
   this.getActiveItem = () => {
-    return this.items.filter(item => item.id === this.activeItem)[0]
+    return this.items.filter(item => item.id === this.activeItemId)[0]
   }
 
   this.updateSelected = (selectedItem) => {
+    const imgElement = selectedItem.imgSrc
+      ? `<img class="configurator__selected-item-image" src="${selectedItem.imgSrc}" alt="${selectedItem.title}" />`
+      : ''
+
     this.template.find('.configurator__selected-item').html(`
-      <img class="configurator__selected-item-image" src="${selectedItem.imgSrc}" alt="${selectedItem.title}" />
+      ${imgElement}
       <span class="configurator__selected-item-title">${selectedItem.title}</span>
     `)
 
     this.template.find('.configurator__selected-price').html(`+&nbsp;${selectedItem.price}&nbsp;Kč`)
   }
 
+  this.removeActiveClassFromItems = (items) => {
+    $(items).closest('.configurator__item ').removeClass(this.CLASSNAME_ACTIVE)
+  }
+
+  this.setActiveClassToItem = (item) => {
+    $(item).closest('.configurator__item ').addClass(this.CLASSNAME_ACTIVE)
+  }
+
   this.handleItemClick = (e, item) => {
     e.preventDefault()
 
-    this.activeItem = item.id
-
-    button.html(`
-      <img class="configurator__option-selected__img" src="${item.imgSrc}" alt="${item.title}" />
-      <span class="configurator__option-selected__title">${item.title}</span>
-      <span class="configurator__option-selected__price">+&nbsp;${item.price}&nbsp;Kč</span>
-    `)
-
+    this.activeItemId = item.id
     this.updateSelected(item)
+
+    this.removeActiveClassFromItems($(`.configurator__table-id-${this.tableId} .${this.CLASSNAME_ACTIVE}`))
+    this.setActiveClassToItem(e.target)
+
+    $(window).trigger('tableWithCategories.handleItemClick', this)
   }
 
   this.renderItems = () => {
     this.items.map((item) => {
-      const listItem = $(`<li class="configurator__item ${item.id === this.activeItem ? 'configurator__item--active' : ''}" />`)
+      const listItem = $(oneLineTrim
+        `<li class="configurator__item ${item.id === this.activeItemId ? this.CLASSNAME_ACTIVE : ''}" />`
+      )
 
-      const itemLink = $(`
-        <a class="configurator__item-link" href="#">
+      const imgElement = item.imgSrc
+        ? oneLineTrim`
           <div class="configurator__item-img-wrap">
             <img class="configurator__item-img" src="${item.imgSrc}" alt="${item.title}" />
           </div>
+         `
+        : ''
+
+      const itemLink = $(oneLineTrim`
+        <a class="configurator__item-link" href="#">
+          ${imgElement}
           <div class="configurator__item-title">${item.title}</div>
-          <span class="configurator__item-price">${item.price}&nbspKč</span>
+          ${item.price ? '<span class="configurator__item-price">' + item.price + '&nbspKč</span>' : ''}
         </a>
       `)
 

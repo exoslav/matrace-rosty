@@ -32,6 +32,7 @@
 
         .product-item__header {
           display: block;
+          width: 100%;
           margin-bottom: .775em;
           color: $gray;
           font-size: 18px;
@@ -44,6 +45,7 @@
         }
 
         .product-item__description {
+          width: 100%;
           font-size: 14px;
           line-height: 120%;
           color: #a7a7a7;

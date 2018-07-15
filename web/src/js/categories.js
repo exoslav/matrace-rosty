@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import $ui from './externals/jquery-ui.min.js';
 
 $(document).ready(function() {
   const defaultMinValue = 234;

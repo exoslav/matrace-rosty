@@ -9,7 +9,9 @@ const TableWithCategories = function({ categories, id }) {
   this.activeItemId = null
   this.tableId = id
 
-  this.template = $('<div class="configurator__table" />')
+  this.CLASSNAME_ACTIVE = 'configurator__category-link--active'
+
+  this.template = $(`<div class="configurator__table configurator__table-id-${this.tableId}" />`)
   
   this.isVisible = false;
 
@@ -67,11 +69,22 @@ const TableWithCategories = function({ categories, id }) {
     this.renderItems()
   }
 
+  this.removeActiveClassFromItems = (items) => {
+    $(items).removeClass(this.CLASSNAME_ACTIVE)
+  }
+
+  this.setActiveClassToItem = (item) => {
+    $(item).addClass(this.CLASSNAME_ACTIVE)
+  }
+
   this.handleItemClick = (e, item) => {
     e.preventDefault()
 
     this.activeItemId = item.id
     this.updateSelected(item)
+
+    this.removeActiveClassFromItems($(`.configurator__table-id-${this.tableId} .${this.CLASSNAME_ACTIVE}`))
+    this.setActiveClassToItem(item)
 
     $(window).trigger('tableWithCategories.handleItemClick', this)
   }
@@ -81,7 +94,7 @@ const TableWithCategories = function({ categories, id }) {
       const isActiveCategory = category.id === this.activeCategory
 
       const categoryItem = $(`<li class="configurator__category" />`)
-      const categoryLink = $(`<a class="configurator__category-link ${isActiveCategory ? 'configurator__category-link--active' : ''}" href="#">${category.categoryTitle}</a>`)
+      const categoryLink = $(`<a class="configurator__category-link ${isActiveCategory ? this.CLASSNAME_ACTIVE : ''}" href="#">${category.categoryTitle}</a>`)
         .on('click', (e) => this.handleCategoryClick(e, category.id))
 
       categoryLink.appendTo(categoryItem)

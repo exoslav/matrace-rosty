@@ -2,14 +2,14 @@
 @import './vars';
 @import './icons/icons';
 
-@import './externals/jquery-ui.css';
-@import './externals/jquery-ui.structure.css';
-@import './externals/jquery-ui.theme.css';
+@import './externals/jquery-ui.min.css';
+@import './externals/jquery-ui.structure.min.css';
 
 @import './globals/grid';
 @import './globals/global';
 @import './globals/forms';
 @import './globals/tables';
+@import './globals/jquery-ui-tabs';
 
 @import 'components/adbox';
 @import 'components/product-item';

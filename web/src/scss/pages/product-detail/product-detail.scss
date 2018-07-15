@@ -12,6 +12,10 @@ $imageBorder: 1px solid #e2e2e2;
 		.product-detail__product-slider {
 			overflow: hidden;
 
+			&.slick-dotted.slick-slider {
+				margin-bottom: 6px;
+			}
+
 			@media (min-width: 768px) {
 			  width: 456px;
 			  float: left;
@@ -19,7 +23,11 @@ $imageBorder: 1px solid #e2e2e2;
 			}
 
 			.slick-list {
-				margin-bottom: 10px;
+				margin-bottom: 15px;
+
+				@media (min-width: 768px) {
+					margin-bottom: 10px;
+				}
 
 				.slick-track {
 					display: flex;
@@ -100,9 +108,13 @@ $imageBorder: 1px solid #e2e2e2;
 			margin-bottom: 22px;
 
 			> p {
-				margin-bottom: .55em;
+				margin-bottom: .4em;
 				line-height: 120%;
 				@extend %clearfix;
+
+				@media (min-width: 768px) {
+					margin-bottom: .55em;
+				}
 			}
 		}
 		
@@ -117,6 +129,7 @@ $imageBorder: 1px solid #e2e2e2;
 				}
 
 		.product-detail__button {
+			display: inline-block;
 			width: 100%;
 			margin-bottom: 18px;
 			padding: 15px 24px;
@@ -161,15 +174,33 @@ $imageBorder: 1px solid #e2e2e2;
 			}
 		}
 
+		.product-detail-hidden-form {
+			margin-bottom: 25px;
+
+			@media (min-width: 576px) {
+				margin-bottom: 55px;
+			}
+		}
+
 		.product-detail-hidden-form__visible-part {
 			padding-top: 18px;
 			border-top: 1px solid #ebebeb;
+
+			@media (min-width: 768px) {
+				display: flex;
+				align-items: center;
+			}
 		}
 
 				.product-detail-hidden-form__summary {
 					display: flex;
 					align-items: center;
 					margin-bottom: 18px;
+
+					@media (min-width: 768px) {
+						flex: 1;
+						margin: 0;
+					}
 				}
 
 						.product-detail-hidden-form__total-price-block {
@@ -221,4 +252,24 @@ $imageBorder: 1px solid #e2e2e2;
 			&:hover {
 				background-color: darken($red, 5%);
 			}
+
+			@media (min-width: 768px) {
+				width: auto;
+				margin-left: 36px;
+			}
 		}
+
+.related-products {
+	.product-item {
+		@media (min-width: 576px) {
+	    width: 50%;
+	    float: left;
+	    flex-grow: 1;
+		}
+
+		@media (min-width: 768px) {
+	    width: 33.3333%;
+	    flex-grow: 1;
+		}
+	}
+}

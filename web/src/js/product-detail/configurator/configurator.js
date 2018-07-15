@@ -1,11 +1,11 @@
 import $ from 'jquery'
+import { oneLineTrim } from 'common-tags';
 import Table, { SIMPLE_TABLE } from './Table'
 import TableWithCategories, { CATEGORIES_TABLE } from './TableWithCategories'
-import { oneLineTrim } from 'common-tags';
+import { priceStorage, updatePriceStorage, addItemToPriceStorage, getTotalPrice } from './price-storage'
 
 const errorMessage = []
 const tableStore = []
-let priceStorage = []
 
 const TYPE_VARIANT = 'variant'
 const TYPE_ATTRIBUTE = 'attribute'
@@ -27,6 +27,10 @@ const getArrowDirection = (optionItemPosition) => {
     ? 'right' : 'left'
 }
 
+const updateTotalPrice = (totalPrice) => {
+  $('.product-detail-hidden-form__total-price').text(totalPrice)
+}
+
 const renderOptions = (data, optionItem) => {
   tableStore.map(Table => Table.tableId !== data.id ? Table.hideTable() : null)
 
@@ -38,7 +42,7 @@ const renderOptions = (data, optionItem) => {
 
     const defaultOptions = {
       id: data.id,
-      arrowDirection: getArrowDirection()
+      arrowDirection: getArrowDirection(getOptionItemPosition($('.configurator__option'), optionItem))
     }
 
     if (data.categories) {
@@ -80,33 +84,12 @@ const updateHiddenFormData = (inputId, value) => {
   $('.product-detail-hidden-form').find(`input[name='option-id-${inputId}']`).val(value)
 }
 
-const updateTotalPrice = (optionId, currentPrice) => {
-  priceStorage = priceStorage.map((item) => {
-    if (item.optionId === optionId) {
-      return {
-        ...item,
-        price: currentPrice
-      }
-    }
-
-    return { ...item }
-  })
-
-  const totalPrice = priceStorage.reduce((prev, curr) => {
-    return {
-      price: prev.price + curr.price
-    }
-  }, { price: 0 }).price
-
-  $('.product-detail-total-price__value').text(totalPrice)
-}
-
 const setDefaultPriceOnLoad = () => {
   const elements = $('button[data-option-id]')
 
   elements.each(function() {
     if ($(this).attr('data-default-value')) {
-      priceStorage.push({
+      addItemToPriceStorage({
         optionId: parseInt($(this).attr('data-option-id')),
         price: parseInt($(this).attr('data-default-value'))
       })
@@ -186,7 +169,7 @@ const initConfigurator = () => {
           const shouldAddToPriceStorage = priceStorage.filter(item => item.optionId === optionData.optionId)[0]
 
           if (!shouldAddToPriceStorage) {
-            priceStorage.push({
+            addItemToPriceStorage({
               optionId: optionData.optionId,
               price: 0
             })
@@ -217,7 +200,7 @@ const initConfigurator = () => {
       ${imgElement}
       <span class="${
         itemHasImage
-          ? 'configurator__option-selected__title--offset-left'
+          ? 'configurator__option-selected__title configurator__option-selected__title--offset-left'
           : 'configurator__option-selected__title'}
       ">
         ${activeItem.title}
@@ -237,9 +220,8 @@ const initConfigurator = () => {
       : Table.getActiveCategory().defaultPrice
 
     updateHiddenFormData(Table.tableId, value)
-    updateTotalPrice(Table.tableId, itemPrice)
-
-    console.log(priceStorage)
+    updatePriceStorage(Table.tableId, itemPrice)
+    updateTotalPrice(getTotalPrice())
   });
 }
 

@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import $ui from './externals/jquery-ui.min.js';
 import 'slick-carousel';
 import lightBox2 from 'lightBox2';
 
@@ -9,7 +10,7 @@ import lightBoxStyles from 'lightBox2/src/css/lightbox.css';
 
 import * as modals from './modals';
 import loginForm from './login-form';
-import initConfigurator from './product-detail/configurator';
+import initConfigurator from './product-detail/configurator/configurator';
 
 $('document').ready(function() {
 	const mainNav = $('#main-nav > ul');
@@ -18,6 +19,8 @@ $('document').ready(function() {
 	const searchBar = $('.header-toolbar__search');
 	const openCategoryNav = $('.open-category-navigation');
 	const categoryNav = $('#category-navigation > nav');
+
+  $(() => $('.ui-tabs-component').tabs());
 
   function debounce(func, wait, immediate) {
     var timeout;
@@ -173,11 +176,13 @@ $('document').ready(function() {
   });
 
   $("a[href^=\\#]").click(function(e) {
-    e.preventDefault();
-    const dest = $(this).attr('href');
-    $('html,body').animate({
-      scrollTop: $(dest).offset().top
-    }, 'slow');
+    if (!$(this).hasClass('ui-tabs-anchor')) {
+      e.preventDefault();
+      const dest = $(this).attr('href');
+      $('html,body').animate({
+        scrollTop: $(dest).offset().top
+      }, 'slow');
+    }
   });
 
   initConfigurator()
