@@ -1,7 +1,8 @@
 import $ from 'jquery'
-import { oneLineTrim } from 'common-tags';
+import { oneLineTrim } from 'common-tags'
 import Table, { SIMPLE_TABLE } from './Table'
 import TableWithCategories, { CATEGORIES_TABLE } from './TableWithCategories'
+import { getOptionItemPosition, getArrowDirection, formatPrice } from './configurator-helpers'
 import { priceStorage, updatePriceStorage, addItemToPriceStorage, getTotalPrice } from './price-storage'
 
 const errorMessage = []
@@ -9,23 +10,6 @@ const tableStore = []
 
 const TYPE_VARIANT = 'variant'
 const TYPE_ATTRIBUTE = 'attribute'
-
-const getOptionItemPosition = (optionItems, currentOptionItem) => {
-  let position = 0
-
-  optionItems.each((index, item) => {
-    if (item === currentOptionItem) {
-      position = index + 1
-    }
-  })
-
-  return position
-}
-
-const getArrowDirection = (optionItemPosition) => {
-  return optionItemPosition % 2 === 0
-    ? 'right' : 'left'
-}
 
 const updateTotalPrice = (totalPrice) => {
   $('.product-detail-hidden-form__total-price').text(totalPrice)
@@ -205,7 +189,7 @@ const initConfigurator = () => {
       ">
         ${activeItem.title}
       </span>
-      <span class="configurator__option-selected__price">+&nbsp;${activeItem.price}&nbsp;Kč</span>
+      <span class="configurator__option-selected__price">+&nbsp;${formatPrice(activeItem.price)}&nbsp;Kč</span>
     `)
 
     let value = ''
@@ -221,7 +205,7 @@ const initConfigurator = () => {
 
     updateHiddenFormData(Table.tableId, value)
     updatePriceStorage(Table.tableId, itemPrice)
-    updateTotalPrice(getTotalPrice())
+    updateTotalPrice(formatPrice(getTotalPrice()))
   });
 }
 

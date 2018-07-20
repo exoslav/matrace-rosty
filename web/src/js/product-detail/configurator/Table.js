@@ -1,6 +1,8 @@
 import $ from 'jquery'
 import { oneLineTrim } from 'common-tags';
 
+import { formatPrice } from './configurator-helpers'
+
 export const SIMPLE_TABLE = 'SIMPLE_TABLE'
 
 const Table = function({ items, id, arrowDirection }) {
@@ -56,7 +58,7 @@ const Table = function({ items, id, arrowDirection }) {
       <span class="configurator__selected-item-title">${selectedItem.title}</span>
     `)
 
-    this.template.find('.configurator__selected-price').html(`+&nbsp;${selectedItem.price}&nbsp;Kč`)
+    this.template.find('.configurator__selected-price').html(`+&nbsp;${formatPrice(selectedItem.price)}&nbsp;Kč`)
   }
 
   this.removeActiveClassFromItems = (items) => {
@@ -97,7 +99,7 @@ const Table = function({ items, id, arrowDirection }) {
         <a class="configurator__item-link" href="#">
           ${imgElement}
           <div class="configurator__item-title">${item.title}</div>
-          ${item.price ? '<span class="configurator__item-price">' + item.price + '&nbspKč</span>' : ''}
+          ${item.price ? '<span class="configurator__item-price">' + formatPrice(item.price) + '&nbspKč</span>' : ''}
         </a>
       `)
 
