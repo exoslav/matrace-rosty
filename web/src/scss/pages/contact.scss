@@ -1,0 +1,26 @@
+.contact__map {
+	margin-bottom: 20px;
+	border: 8px solid #fff !important;
+	box-shadow: 0 0 20px -10px #333;
+}
+
+@media (min-width: 768px) {
+  .contact__left,
+  .contact__right {
+  	width: 50%;
+  	float: left;
+  }
+
+  .contact__shop {
+  	overflow: hidden;
+
+		> div {
+			width: 50%;
+			float: left;
+		}
+  }
+}
+
+.contact__qrcode {
+	text-align: center;
+}
