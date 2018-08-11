@@ -101,14 +101,18 @@
             </nav>
 
             <div class="check-in-block">
-              <a class="check-in-block__registration" href="">
-                <i class="icon icon-lock"></i>
-                <span>REGISTRACE</span>
-              </a>
-
-              <a class="check-in-block__login" href="">
+              <button type="button" class="check-in-block__login check-in-block__login--logged-user" href="">
                 <i class="icon icon-person"></i>
-                <span>PŘIHLÁŠENÍ</span>
+                <span>Radek Januš</span>
+                <ul class="check-in-block__login--logged-user__list">
+                  <li><a href="">Můj účet</a></li>
+                  <li><a href="">Objednávky</a></li>
+                  <li><a href="">Reklamce</a></li>
+                </ul>
+              </button>
+
+              <a class="check-in-block__logout" href="">
+                <span>Odhlásit se</span>
               </a>
             </div>
           </div>

@@ -13,7 +13,8 @@
   }
 }
   .check-in-block__login,
-  .check-in-block__registration {
+  .check-in-block__registration,
+  .check-in-block__logout {
     position: relative;
     display: block;
     float: left;
@@ -62,6 +63,91 @@
       .icon {
         top: 21px;
       }
+    }
+  }
+
+  .check-in-block__login--logged-user {
+    position: relative;
+    border: none;
+
+    @media (min-width: 992px) {
+      width: 193px;
+      padding-left: 20px;
+      padding-right: 20px;
+      text-transform: uppercase;
+
+      span {
+        position: relative;
+        display: inline-block;
+        float: left;
+        max-width: 100%;
+        padding-right: 17px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        &:after {
+          content: "";
+          position: absolute;
+          right: 0;
+          top: calc(50% - 4px);
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 7px 5px 0 5px;
+          border-color: #ffffff transparent transparent transparent;
+        }
+      }
+
+      .icon {
+        display: none;
+      }
+    }
+  }
+
+      .check-in-block__login--logged-user__list {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: calc(100% + 104px);
+        z-index: 1;
+
+        @media (min-width: 992px) {
+          right: -104px;
+        }
+
+        li {
+          a {
+            display: block;
+            padding: 18px 20px;
+            text-align: left;
+            text-transform: initial;
+            font-size: 15px;
+            font-weight: 400;
+            color: #f5f5f5;
+            background: #303030;
+            border-bottom: 1px solid #535353;
+          }
+
+          &:last-of-type a {
+            border-bottom: none;
+          }
+        }
+      }
+
+  .check-in-block__logout {
+    display: none;
+
+    @media (min-width: 992px) {
+      display: block;
+      width: 104px;
+      padding-left: 10px;
+      padding-right: 10px;
+      font-weight: 300;
+      text-decoration: underline;
+      text-align: center;
+      border-left: 1px solid #555;
     }
   }
 

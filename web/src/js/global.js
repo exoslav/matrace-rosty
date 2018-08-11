@@ -170,9 +170,13 @@ $('document').ready(function() {
   moveContents();
   $(window).resize(debounce(moveContents, 500));
 
-  $('.check-in-block__login').on('click', function(e) {
+  $('.check-in-block__login--login-form').on('click', function(e) {
     e.preventDefault();
     modals.open(loginForm);
+  });
+
+  $('.check-in-block__login--logged-user').on('click', function(e) {
+    $('.check-in-block__login--logged-user__list').toggle();
   });
 
   $("a[href^=\\#]").click(function(e) {
