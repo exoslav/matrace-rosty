@@ -1,0 +1,13 @@
+.my-account__orders-table {
+  tr {
+    border-bottom: 2px solid #fff;
+  }
+}
+
+.my-account__order-date,
+.my-account__order-price,
+.my-account__order-state {
+  @media (max-width: 575px) {
+    display: none;
+  }
+}
