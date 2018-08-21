@@ -1,7 +1,7 @@
 // mock for "attribute" table
 
 export default {
-  "id": 322,
+  "id": 13,
   "categories": [
     {
       "name": "Podřazená testovací vlastnost 1",

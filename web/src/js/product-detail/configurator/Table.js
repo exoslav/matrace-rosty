@@ -62,11 +62,11 @@ const Table = function({ items, id, arrowDirection }) {
   }
 
   this.removeActiveClassFromItems = (items) => {
-    $(items).closest('.configurator__item ').removeClass(this.CLASSNAME_ACTIVE)
+    $(items).closest('.configurator__item').removeClass(this.CLASSNAME_ACTIVE)
   }
 
   this.setActiveClassToItem = (item) => {
-    $(item).closest('.configurator__item ').addClass(this.CLASSNAME_ACTIVE)
+    $(item).closest('.configurator__item').addClass(this.CLASSNAME_ACTIVE)
   }
 
   this.handleItemClick = (e, item) => {

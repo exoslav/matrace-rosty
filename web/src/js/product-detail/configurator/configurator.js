@@ -65,7 +65,7 @@ const renderOptions = (data, optionItem) => {
 }
 
 const updateHiddenFormData = (inputId, value) => {
-  $('.product-detail-hidden-form').find(`input[name='option-id-${inputId}']`).val(value)
+  $('.product-detail-hidden-form').find(`input#attribute-${inputId}`).val(value)
 }
 
 const setDefaultPriceOnLoad = () => {
@@ -183,25 +183,18 @@ const initConfigurator = () => {
     optionElement.html(oneLineTrim`
       ${imgElement}
       <span class="${
-        itemHasImage
-          ? 'configurator__option-selected__title configurator__option-selected__title--offset-left'
-          : 'configurator__option-selected__title'}
+      itemHasImage
+        ? 'configurator__option-selected__title configurator__option-selected__title--offset-left'
+        : 'configurator__option-selected__title'}
       ">
         ${activeItem.title}
       </span>
       <span class="configurator__option-selected__price">+&nbsp;${formatPrice(activeItem.price)}&nbsp;Kč</span>
     `)
 
-    let value = ''
-    if (Table.type === SIMPLE_TABLE) {
-      value = `selectedItemId=${Table.getActiveItem().id}`
-    } else if (Table.type === CATEGORIES_TABLE) {
-      value = `selectedCategoryId=${Table.getActiveCategory().id}&selectedItemId=${Table.getActiveItem().id}`
-    }
+    let value = Table.getActiveItem().id
 
-    const itemPrice = Table.getActiveItem().price !== null
-      ? Table.getActiveItem().price
-      : Table.getActiveCategory().defaultPrice
+    const itemPrice = Table.getActiveItem().price
 
     updateHiddenFormData(Table.tableId, value)
     updatePriceStorage(Table.tableId, itemPrice)

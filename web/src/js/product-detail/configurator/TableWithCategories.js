@@ -1,15 +1,18 @@
 import $ from 'jquery'
+import { formatPrice } from './configurator-helpers'
 
 export const CATEGORIES_TABLE = 'CATEGORIES_TABLE'
 
-const TableWithCategories = function({ categories, id }) {
+const TableWithCategories = function({ categories, id, arrowDirection }) {
   this.type = CATEGORIES_TABLE
   this.categories = categories || []
-  this.activeCategory = 1
+  this.activeCategory = 0
   this.activeItemId = null
   this.tableId = id
+  this.arrowDirection = arrowDirection || 'center'
 
-  this.CLASSNAME_ACTIVE = 'configurator__category-link--active'
+  this.CATEGORY_CLASSNAME_ACTIVE = 'configurator__category-link--active'
+  this.ITEM_CLASSNAME_ACTIVE = 'configurator__item--active'
 
   this.template = $(`<div class="configurator__table configurator__table-id-${this.tableId}" />`)
   
@@ -17,16 +20,18 @@ const TableWithCategories = function({ categories, id }) {
 
   this.showTable = () => {
     this.template.show()
+    this.template.addClass('configurator__table--visible')
     this.isVisible = true
   }
 
   this.hideTable = () => {
     this.template.hide()
+    this.template.removeClass('configurator__table--visible')
     this.isVisible = false
   }
 
   this.getActiveCategory = () => {
-    return this.categories.filter(category => category.id === this.activeCategory)[0]
+    return this.categories[this.activeCategory]
   }
 
   this.getActiveItem = () => {
@@ -44,7 +49,7 @@ const TableWithCategories = function({ categories, id }) {
     this.renderItems()
     this.renderCategories()
     this.renderFooter()
-
+    this.template.addClass(`configurator__table-arrow configurator__table-arrow--${this.arrowDirection}`)
     this.attachEvents()
   }
 
@@ -54,13 +59,13 @@ const TableWithCategories = function({ categories, id }) {
       <span class="configurator__selected-item-title">${selectedItem.title}</span>
     `)
 
-    this.template.find('.configurator__selected-price').html(`+&nbsp;${this.getActiveItem().price ? this.getActiveItem().price : this.getActiveCategory().defaultPrice}&nbsp;Kč`)
+    this.template.find('.configurator__selected-price').html(`+&nbsp;${formatPrice(this.getActiveItem().price)}&nbsp;Kč`)
   }
 
-  this.handleCategoryClick = (e, categoryId) => {
+  this.handleCategoryClick = (e, categoryIndex) => {
     e.preventDefault()
 
-    this.activeCategory = categoryId
+    this.activeCategory = categoryIndex
 
     this.template.find('.configurator__items').empty()
     this.template.find('.configurator__categories').empty()
@@ -70,11 +75,11 @@ const TableWithCategories = function({ categories, id }) {
   }
 
   this.removeActiveClassFromItems = (items) => {
-    $(items).removeClass(this.CLASSNAME_ACTIVE)
+    $(items).removeClass(this.ITEM_CLASSNAME_ACTIVE)
   }
 
   this.setActiveClassToItem = (item) => {
-    $(item).addClass(this.CLASSNAME_ACTIVE)
+    $(item).closest('.configurator__item').addClass(this.ITEM_CLASSNAME_ACTIVE)
   }
 
   this.handleItemClick = (e, item) => {
@@ -83,19 +88,19 @@ const TableWithCategories = function({ categories, id }) {
     this.activeItemId = item.id
     this.updateSelected(item)
 
-    this.removeActiveClassFromItems($(`.configurator__table-id-${this.tableId} .${this.CLASSNAME_ACTIVE}`))
-    this.setActiveClassToItem(item)
+    this.removeActiveClassFromItems($(`.configurator__table-id-${this.tableId} .configurator__items .${this.ITEM_CLASSNAME_ACTIVE}`))
+    this.setActiveClassToItem(e.target)
 
     $(window).trigger('tableWithCategories.handleItemClick', this)
   }
 
   this.renderCategories = () => {
-    this.categories.map((category) => {
-      const isActiveCategory = category.id === this.activeCategory
+    this.categories.map((category, index) => {
+      const isActiveCategory = index === this.activeCategory
 
       const categoryItem = $(`<li class="configurator__category" />`)
-      const categoryLink = $(`<a class="configurator__category-link ${isActiveCategory ? this.CLASSNAME_ACTIVE : ''}" href="#">${category.categoryTitle}</a>`)
-        .on('click', (e) => this.handleCategoryClick(e, category.id))
+      const categoryLink = $(`<a class="configurator__category-link ${isActiveCategory ? this.CATEGORY_CLASSNAME_ACTIVE : ''}" href="#">${category.name}</a>`)
+        .on('click', (e) => this.handleCategoryClick(e, index))
 
       categoryLink.appendTo(categoryItem)
       categoryItem
@@ -104,10 +109,10 @@ const TableWithCategories = function({ categories, id }) {
   }
 
   this.renderItems = () => {
-    const items = this.categories.filter(category => category.id === this.activeCategory)[0].items
+    const items = this.categories[this.activeCategory].items
 
     items.map((item) => {
-      const listItem = $(`<li class="configurator__item ${item.id === this.activeItemId ? 'configurator__item--active' : ''}" />`)
+      const listItem = $(`<li class="configurator__item ${item.id === this.activeItemId ? this.ITEM_CLASSNAME_ACTIVE : ''}" />`)
 
       const itemLink = $(`
         <a class="configurator__item-link" href="#">
@@ -115,7 +120,7 @@ const TableWithCategories = function({ categories, id }) {
             <img class="configurator__item-img" src="${item.imgSrc}" alt="${item.title}" />
           </div>
           <div class="configurator__item-title">${item.title}</div>
-          ${item.price ? '<div class="configurator__item-price">' + item.price + '&nbsp;Kč</div>' : ''}
+          ${item.price ? '<div class="configurator__item-price">' + formatPrice(item.price) + '&nbsp;Kč</div>' : ''}
         </a>
       `)
 
