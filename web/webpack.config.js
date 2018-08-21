@@ -33,12 +33,11 @@ module.exports = function (env) {
         {
           test: /\.js$/,
           loader: 'babel-loader',
-          include: path.join(__dirname, '/app/js'),
+          include: path.join(__dirname, '/src/js'),
           exclude: /node_modules/,
           query: {
             cacheDirectory: true,
-            presets: ['es2015', 'react'],
-            plugins: ["react-html-attrs", "transform-runtime"]
+            presets: ["babel-preset-env"]
           }
         },
         {
