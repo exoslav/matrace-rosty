@@ -3,7 +3,7 @@ import { oneLineTrim } from 'common-tags'
 import Table, { SIMPLE_TABLE } from './Table'
 import TableWithCategories, { CATEGORIES_TABLE } from './TableWithCategories'
 import { getOptionItemPosition, getArrowDirection, formatPrice } from './configurator-helpers'
-import { priceStorage, updatePriceStorage, addItemToPriceStorage, getTotalPrice } from './price-storage'
+import { priceStorage, updatePriceStorage, addItemToPriceStorage, getTotalPrice, updateTotalItems } from './price-storage'
 
 const errorMessage = []
 const tableStore = []
@@ -64,8 +64,12 @@ const renderOptions = (data, optionItem) => {
   }
 }
 
-const updateHiddenFormData = (inputId, value) => {
-  $('.product-detail-hidden-form').find(`input#attribute-${inputId}`).val(value)
+const updateHiddenFormData = (tableId, value) => {
+  if (tableId === 'product-variant') {
+    $('.product-detail-hidden-form').find(`#product-variant-price-selection`).val(value)
+  }
+
+  $('.product-detail-hidden-form').find(`input#attribute-${tableId}`).val(value)
 }
 
 const setDefaultPriceOnLoad = () => {
@@ -192,14 +196,18 @@ const initConfigurator = () => {
       <span class="configurator__option-selected__price">+&nbsp;${formatPrice(activeItem.price)}&nbsp;Kč</span>
     `)
 
-    let value = Table.getActiveItem().id
-
-    const itemPrice = Table.getActiveItem().price
+    const value = activeItem.id
+    const itemPrice = activeItem.price
 
     updateHiddenFormData(Table.tableId, value)
     updatePriceStorage(Table.tableId, itemPrice)
     updateTotalPrice(formatPrice(getTotalPrice()))
   });
+
+  $('#total-items').on('change', function() {
+    updateTotalItems(parseInt($('#total-items').val()))
+    updateTotalPrice(formatPrice(getTotalPrice()))
+  })
 }
 
 export default initConfigurator

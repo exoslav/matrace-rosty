@@ -179,15 +179,5 @@ $('document').ready(function() {
     $('.check-in-block__login--logged-user__list').toggle();
   });
 
-  $("a[href^=\\#]").click(function(e) {
-    if (!$(this).hasClass('ui-tabs-anchor')) {
-      e.preventDefault();
-      const dest = $(this).attr('href');
-      $('html,body').animate({
-        scrollTop: $(dest).offset().top
-      }, 'slow');
-    }
-  });
-
   initConfigurator()
 });

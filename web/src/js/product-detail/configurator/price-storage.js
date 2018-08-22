@@ -1,8 +1,7 @@
 export let priceStorage = []
+export let totalItems = 1
 
-const emptyPriceStorage = () => {
-	priceStorage = []
-}
+export const updateTotalItems = newTotalItems => totalItems = newTotalItems
 
 export const updatePriceStorage = (optionId, price) => {
   const newStorage = priceStorage.map((item) => {
@@ -21,5 +20,11 @@ export const addItemToPriceStorage = (item) => {
 }
 
 export const getTotalPrice = () => {
-  return priceStorage.reduce((prev, curr) => ({ ...prev, price: prev.price + curr.price })).price || 0
+  return (
+    priceStorage
+      .reduce((prev, curr) => ({
+      ...prev,
+      price: prev.price + curr.price
+      })).price * totalItems || 0
+  )
 }

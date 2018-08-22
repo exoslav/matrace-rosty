@@ -82,6 +82,7 @@ $imageBorder: 1px solid #e2e2e2;
 
 								img {
 									max-width: 100%;
+									width: 100%;
 									height: auto;
 								}
 							}
@@ -219,7 +220,7 @@ $imageBorder: 1px solid #e2e2e2;
 
 						.product-detail-hidden-form__total-items {
 							input {
-								width: 51px;
+								width: 61px;
 								height: 51px;
 								text-align: center;
 							}

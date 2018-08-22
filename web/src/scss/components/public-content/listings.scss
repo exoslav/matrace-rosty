@@ -1,21 +1,24 @@
-.public-content-list {
-	margin-bottom: 1em;
-	
-	li {
-		position: relative;
-		margin-bottom: 1.065em;
-		padding-left: 1.13em;
-		line-height: 120%;
+.public-content {
 
-		&:before {
-			content: '';
-			position: absolute;
-			top: .45em;
-			left: 0;
-			width: .375em;
-			height: .375em;
-			border-radius: 50%;
-			background: $red;
+	ul {
+		margin-bottom: 1em;
+
+		li {
+			position: relative;
+			margin-bottom: 1.065em;
+			padding-left: 1.13em;
+			line-height: 120%;
+
+			&:before {
+				content: '';
+				position: absolute;
+				top: .45em;
+				left: 0;
+				width: .375em;
+				height: .375em;
+				border-radius: 50%;
+				background: $red;
+			}
 		}
 	}
 }
