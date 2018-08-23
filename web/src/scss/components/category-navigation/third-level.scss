@@ -23,13 +23,17 @@
           content: '';
           position: absolute;
           left: 51px;
-          top: 12px;
+          top: 16px;
           width: 5px;
           height: 5px;
           margin-right: 4px;
           display: block;
           border-radius: 50%;
           background: $mainBlue;
+        }
+
+        &:hover {
+          text-decoration: none;
         }
       }
     }
