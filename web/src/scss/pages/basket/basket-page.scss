@@ -152,10 +152,10 @@
 	font-family: 'Roboto', sans-serif;
 	text-transform: uppercase;
 	border: none;
-	background: $red;
+	background: $mainBlue;
 
 	&:hover {
-		background: darken($red, 5%);
+		background: darken($mainBlue, 5%);
 	}
 
 	@media (min-width: 992px) {

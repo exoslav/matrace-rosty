@@ -10,7 +10,7 @@ body {
 }
 
 a {
-	color: $red;
+	color: $mainBlue;
 	text-decoration: underline;
 
 	&:hover {
@@ -61,7 +61,7 @@ th {
 	line-height: 30px;
 	font-weight: 700;
 	text-transform: uppercase;
-	background: $red;
+	background: $mainBlue;
 }
 
 td {

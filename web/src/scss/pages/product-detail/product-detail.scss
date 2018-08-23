@@ -77,7 +77,7 @@ $imageBorder: 1px solid #e2e2e2;
 								border: $imageBorder;
 
 								&:hover {
-									border-color: $red;
+									border-color: $mainBlue;
 								}
 
 								img {
@@ -143,10 +143,10 @@ $imageBorder: 1px solid #e2e2e2;
 			text-decoration: none;
 			font-family: 'Roboto', sans-serif;
 			border: none;
-			background: $red;
+			background: $mainBlue;
 
 			&:hover {
-				background-color: darken($red, 5%);
+				background-color: darken($mainBlue, 5%);
 			}
 
 			span {
@@ -242,7 +242,7 @@ $imageBorder: 1px solid #e2e2e2;
 			line-height: 30px;
 			color: #fff;
 			text-transform: uppercase;
-			background: $red;
+			background: $mainBlue;
 			border: none;
 
 			i {
@@ -251,7 +251,7 @@ $imageBorder: 1px solid #e2e2e2;
 			}
 
 			&:hover {
-				background-color: darken($red, 5%);
+				background-color: darken($mainBlue, 5%);
 			}
 
 			@media (min-width: 768px) {

@@ -17,7 +17,7 @@
       font-weight: 700;
       line-height: 120%;
       text-decoration: none;
-      color: $red;
+      color: $mainBlue;
       text-transform: uppercase;
       border: 1px solid #e7e7e7;
       background-color: #fff;
@@ -29,7 +29,7 @@
         left: -1px;
         width: 5px;
         height: calc(100% + 2px);
-        background: $red;
+        background: $mainBlue;
         z-index: 2;
       }
 
@@ -41,7 +41,7 @@
       }
 
       .icon {
-        @include paddedIcon(16px, #3b3b3b, #fff, #fff, $red);
+        @include paddedIcon(16px, #3b3b3b, #fff, #fff, $mainBlue);
         right: 15px;
         border-radius: 50%;
         box-shadow: -1px 1px 5px -3px #000;
@@ -50,11 +50,11 @@
       }
 
       &:hover {
-        border-color: $red;
+        border-color: $mainBlue;
 
         .icon {
           color: #fff;
-          background: $red;
+          background: $mainBlue;
         }
       }
     }

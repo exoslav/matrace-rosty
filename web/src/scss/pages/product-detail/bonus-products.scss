@@ -107,12 +107,12 @@
 							}
 
 							&:hover {
-								border-color: $red;
+								border-color: $mainBlue;
 								z-index: 1;
 
 								&:after,
 								&:before {
-									background: $red;
+									background: $mainBlue;
 								}
 							}
 						}

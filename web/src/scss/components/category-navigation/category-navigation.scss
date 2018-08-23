@@ -46,7 +46,7 @@
 }
 
 .open-category-navigation {
-  @include firstLevelItem(#fff, $red);
+  @include firstLevelItem(#fff, $mainBlue);
   width: 100%;
   border: none;
   text-align: left;
@@ -56,7 +56,7 @@
     right: 15px;
 
     &:hover {
-      color: $red;
+      color: $mainBlue;
       background: #fff;
     }
   }

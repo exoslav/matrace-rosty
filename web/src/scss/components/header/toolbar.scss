@@ -100,11 +100,11 @@
 
         i {
           font-size: 28px;
-          color: $red;
+          color: $mainBlue;
         }
 
         &:hover {
-          background: $red;
+          background: $mainBlue;
 
           i {
             color: #fff;
@@ -151,11 +151,11 @@
 
           i {
             font-size: 28px;
-            color: $red;
+            color: $mainBlue;
           }
 
           &:hover {
-            background: $red;
+            background: $mainBlue;
 
             i {
               color: #fff;
@@ -200,7 +200,7 @@
       }
 
       &:hover .cart-wrap .icon {
-        background: darken($red, 5%);
+        background: darken($mainBlue, 5%);
       }
 
       .cart-wrap {
@@ -231,7 +231,7 @@
           width: 53px;
           height: 53px;
           padding-top: 11px;
-          background: $red;
+          background: $mainBlue;
           border-radius: 100%;
         }
       }
@@ -255,7 +255,7 @@
         .basket-price {
           font-size: 18px;
           font-weight: 900;
-          color: $red;
+          color: $mainBlue;
         }
       }
     }

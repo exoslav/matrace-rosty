@@ -16,19 +16,19 @@
   }
 
   > .icon {
-    @include paddedIcon(16px, $red, #fff, #fff, $red);
+    @include paddedIcon(16px, $mainBlue, #fff, #fff, $mainBlue);
     right: 13px;
   }
   
   &[data-open='true'] {
     color: #fff;
-    border-color: $red;
-    background: $red;
+    border-color: $mainBlue;
+    background: $mainBlue;
 
     > .icon {
       transform: rotate(180deg);
       box-shadow: -1px -1px 5px -3px #000;
-      color: $red;
+      color: $mainBlue;
       background: #fff;
     }
   }

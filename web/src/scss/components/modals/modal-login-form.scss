@@ -31,10 +31,10 @@
 			font-weight: 700;
 			line-height: 24px;
 			text-transform: uppercase;
-			background: $red;
+			background: $mainBlue;
 
 			&:hover {
-				background: darken($red, 5%);
+				background: darken($mainBlue, 5%);
 			}
 
 			@media (min-width: 992px) {

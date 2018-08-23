@@ -40,7 +40,7 @@
         height: calc(100% - 8px);
         top: 4px;
         left: 4px;
-        background: $red;
+        background: $mainBlue;
       }
 
       button {
@@ -104,7 +104,7 @@
             line-height: 14px;
             text-decoration: none;
             color: #fff;
-            background: $red;
+            background: $mainBlue;
             @extend .clearfix;
 
             span, .icon {
@@ -118,7 +118,7 @@
             }
 
             .icon {
-              background: #9c2424;
+              background: $mainBlueLight;
               padding-right: 13px;
               transform: rotate(180deg);
             }
@@ -137,7 +137,7 @@
                 left: 0;
                 width: 30px;
                 height: 4px;
-                background: $red;
+                background: $mainBlue;
               }
             }
 
