@@ -241,31 +241,83 @@
             </div>
            </div>
 
-            <div class="general-form__field">
+            <div class="general-form__field general-form__field--wide">
               <div class="checkbox">
                 <div class="checkbox__decoy">
-                  <input class="checkbox__element" type="checkbox" name="company" id="basket-form-form-company">
+                  <input class="checkbox__element" type="checkbox" name="company" id="frm-cartForm-invoiceInformation-companyOrder">
                   <span class="checkbox__icon"></span>
                 </div>
               </div>
               
-              <label class="checkbox__label" for="basket-form-form-company">Nakupuji na firmu</label>
+              <label class="checkbox__label" for="frm-cartForm-invoiceInformation-companyOrder">Nakupuji na firmu</label>
+            </div>
+
+            <div class="firm-purchase" data-open="false">
+              <div class="general-form__field general-form__field--wide">
+                <label for="frm-cartForm-invoiceInformation-ico">IČ:</label>
+                <input type="text" name="invoiceInformation[ico]" id="frm-cartForm-invoiceInformation-ico">
+              </div>
+              <div class="general-form__field general-form__field--wide">
+                <label for="frm-cartForm-invoiceInformation-dic">DIČ:</label>
+                <input type="text" name="invoiceInformation[dic]" id="frm-cartForm-invoiceInformation-dic">
+              </div>
+              <div class="general-form__field general-form__field--wide">
+                <label for="frm-cartForm-invoiceInformation-company">Firma:</label>
+                <input type="text" name="invoiceInformation[company]" id="frm-cartForm-invoiceInformation-company">
+              </div>
             </div>
           </div>
         </div>
 
         <div class="general-form__block">
           <h3 class="general-form__header">Dodací adresa</h3>
-
           <div class="general-form__field general-form__field--wide">
             <div class="checkbox">
               <div class="checkbox__decoy">
                 <input class="checkbox__element" type="checkbox" name="delivery-address" id="basket-form-delivery-address">
-                <span class="checkbox__icon"></span>  
+                <span class="checkbox__icon"></span>
               </div>
             </div>
-            
+
             <label class="checkbox__label" for="basket-form-delivery-address">Dodací adresa je stejná jako fakturační</label>
+          </div>
+
+          <div class="basket-addresses-forms__delivery-address-block" data-open="false">
+            <div class="general-form__field general-form__field--wide">
+              <label for="frm-cartForm-deliveryAddress-name">Jméno</label>
+              <input type="text" name="deliveryAddress[name]" id="frm-cartForm-deliveryAddress-name" data-nette-rules="[{&quot;op&quot;:&quot;:equal&quot;,&quot;rules&quot;:[{&quot;op&quot;:&quot;:filled&quot;,&quot;msg&quot;:&quot;Zadejte jméno&quot;}],&quot;control&quot;:&quot;deliveryAddress[deliverySame]&quot;,&quot;arg&quot;:true}]">
+            </div>
+
+            <div class="general-form__field general-form__field--wide">
+              <label for="frm-cartForm-deliveryAddress-lastName">Příjmení</label>
+              <input type="text" name="deliveryAddress[lastName]" id="frm-cartForm-deliveryAddress-lastName" data-nette-rules="[{&quot;op&quot;:&quot;:equal&quot;,&quot;rules&quot;:[{&quot;op&quot;:&quot;:filled&quot;,&quot;msg&quot;:&quot;Zadejte příjmení&quot;}],&quot;control&quot;:&quot;deliveryAddress[deliverySame]&quot;,&quot;arg&quot;:true}]">
+            </div>
+
+            <div class="general-form__field general-form__field--wide">
+              <label for="frm-cartForm-deliveryAddress-company">Firma</label>
+              <input type="text" name="deliveryAddress[company]" id="frm-cartForm-deliveryAddress-company">
+            </div>
+            <div class="general-form__field general-form__field--wide">
+              <label for="frm-cartForm-deliveryAddress-street">Ulice a č.p.</label>
+              <input type="text" name="deliveryAddress[street]" id="frm-cartForm-deliveryAddress-street" data-nette-rules="[{&quot;op&quot;:&quot;:equal&quot;,&quot;rules&quot;:[{&quot;op&quot;:&quot;:filled&quot;,&quot;msg&quot;:&quot;Zadejte ulici a popisné číslo&quot;}],&quot;control&quot;:&quot;deliveryAddress[deliverySame]&quot;,&quot;arg&quot;:true}]">
+            </div>
+
+            <div class="general-form__field general-form__field--wide">
+              <label for="frm-cartForm-deliveryAddress-city">Obec</label>
+              <input type="text" name="deliveryAddress[city]" id="frm-cartForm-deliveryAddress-city" data-nette-rules="[{&quot;op&quot;:&quot;:equal&quot;,&quot;rules&quot;:[{&quot;op&quot;:&quot;:filled&quot;,&quot;msg&quot;:&quot;Zadejte město&quot;}],&quot;control&quot;:&quot;deliveryAddress[deliverySame]&quot;,&quot;arg&quot;:true}]">
+            </div>
+
+            <div class="general-form__field general-form__field--wide">
+              <label for="frm-cartForm-deliveryAddress-zip">PSČ</label>
+              <input type="text" name="deliveryAddress[zip]" id="frm-cartForm-deliveryAddress-zip" data-nette-rules="[{&quot;op&quot;:&quot;:equal&quot;,&quot;rules&quot;:[{&quot;op&quot;:&quot;:filled&quot;,&quot;msg&quot;:&quot;Zadejte poštovní směrovací číslo&quot;}],&quot;control&quot;:&quot;deliveryAddress[deliverySame]&quot;,&quot;arg&quot;:true}]">
+            </div>
+
+            <div class="general-form__field general-form__field--wide">
+              <label for="frm-cartForm-deliveryAddress-country">Stát</label>
+              <div class="select">
+                <select class="select__element" name="deliveryAddress[country]" id="frm-cartForm-deliveryAddress-country" data-nette-rules="[{&quot;op&quot;:&quot;:equal&quot;,&quot;rules&quot;:[{&quot;op&quot;:&quot;:filled&quot;,&quot;msg&quot;:&quot;Zadejte stát&quot;}],&quot;control&quot;:&quot;deliveryAddress[deliverySame]&quot;,&quot;arg&quot;:true}]"><option value="1">Česká republika</option><option value="2">Slovenská republika</option><option value="3">Rakousko</option><option value="4">Polsko</option><option value="5">Německo</option></select>
+              </div>
+            </div>
           </div>
         </div>
       </div>

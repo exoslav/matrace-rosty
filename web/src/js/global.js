@@ -179,5 +179,29 @@ $('document').ready(function() {
     $('.check-in-block__login--logged-user__list').toggle();
   });
 
+  $('#basket-form-delivery-address').on('change', () => {
+    const addressBlock = $('.basket-addresses-forms__delivery-address-block')
+
+    if (addressBlock.attr('data-open') === 'true') {
+      addressBlock.attr('data-open', 'false')
+      addressBlock.slideUp()
+    } else {
+      addressBlock.attr('data-open', 'true')
+      addressBlock.slideDown()
+    }
+  });
+
+  $('#frm-cartForm-invoiceInformation-companyOrder').on('change', () => {
+    const firmBlock = $('.firm-purchase')
+
+    if (firmBlock.attr('data-open') === 'true') {
+      firmBlock.attr('data-open', 'false')
+      firmBlock.slideUp()
+    } else {
+      firmBlock.attr('data-open', 'true')
+      firmBlock.slideDown()
+    }
+  });
+
   initConfigurator()
 });
