@@ -98,7 +98,8 @@
 							    top: 0;
 							    bottom: 0;
 							    left: 12px;
-									width: 33px;
+									max-width: 33px;
+									max-height: 33px;
 							    margin: auto;
 								}
 
@@ -438,3 +439,34 @@
 								left: auto;
 							}
 						}
+
+.configurator__errors-template {
+	margin-top: 20px;
+	margin-bottom: 10px;
+	padding: 20px;
+	background: $gray-2;
+	border: 2px solid $red;
+	border-radius: 5px;
+	@extend .public-content;
+
+	@media (min-width: 576px) {
+		margin-top: 0;
+	}
+
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+
+		li {
+			flex-basis: 100%;
+
+			@media (min-width: 576px) {
+				flex-basis: 33.333%;
+			}
+
+			@media (min-width: 992px) {
+				flex-basis: 25%;
+			}
+		}
+	}
+}

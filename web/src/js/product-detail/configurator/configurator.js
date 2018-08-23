@@ -5,11 +5,12 @@ import TableWithCategories, { CATEGORIES_TABLE } from './TableWithCategories'
 import { getOptionItemPosition, getArrowDirection, formatPrice } from './configurator-helpers'
 import { priceStorage, updatePriceStorage, addItemToPriceStorage, getTotalPrice, updateTotalItems } from './price-storage'
 
-const errorMessage = []
+const errorMessages = []
 const tableStore = []
 
 const TYPE_VARIANT = 'variant'
 const TYPE_ATTRIBUTE = 'attribute'
+const ERROR_MESSAGE_UNEXPECTED_ERROR = 'Nastala neočekávaná chyba, nebylo možné načíst položky. Zkuste to prosím znovu.'
 
 const updateTotalPrice = (totalPrice) => {
   $('.product-detail-hidden-form__total-price').text(totalPrice)
@@ -85,9 +86,8 @@ const setDefaultPriceOnLoad = () => {
   })
 }
 
-const renderErrorMessage = (optionItem, optionItemPosition, errorMsg) => {
+const renderErrorMessage = (optionItem, optionItemPosition, errorMsg, errorText) => {
   const rowElement = $(optionItem).closest('.configurator__row')
-  const ERROR_MESSAGE = 'Nastala neočekávaná chyba, nebylo možné načíst položky. Zkuste to prosím znovu.'
 
   const message = $(oneLineTrim`<div 
       class="
@@ -96,7 +96,7 @@ const renderErrorMessage = (optionItem, optionItemPosition, errorMsg) => {
         configurator__error-message__arrow 
         configurator__error-message__arrow--${getArrowDirection(optionItemPosition)}"
     >
-      ${ERROR_MESSAGE}
+      ${errorText}
     </div>`)
     
     message.appendTo(rowElement)
@@ -104,13 +104,10 @@ const renderErrorMessage = (optionItem, optionItemPosition, errorMsg) => {
     errorMsg.push(message)
 }
 
-const removeErrorMessage = (messages) => {
-  if (messages.length <= 0) {
-    return
-  }
-  
-  $(messages[0]).remove()
-  messages.splice(0, 1)
+const removeErrorMessages = () => {
+  errorMessages.map(errorMessage => errorMessage.remove())
+
+  errorMessages.splice(0, 1)
 }
 
 const initConfigurator = () => {
@@ -138,7 +135,7 @@ const initConfigurator = () => {
     const dataExists = cachedData.filter(dataItem => dataItem.id === optionData.optionId)[0]
 
     if (dataExists) {
-      removeErrorMessage(errorMessage)
+      removeErrorMessages()
       renderOptions(dataExists, self)
     } else {
       $(self).addClass('configurator__option--loading')
@@ -150,7 +147,7 @@ const initConfigurator = () => {
       })
         .done(function(data) {
           loader.remove()
-          removeErrorMessage(errorMessage)
+          removeErrorMessages()
           $(self).removeClass('configurator__option--loading')
           renderOptions(data, self)
 
@@ -166,11 +163,11 @@ const initConfigurator = () => {
           cachedData.push(data)
         })
         .fail(function() {
-          removeErrorMessage(errorMessage)
+          removeErrorMessages()
           const optionItemPosition = getOptionItemPosition($('.configurator__option'), self)
           loader.remove()
           $(self).removeClass('configurator__option--loading')
-          renderErrorMessage(self, optionItemPosition, errorMessage)
+          renderErrorMessage(self, optionItemPosition, errorMessages, ERROR_MESSAGE_UNEXPECTED_ERROR)
         })
     }
   })
@@ -207,6 +204,42 @@ const initConfigurator = () => {
   $('#total-items').on('change', function() {
     updateTotalItems(parseInt($('#total-items').val()))
     updateTotalPrice(formatPrice(getTotalPrice()))
+  })
+
+  $('.product-detail-hidden-form__submit').attr('type', 'submit')
+
+  $('.product-detail-hidden-form').on('submit', e => {
+    e.preventDefault()
+
+    $('.configurator__errors-template').remove()
+
+    let isValid = true
+
+    const errorList = $('<ul/>')
+    const errorTemplate = $('<div class="configurator__errors-template" />')
+    const errorTemplateHeader = $('<h2>Pro vložení produktu do košíku musíte vybrat následující položky:</h2>')
+
+    $('.configurator__option').each((index, item) => {
+      if ($(item).attr('data-required') === 'true') {
+        const itemId = $(item).attr('data-option-id')
+        const inputValue = $(`${itemId === 'product-variant' ? '#product-variant-price-selection' : '#attribute-' + itemId}`).val()
+
+        isValid = inputValue ? true : false
+
+        if (!inputValue) {
+          const label = $(item).parent().find('.configurator__option-label').text()
+          $(oneLineTrim`<li>${label}</li>`).appendTo(errorList)
+        }
+      }
+    })
+
+    if (!isValid) {
+      errorTemplateHeader.appendTo(errorTemplate)
+      errorList.appendTo(errorTemplate)
+      errorTemplate.appendTo($('.configurator'))
+    } else {
+      $('.product-detail-hidden-form')[0].submit()
+    }
   })
 }
 
