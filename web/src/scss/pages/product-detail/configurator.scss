@@ -256,10 +256,12 @@
 						}
 
 								.configurator__item  {
-									float: left;
+									display: flex;
+									text-align: center;
+									align-items: flex-end;
+									justify-content: center;
 									width: 33.33333%;
 									padding: 15px 10px;
-									text-align: center;
 
 									&.configurator__item--active {
 										.configurator__item-title {
