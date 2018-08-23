@@ -1,0 +1,35 @@
+.subcategories {
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    li {
+      flex-basis: 100%;
+
+      @media (min-width: 576px) {
+        flex-basis: 48%;
+      }
+
+      @media (min-width: 992px) {
+        flex-basis: 32%;
+      }
+
+      margin-bottom: 20px;
+
+      a {
+        display: block;
+        padding: 5px 15px;
+        color: #3b3b3b;
+        text-decoration: none;
+        background: $gray-2;
+        border: 2px solid #ebebeb;
+
+        &:hover {
+          background: darken($gray-2, 5%);
+          border-color: darken($gray-2, 5%);
+        }
+      }
+    }
+  }
+}
