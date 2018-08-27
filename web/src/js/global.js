@@ -204,4 +204,30 @@ $('document').ready(function() {
   });
 
   initConfigurator()
+
+  window.onBasketAdded = data => {
+    let content = null
+
+    if (data.productAdded) {
+      content = `
+        <div class="modal__header">
+          <h2>Zboží vloženo do košíku</h2>
+        </div>
+        
+        <div class="modal__body">
+          <strong>${data.productCountAddedToBasket}x ${data.productName}</strong>
+          <strong>${data.productPriceAddedToBasket}</strong>
+        </div>
+        
+        <div class="added-to-bakset-footer">
+          <a href="/" class="modal__close">Pokračovat v nákupu</a>
+          <a href="/kosik">K objednávce</a>
+        </div>
+      `
+    } else {
+
+    }
+
+    modals.open(content);
+  }
 });
