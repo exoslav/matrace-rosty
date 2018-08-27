@@ -29,6 +29,9 @@ export const open = content => {
   modals.push(modal);
 
   $(modal.content).appendTo($('body'));
-  $(modal.content).find('.modal__close').on('click', () => modal.close(modalId));
+  $(modal.content).find('.modal__close').on('click', e => {
+    e.preventDefault()
+    modal.close(modalId)
+  });
 }
 

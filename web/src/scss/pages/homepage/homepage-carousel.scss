@@ -122,6 +122,14 @@
               padding-right: 13px;
               transform: rotate(180deg);
             }
+
+            &:hover {
+              background: darken($mainBlue, 10%);
+
+              .icon {
+                background: darken($mainBlueLight, 10%);
+              }
+            }
           }
 
           @media (min-width: 768px) {

@@ -159,15 +159,17 @@
 
 								.basket__product-img {
 									float: left;
-									width: 74px;
+									max-width: 74px;
+									max-height: 100%;
 									margin-right: 20px;
 									border: 1px solid #e2e2e2;
 
 									@media (min-width: 992px) {
 									  position: absolute;
-									  top: 14px;
+									  top: 0;
+										bottom: 0;
 									  left: 20px;
-									  margin: 0;
+										margin: auto;
 									}
 								}
 
