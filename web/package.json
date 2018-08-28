@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build-dev": "webpack --env.dev -w",
-    "build-prod": "webpack --env.prod -w"
+    "build:dev": "webpack --env.dev -w",
+    "build:prod": "webpack --env.prod -w"
   },
   "author": "Martin Nikl",
   "license": "ISC",

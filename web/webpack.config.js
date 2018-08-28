@@ -17,7 +17,7 @@ module.exports = function (env) {
       filename: '[name].min.js'
     },
     mode: env === 'prod' ? 'production' : 'development',
-    devtool: env === 'prod' ? 'source-map' : 'eval-source-map', // viz.: https://webpack.js.org/configuration/devtool/
+    devtool: env === 'prod' ? 'cheap-module-source-map' : 'inline-source-map', // viz.: https://webpack.js.org/configuration/devtool/
     plugins: [
       new ExtractText({
         filename: '[name].min.css',
@@ -70,19 +70,6 @@ module.exports = function (env) {
       ]
     }
   };
-
-  if(env === 'prod') {
-    config.plugins.push(
-      new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: false
-        },
-        // source-map musi byt definovano i zde, jinak sse source mapy nebudou generovat (nebo jen pro css)
-        // viz.: http://stackoverflow.com/questions/30870830/how-do-i-generate-sourcemaps-when-using-babel-and-webpack
-        sourceMap: true
-      })
-    )
-  }
 
   return config;
 }
