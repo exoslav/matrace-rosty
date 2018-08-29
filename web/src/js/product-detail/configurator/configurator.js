@@ -208,19 +208,26 @@ const initConfigurator = () => {
 
   $('.product-detail-hidden-form__submit').attr('type', 'submit')
 
-  $('.product-detail-hidden-form').on('submit', e => {
-    e.preventDefault()
+  window.onConfiguratorFormSubmit = function(requestSettings) {
 
-    $('.configurator__errors-template').remove()
+    const submittedForm = requestSettings.nette.form
 
-    let isValid = true
+    if (
+      requestSettings.nette &&
+      requestSettings.nette.form &&
+      requestSettings.nette.form[0] &&
+      requestSettings.nette.form[0].id === 'product-add-to-basket-form'
+    ) {
+      $('.configurator__errors-template').remove()
 
-    const errorList = $('<ul/>')
-    const errorTemplate = $('<div class="configurator__errors-template" />')
-    const errorTemplateHeader = $('<h2>Pro vložení produktu do košíku musíte vybrat následující položky:</h2>')
+      let isValid = true
 
-    $('.configurator__option').each((index, item) => {
-      if ($(item).attr('data-required') === 'true') {
+      const errorList = $('<ul/>')
+      const errorTemplate = $('<div class="configurator__errors-template" />')
+      const errorTemplateHeader = $('<h2>Pro vložení produktu do košíku musíte vybrat následující položky:</h2>')
+
+      $('.configurator__option').each((index, item) => {
+        if ($(item).attr('data-required') === 'true') {
         const itemId = $(item).attr('data-option-id')
         const inputValue = $(`${itemId === 'product-variant' ? '#product-variant-price-selection' : '#attribute-' + itemId}`).val()
 
@@ -233,14 +240,17 @@ const initConfigurator = () => {
       }
     })
 
-    if (!isValid) {
-      errorTemplateHeader.appendTo(errorTemplate)
-      errorList.appendTo(errorTemplate)
-      errorTemplate.appendTo($('.configurator'))
-    } else {
-      $('.product-detail-hidden-form')[0].submit()
+      if (!isValid) {
+        errorTemplateHeader.appendTo(errorTemplate)
+        errorList.appendTo(errorTemplate)
+        errorTemplate.appendTo($('.configurator'))
+
+        return false
+      } else {
+        return true
+      }
     }
-  })
+  }
 }
 
 export default initConfigurator
