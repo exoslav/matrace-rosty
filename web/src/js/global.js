@@ -211,17 +211,19 @@ $('document').ready(function() {
     if (data.productAdded) {
       content = `
         <div class="modal__header">
-          <h2>Zboží vloženo do košíku</h2>
+          <h2 class="add-to-basket-modal__title">Zboží vloženo do košíku</h2>
         </div>
         
         <div class="modal__body">
-          <strong>${data.productCountAddedToBasket}x ${data.productName}</strong>
-          <strong>${data.productPriceAddedToBasket}</strong>
-        </div>
-        
-        <div class="added-to-bakset-footer">
-          <a href="/" class="modal__close">Pokračovat v nákupu</a>
-          <a href="/kosik">K objednávce</a>
+          <div class="added-to-basket__content">
+            <strong class="add-to-basket-modal__product-name">${data.productCountAddedToBasket}x ${data.productName}</strong>
+            <strong class="add-to-basket-modal__price">${data.productPriceAddedToBasket}&nbsp;Kč</strong>
+          </div>
+          
+          <div class="added-to-basket__footer">
+            <a href="/kosik" class="add-to-basket-modal__to-basket">K objednávce</a>
+            <a href="/" class="modal__close add-to-basket-modal__continue-shopping">Pokračovat v nákupu</a>
+          </div>
         </div>
       `
     } else {
@@ -230,4 +232,10 @@ $('document').ready(function() {
 
     modals.open(content);
   }
+
+  /*
+  $('#cartStepOneForm .form-data-change').on('change', () => {
+    $('.hidden-refresh-button').click()
+  })
+  */
 });

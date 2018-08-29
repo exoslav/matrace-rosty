@@ -24,6 +24,10 @@
           text-align: center;
           border-bottom: 1px solid #e8e8e8;
           background: #fff;
+
+          @media (min-width: 576px) {
+            padding: 20px;
+          }
         }
 
             .modal__close-button {
