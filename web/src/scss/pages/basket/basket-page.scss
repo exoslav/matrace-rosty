@@ -163,4 +163,8 @@
 		padding: 16px 30px;
 		line-height: 30px;
 	}
+
+	&.hidden-refresh-button {
+		display: none;
+	}
 }
