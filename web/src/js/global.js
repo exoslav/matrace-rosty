@@ -233,9 +233,7 @@ $('document').ready(function() {
     modals.open(content);
   }
 
-  /*
   $('#cartStepOneForm .form-data-change').on('change', () => {
     $('.hidden-refresh-button').click()
   })
-  */
 });
