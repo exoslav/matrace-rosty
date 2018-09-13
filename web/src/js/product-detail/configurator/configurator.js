@@ -127,8 +127,8 @@ const initConfigurator = () => {
         ? $(self).attr('data-option-id')
         : parseInt($(self).attr('data-option-id'))
     }
-    const TYPE_VARIANT_URL = 'http://matrace.1sys.cz/api/product/get-price-variants/'
-    const TYPE_ATTRIBUTE_URL = 'http://matrace.1sys.cz/api/attribute/get-variants/'
+    const TYPE_VARIANT_URL = 'http://klik-nabytek.cz/api/product/get-price-variants/'
+    const TYPE_ATTRIBUTE_URL = 'http://klik-nabytek.cz/api/attribute/get-variants/'
     const URL = type === TYPE_VARIANT
       ? `${TYPE_VARIANT_URL}${optionData.productId}`
       : `${TYPE_ATTRIBUTE_URL}${optionData.optionId}`
