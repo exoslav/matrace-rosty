@@ -46,9 +46,10 @@
     line-height: 0;
 
     @media (min-width: 992px) {
+      margin-top: 5px;
       display: block;
       float: left;
-      max-width: 312px;
+      max-width: 320px;
 
       a {
         font-size: 0;
@@ -168,7 +169,7 @@
 
   .header-toolbar__shopping-cart {
     right: 0;
-    top: 49px;
+    top: 51px;
     @extend .header-item;
 
     .cart-wrap {
