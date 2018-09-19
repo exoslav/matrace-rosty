@@ -129,6 +129,10 @@ $imageBorder: 1px solid #e2e2e2;
 					float: left;
 				}
 
+		.product-detail__description {
+			text-align: justify;
+		}
+
 		.product-detail__button {
 			display: inline-block;
 			width: 100%;
