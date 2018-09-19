@@ -121,6 +121,7 @@ const TableWithCategories = function({ categories, id, arrowDirection }) {
           </div>
           <div class="configurator__item-title">${item.title}</div>
           ${item.price ? '<div class="configurator__item-price">' + formatPrice(item.price) + '&nbsp;Kč</div>' : ''}
+          ${item.availability && item.availability.label ? '<span class="configurator__item-availability configurator__item-availability--' + item.availability.class.trim() + '">' + item.availability.label.trim() + '</span>' : ''}
         </a>
       `)
 

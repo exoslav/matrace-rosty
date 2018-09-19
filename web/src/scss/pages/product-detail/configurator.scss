@@ -282,10 +282,6 @@
 									}
 
 									@media (min-width: 576px) {
-										width: 20%;
-									}
-
-									@media (min-width: 768px) {
 										width: 25%;
 									}
 								}
@@ -329,8 +325,30 @@
 														}
 
 												.configurator__item-price {
+													display: block;
 													color: #1da72d;
 												}
+
+												.configurator__item-availability {
+													display: inline-block;
+													padding: 0px 10px;
+													color: #fff;
+													font-weight: 400;
+													font-size: 12px;
+													line-height: 15px;
+												}
+
+														.configurator__item-availability--green-availability {
+															background: #1da72d;
+														}
+
+														.configurator__item-availability--yellow-availability {
+															background: #b0b300;
+														}
+
+														.configurator__item-availability--red-availability {
+															background: #b32100;
+														}
 
 						.configurator__footer {
 							display: flex;

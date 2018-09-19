@@ -100,6 +100,7 @@ const Table = function({ items, id, arrowDirection }) {
           ${imgElement}
           <div class="configurator__item-title">${item.title}</div>
           ${item.price ? '<span class="configurator__item-price">' + formatPrice(item.price) + '&nbspKč</span>' : ''}
+          ${item.availability && item.availability.label ? '<span class="configurator__item-availability configurator__item-availability--' + item.availability.class.trim() + '">' + item.availability.label.trim() + '</span>' : ''}
         </a>
       `)
 
