@@ -209,9 +209,6 @@ const initConfigurator = () => {
   $('.product-detail-hidden-form__submit').attr('type', 'submit')
 
   window.onConfiguratorFormSubmit = function(requestSettings) {
-
-    const submittedForm = requestSettings.nette.form
-
     if (
       requestSettings.nette &&
       requestSettings.nette.form &&
