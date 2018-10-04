@@ -92,6 +92,13 @@ const setDefaultPriceOnLoad = () => {
   })
 }
 
+const setHiddenFormDataOnLoad = () => {
+  updateHiddenFormData(
+    'product-variant',
+    $('button[data-preselected-variant-id]')
+  )
+}
+
 const renderErrorMessage = (optionItem, optionItemPosition, errorMsg, errorText) => {
   const rowElement = $(optionItem).closest('.configurator__row')
 
@@ -120,6 +127,7 @@ const initConfigurator = () => {
   const cachedData = []
 
   setDefaultPriceOnLoad()
+  setHiddenFormDataOnLoad()
 
   $('.configurator__option').on('click', function() {
     const self = this
