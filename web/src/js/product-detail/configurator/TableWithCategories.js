@@ -3,7 +3,7 @@ import { formatPrice } from './configurator-helpers'
 
 export const CATEGORIES_TABLE = 'CATEGORIES_TABLE'
 
-const TableWithCategories = function({ categories, id, arrowDirection, isPreselected, preselectedId, preselectedPrice, preselectedTitle }) {
+const TableWithCategories = function({ categories, id, arrowDirection }) {
   this.type = CATEGORIES_TABLE
   this.categories = categories || []
   this.activeCategory = 0

@@ -85,7 +85,7 @@ const setDefaultPriceOnLoad = () => {
   elements.each(function() {
     if ($(this).attr('data-default-value')) {
       addItemToPriceStorage({
-        optionId: parseInt($(this).attr('data-option-id')),
+        optionId: $(this).attr('data-option-id'),
         price: parseInt($(this).attr('data-default-value'))
       })
     }
