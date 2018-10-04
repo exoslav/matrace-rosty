@@ -69,6 +69,7 @@
 
     &[data-open='true'] {
       display: block;
+      z-index: 1;
     }
 
     &[data-open='false'] {
@@ -88,16 +89,22 @@
         width: calc(100% - 50px);
         padding: 10px 15px;
         border: none;
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
+
+        @media (min-width: 576px) {
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+        }
       }
 
       button {
         width: 50px;
         border: none;
         border-left: 1px solid #ececec;
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
+
+        @media (min-width: 576px) {
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px;
+        }
 
         i {
           font-size: 28px;
