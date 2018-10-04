@@ -25,14 +25,20 @@ const renderOptions = (data, optionItem) => {
   if (!isTableInitialized) {
     let TableItem = null
 
+    const isPreselected = optionItem.dataset.preselected ? true : false
+
     const defaultOptions = {
       id: data.id,
+      isPreselected: isPreselected,
+      preselectedTitle: $(optionItem).find('.configurator__option-selected__title').text(),
+      preselectedId: isPreselected ? Number(optionItem.dataset.preselectedVariantId) : null,
+      preselectedPrice: isPreselected ? Number(optionItem.dataset.preselectedVariantPrice) : null,
       arrowDirection: getArrowDirection(getOptionItemPosition($('.configurator__option'), optionItem))
     }
 
     if (data.categories) {
       const tableOpts = {
-          ...defaultOptions,
+        ...defaultOptions,
         categories: data.categories
       }
 

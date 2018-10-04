@@ -5,10 +5,11 @@ import { formatPrice } from './configurator-helpers'
 
 export const SIMPLE_TABLE = 'SIMPLE_TABLE'
 
-const Table = function({ items, id, arrowDirection }) {
+const Table = function({ items, id, arrowDirection, isPreselected, preselectedId, preselectedPrice, preselectedTitle }) {
   this.type = SIMPLE_TABLE
+  this.isPreselected = isPreselected || false
   this.items = items || []
-  this.activeItemId = items.filter(item => item.selectedOnDefault)[0]
+  this.activeItemId = preselectedId ? preselectedId : items.filter(item => item.selectedOnDefault)[0]
   this.tableId = id
   this.arrowDirection = arrowDirection || 'center'
 
@@ -42,6 +43,14 @@ const Table = function({ items, id, arrowDirection }) {
     this.renderFooter()
     this.template.addClass(`configurator__table-arrow configurator__table-arrow--${this.arrowDirection}`)
     this.attachEvents()
+
+    if (this.isPreselected) {
+      this.updateSelected({
+        imgSrc: null,
+        title: preselectedTitle,
+        price: preselectedPrice
+      })
+    }
   }
 
   this.getActiveItem = () => {
