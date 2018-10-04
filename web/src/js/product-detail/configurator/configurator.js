@@ -93,10 +93,15 @@ const setDefaultPriceOnLoad = () => {
 }
 
 const setHiddenFormDataOnLoad = () => {
-  updateHiddenFormData(
-    'product-variant',
-    $('button[data-preselected-variant-id]')
-  )
+  const button = $('button[data-preselected-variant-id]')
+
+  // only single item should be preselected
+  if (button.length === 1) {
+    updateHiddenFormData(
+      'product-variant',
+      button.attr('data-preselected-variant-id')
+    )
+  }
 }
 
 const renderErrorMessage = (optionItem, optionItemPosition, errorMsg, errorText) => {
