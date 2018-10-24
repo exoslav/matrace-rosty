@@ -6,13 +6,13 @@ $(document).ready(function() {
     const defaultMinValue = 234
     const defaultMaxValue = 987
 
-    const minField = $('.categories-filters__range-min')
-    const maxField = $('.categories-filters__range-max')
+    const minField = $('.filters__range-min')
+    const maxField = $('.filters__range-max')
 
     minField.html(`${defaultMinValue} Kč`)
     maxField.html(`${defaultMaxValue}  Kč`)
 
-    $('.categories-filters__range-element').slider({
+    $('.filters__range-element').slider({
       range: true,
       min: defaultMinValue,
       max: defaultMaxValue,
@@ -37,11 +37,25 @@ $(document).ready(function() {
 
   filterSelect.on('change', function() {
     const val = $(this).val()
-    const cateogryLists = $('.categories-filters__list .categories-filters__list-category')
+    const cateogryLists = $('.filters__category')
+
+    if (val === 'default') {
+      cateogryLists.hide()
+      $('.filters__select-category-filter__select-wrapper').removeClass('filters__select-category-filter__select-wrapper--open')
+
+      return
+    }
 
     cateogryLists.hide()
 
-    $(`.categories-filters__list--${val}`).show()
+    $('.filters__select-category-filter__select-wrapper').addClass('filters__select-category-filter__select-wrapper--open')
+    $(`.filters__category--${val}`).show()
 
+  })
+
+  $('.filters__close-category').on('click', () => {
+    filterSelect.val('default')
+    $('.filters__category').hide()
+    $('.filters__select-category-filter__select-wrapper').removeClass('filters__select-category-filter__select-wrapper--open')
   })
 })

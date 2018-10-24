@@ -166,25 +166,38 @@
         </ul>
       </div>
 
-      <div class="categories-filters">
+      <div class="filters">
 
-        <div class="categories-select-filters">
-          <label class="categories-filters__label" for="categories-filters">Filtry:</label>
+        <div class="filters__select-category-filter">
+          <label class="filters__select-category-filter__label" for="categories-filters">Filtry:</label>
 
-          <div class="categories-filters__select__wrapper">
-            <select name="categories-filters" id="categories-filters" class="categories-filters__select select__element" required="">
+          <div class="filters__select-category-filter__select-wrapper">
+            <select name="categories-filters" id="categories-filters" class="filters__select-category-filter__select select__element" required="">
+              <option value="default">Vyberte...</option>
               <option value="velikost">Velikost</option>
               <option value="material">Materiál</option>
-              <option value="cena">Cena</option>
             </select>
           </div>
         </div>
 
-        <div class="categories-filters__list-wrapper">
-          <ul class="categories-filters__list">
-            <li class="categories-filters__list-category categories-filters__list--velikost">
+        <div class="filters__range">
+          <strong class="filters__range-label">Cena:</strong>
+          <div class="filters__range-body">
+            <div class="filters__range-min"></div>
+            <div class="filters__range-max"></div>
+            <div class="filters__range-element"></div>
+          </div>
+        </div>
+
+        <div>
+          <ul>
+            <li class="filters__category filters__category--velikost">
+              <button class="filters__close-category" type="button">
+                <i class="icon icon-cancel"></i>
+              </button>
+
               <ul>
-                <li class="categories-filters__list-category__item">
+                <li class="filters__category__item">
                   <div class="checkbox">
                     <div class="checkbox__decoy">
                       <input class="checkbox__element" type="checkbox" name="size-xs" id="size-xs">
@@ -194,7 +207,7 @@
                   <label class="checkbox__label" for="size-xs">XS</label>
                 </li>
 
-                <li class="categories-filters__list-category__item">
+                <li class="filters__category__item">
                   <div class="checkbox">
                     <div class="checkbox__decoy">
                       <input class="checkbox__element" type="checkbox" name="size-s" id="size-s">
@@ -204,7 +217,7 @@
                   <label class="checkbox__label" for="size-s">S</label>
                 </li>
 
-                <li class="categories-filters__list-category__item">
+                <li class="filters__category__item">
                   <div class="checkbox">
                     <div class="checkbox__decoy">
                       <input class="checkbox__element" type="checkbox" name="size-m" id="size-m">
@@ -214,7 +227,7 @@
                   <label class="checkbox__label" for="size-m">M</label>
                 </li>
 
-                <li class="categories-filters__list-category__item">
+                <li class="filters__category__item">
                   <div class="checkbox">
                     <div class="checkbox__decoy">
                       <input class="checkbox__element" type="checkbox" name="size-l" id="size-l">
@@ -224,7 +237,7 @@
                   <label class="checkbox__label" for="size-l">L</label>
                 </li>
 
-                <li class="categories-filters__list-category__item">
+                <li class="filters__category__item">
                   <div class="checkbox">
                     <div class="checkbox__decoy">
                       <input class="checkbox__element" type="checkbox" name="size-XL" id="size-XL">
@@ -236,9 +249,13 @@
               </ul>
             </li>
 
-            <li class="categories-filters__list-category categories-filters__list--material">
+            <li class="filters__category filters__category--material">
+              <button class="filters__close-category" type="button">
+                <i class="icon icon-cancel"></i>
+              </button>
+
               <ul>
-                <li class="categories-filters__list-category__item">
+                <li class="filters__category__item">
                   <div class="checkbox">
                     <div class="checkbox__decoy">
                       <input class="checkbox__element" type="checkbox" name="material-silikon" id="material-silikon">
@@ -248,7 +265,7 @@
                   <label class="checkbox__label" for="material-silikon">silikon</label>
                 </li>
 
-                <li class="categories-filters__list-category__item">
+                <li class="filters__category__item">
                   <div class="checkbox">
                     <div class="checkbox__decoy">
                       <input class="checkbox__element" type="checkbox" name="material-vlna" id="material-vlna">
@@ -258,7 +275,7 @@
                   <label class="checkbox__label" for="material-vlna">vlna</label>
                 </li>
 
-                <li class="categories-filters__list-category__item">
+                <li class="filters__category__item">
                   <div class="checkbox">
                     <div class="checkbox__decoy">
                       <input class="checkbox__element" type="checkbox" name="material-bavlna" id="material-bavlna">
@@ -269,15 +286,56 @@
                 </li>
               </ul>
             </li>
+          </ul>
+        </div>
 
-            <li class="categories-filters__list-category categories-filters__list--cena">
-              <div class="categories-filters__range-slider">
-                <div class="categories-filters__range-min"></div>
-                <div class="categories-filters__range-max"></div>
-                <div class="categories-filters__range-element"></div>
+        <div class="filters__wrapper">
+          <ul class="filters__checkbox-filters">
+            <li class="filters__checkbox-filters__item">
+              <div class="checkbox">
+                <div class="checkbox__decoy">
+                  <input class="checkbox__element" type="checkbox" name="filter-akcni" id="filter-akcni">
+                  <span class="checkbox__icon"></span>
+                </div>
               </div>
+              <label class="checkbox__label" for="filter-akcni">Akční</label>
+            </li>
+
+            <li class="filters__checkbox-filters__item">
+              <div class="checkbox">
+                <div class="checkbox__decoy">
+                  <input class="checkbox__element" type="checkbox" name="filter-dostupne" id="filter-dostupne">
+                  <span class="checkbox__icon"></span>
+                </div>
+              </div>
+              <label class="checkbox__label" for="filter-dostupne">Dostupné</label>
             </li>
           </ul>
+
+          <div class="filters__sort-by">
+            <strong class="filters__sort-by__label">Řadit podle:</strong>
+            <ul class="filters__sort-by-list">
+              <li class="filters__sort-by__item">
+                <div class="checkbox">
+                  <div class="checkbox__decoy">
+                    <input class="checkbox__element" type="checkbox" name="filter-nejlevnejsi" id="filter-nejlevnejsi">
+                    <span class="checkbox__icon"></span>
+                  </div>
+                </div>
+                <label class="checkbox__label" for="filter-nejlevnejsi">Nejlevnější</label>
+              </li>
+
+              <li class="filters__sort-by__item">
+                <div class="checkbox">
+                  <div class="checkbox__decoy">
+                    <input class="checkbox__element" type="checkbox" name="filter-nejdrazsi" id="filter-nejdrazsi">
+                    <span class="checkbox__icon"></span>
+                  </div>
+                </div>
+                <label class="checkbox__label" for="filter-nejdrazsi">Nejdražší</label>
+              </li>
+            </ul>
+          </div>
         </div>
 
       </div>
