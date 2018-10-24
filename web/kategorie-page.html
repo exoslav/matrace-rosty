@@ -134,17 +134,170 @@
       <h1>Matrace</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin hendrerit gravida dui, at dapibus velit. Curabitur vulputate nulla facilisis mollis rhoncus. Nam feugiat orci dolor, a molestie lacus tristique eget. Mauris ut nunc nunc. In consequat leo vel elit efficitur, nec vehicula dui sagittis. Etiam varius velit consequat, consequat lectus quis, laoreet justo. Vivamus vitae placerat magna, at consequat lorem. </p>
 
+      <div class="subcategories">
+        <ul>
+          <li>
+            <a title="Taštičkové matrace" href="/tastickove-matrace">Taštičkové matrace</a>
+          </li>
+          <li>
+            <a title="Matrace ze studené pěny" href="/matrace-ze-studene-peny">Matrace ze studené pěny</a>
+          </li>
+          <li>
+            <a title="Latexové matrace" href="/latexove-matrace">Latexové matrace</a>
+          </li>
+          <li>
+            <a title="Přírodní matrace" href="/prirodni-matrace">Přírodní matrace</a>
+          </li>
+          <li>
+            <a title="Matrace z paměťové pěny" href="/matrace-z-pametove-peny">Matrace z paměťové pěny</a>
+          </li>
+          <li>
+            <a title="Dětské matrace" href="/detske-matrace">Dětské matrace</a>
+          </li>
+          <li>
+            <a title="Molitanové matrace" href="/molitanove-matrace">Molitanové matrace</a>
+          </li>
+          <li>
+            <a title="Přistýlka - čabraka" href="/pristylka-cabraka">Přistýlka - čabraka</a>
+          </li>
+          <li>
+            <a title="Chrániče matrace" href="/chranice-matrace">Chrániče matrace</a>
+          </li>
+        </ul>
+      </div>
+
       <div class="categories-filters">
 
-        <div class="categories-filters__range-slider">
-          <div class="categories-filters__range-text">Podle ceny:</div>
-          <div class="categories-filters__range-min"></div>
-          <div class="categories-filters__range-max"></div>
-          <div class="categories-filters__range-element"></div>
+        <div class="categories-select-filters">
+          <label class="categories-filters__label" for="categories-filters">Filtry:</label>
+
+          <div class="categories-filters__select__wrapper">
+            <select name="categories-filters" id="categories-filters" class="categories-filters__select select__element" required="">
+              <option value="velikost">Velikost</option>
+              <option value="material">Materiál</option>
+              <option value="cena">Cena</option>
+            </select>
+          </div>
         </div>
+
+        <div class="categories-filters__list-wrapper">
+          <ul class="categories-filters__list">
+            <li class="categories-filters__list-category categories-filters__list--velikost">
+              <ul>
+                <li class="categories-filters__list-category__item">
+                  <div class="checkbox">
+                    <div class="checkbox__decoy">
+                      <input class="checkbox__element" type="checkbox" name="size-xs" id="size-xs">
+                      <span class="checkbox__icon"></span>
+                    </div>
+                  </div>
+                  <label class="checkbox__label" for="size-xs">XS</label>
+                </li>
+
+                <li class="categories-filters__list-category__item">
+                  <div class="checkbox">
+                    <div class="checkbox__decoy">
+                      <input class="checkbox__element" type="checkbox" name="size-s" id="size-s">
+                      <span class="checkbox__icon"></span>
+                    </div>
+                  </div>
+                  <label class="checkbox__label" for="size-s">S</label>
+                </li>
+
+                <li class="categories-filters__list-category__item">
+                  <div class="checkbox">
+                    <div class="checkbox__decoy">
+                      <input class="checkbox__element" type="checkbox" name="size-m" id="size-m">
+                      <span class="checkbox__icon"></span>
+                    </div>
+                  </div>
+                  <label class="checkbox__label" for="size-m">M</label>
+                </li>
+
+                <li class="categories-filters__list-category__item">
+                  <div class="checkbox">
+                    <div class="checkbox__decoy">
+                      <input class="checkbox__element" type="checkbox" name="size-l" id="size-l">
+                      <span class="checkbox__icon"></span>
+                    </div>
+                  </div>
+                  <label class="checkbox__label" for="size-l">L</label>
+                </li>
+
+                <li class="categories-filters__list-category__item">
+                  <div class="checkbox">
+                    <div class="checkbox__decoy">
+                      <input class="checkbox__element" type="checkbox" name="size-XL" id="size-XL">
+                      <span class="checkbox__icon"></span>
+                    </div>
+                  </div>
+                  <label class="checkbox__label" for="size-XL">XL</label>
+                </li>
+              </ul>
+            </li>
+
+            <li class="categories-filters__list-category categories-filters__list--material">
+              <ul>
+                <li class="categories-filters__list-category__item">
+                  <div class="checkbox">
+                    <div class="checkbox__decoy">
+                      <input class="checkbox__element" type="checkbox" name="material-silikon" id="material-silikon">
+                      <span class="checkbox__icon"></span>
+                    </div>
+                  </div>
+                  <label class="checkbox__label" for="material-silikon">silikon</label>
+                </li>
+
+                <li class="categories-filters__list-category__item">
+                  <div class="checkbox">
+                    <div class="checkbox__decoy">
+                      <input class="checkbox__element" type="checkbox" name="material-vlna" id="material-vlna">
+                      <span class="checkbox__icon"></span>
+                    </div>
+                  </div>
+                  <label class="checkbox__label" for="material-vlna">vlna</label>
+                </li>
+
+                <li class="categories-filters__list-category__item">
+                  <div class="checkbox">
+                    <div class="checkbox__decoy">
+                      <input class="checkbox__element" type="checkbox" name="material-bavlna" id="material-bavlna">
+                      <span class="checkbox__icon"></span>
+                    </div>
+                  </div>
+                  <label class="checkbox__label" for="material-bavlna">bavlna</label>
+                </li>
+              </ul>
+            </li>
+
+            <li class="categories-filters__list-category categories-filters__list--cena">
+              <div class="categories-filters__range-slider">
+                <div class="categories-filters__range-min"></div>
+                <div class="categories-filters__range-max"></div>
+                <div class="categories-filters__range-element"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
       </div>
 
       <div class="best-sellers-hp">
+        <div class="pagination" id="products-list">
+          <ol>
+            <li class="disabled"><a>« Předchozí</a></li>
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="/matrace/strana-2/?do=productsList-visualPaginator-showPage" class="ajax">2</a></li>
+            <li><a href="/matrace/strana-3/?do=productsList-visualPaginator-showPage" class="ajax">3</a></li>
+            <li><a href="/matrace/strana-4/?do=productsList-visualPaginator-showPage" class="ajax">4</a></li>
+            <li><a href="/matrace/strana-5/?do=productsList-visualPaginator-showPage" class="ajax">5</a></li>
+            <li><a href="/matrace/strana-6/?do=productsList-visualPaginator-showPage" class="ajax">6</a></li>
+            <li class="disabled"><a>…</a></li>
+            <li><a href="/matrace/strana-8/?do=productsList-visualPaginator-showPage" class="ajax">8</a></li>
+            <li><a href="/matrace/strana-2/?do=productsList-visualPaginator-showPage" rel="next" class="ajax">Další »</a></li>
+          </ol>
+        </div>
+
         <div class="best-sellers-hp__wrapper">
 
           <div class="product-item">

@@ -1,13 +1,69 @@
 .categories-filters {
-  padding: 7px 14px 16px;
-  background: #f5f5f5;
-
-
-    .categories-filters__range-text {
-      margin-bottom: 9px;
-      font-size: 15px;
-    }
+  margin-bottom: 30px;
 }
+
+    .categories-select-filters {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+        .categories-filters__label {
+          margin-right: 10px;
+          font-weight: 700;
+        }
+
+        .categories-filters__select__wrapper {
+          position: relative;
+
+          &:before {
+            content: "";
+            position: absolute;
+            bottom: -20px;
+            right: 0;
+            left: 0;
+            margin: auto;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 20px 15px 20px;
+            border-color: transparent transparent #f5f5f5;
+          }
+        }
+
+            .categories-filters__select {
+              width: 200px;
+            }
+
+    .categories-filters__list-category {
+      display: none;
+      padding: 15px 15px 0 15px;
+      background: #f5f5f5;
+
+      &:first-of-type {
+        display: flex;
+      }
+
+      > ul {
+        display: flex;
+        flex: 1;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+    }
+
+    .categories-filters__list--cena {
+      padding-bottom: 15px;
+    }
+
+        .categories-filters__list-category__item {
+          min-width: 100px;
+          padding: 0 15px 15px 0;
+          
+          .checkbox__decoy {
+            background: #fff;
+          }
+        }
 
     .categories-filters__range-min,
     .categories-filters__range-max {
