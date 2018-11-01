@@ -106,7 +106,7 @@ $(document).ready(function() {
         const listItem = $('<li class="filters__active-filters__item" />')
 
         $(`
-          <button type="button" class="filters__active-filters__button" data-label=${activeFilters[i]}>
+          <button type="button" class="filters__active-filters__button" data-label="${activeFilters[i]}">
             <span class="filters__active-filters__text">${activeFilters[i]}</span>
             <i class="icon icon-cancel"></i>
           </button>
@@ -118,7 +118,7 @@ $(document).ready(function() {
           emptyActiveFilters()
           renderActiveFilters()
 
-          $(`.filters__category`).find(`input[data-label=${label}]`).prop('checked', false)
+          $(`.filters__category`).find(`input[data-label="${label}"]`).prop('checked', false)
 
           showHideActiveFilters()
         })
