@@ -4,6 +4,8 @@ import queryString from 'query-string';
 import getProducts from './getProducts';
 import { activeFilters, addCategoryFilter, removeCategoryFilter } from './activeFilters';
 
+export const CATEGORY_FILTERS_KEY = 'filtersValues';
+
 const initCategoryFilters = () => {
   const DEFAULT_FILTER_VALUE = 'default';
   let currentFilterCategory = DEFAULT_FILTER_VALUE;

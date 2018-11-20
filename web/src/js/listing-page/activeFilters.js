@@ -19,32 +19,3 @@ export const removeCategoryFilter = (value) => {
     .filter(i => i.value !== value);
 }
 
-export const removeSortByFilter = () => {
-  activeFilters = {
-    ...activeFilters,
-    sortByFilters: {}
-  }
-}
-
-export const removeCheckboxFilter = (value) => {
-  activeFilters.checkboxFilters = 
-    activeFilters.checkboxFilters.filter(i => i.value !== value)
-}
-
-export const addCheckboxFilter = (value, active) => {
-  activeFilters.checkboxFilters = [
-    ...activeFilters.checkboxFilters,
-    {
-      value,
-      active
-    }
-  ]
-}
-
-export const addSortByFilter = (value) => {
-  activeFilters = {
-    ...activeFilters,
-    sortByFilters: { value }
-  }
-}
-

@@ -1,11 +1,9 @@
 import $ from 'jquery';
 
-import getFilters from './listing-page/getFiltersFromUrl';
-import activeFilters from './listing-page/activeFilters';
+import $ui from './externals/jquery-ui.min.js';
 import initSortByFilters from './listing-page/sortByFilters';
 import initCategoryFilters from './listing-page/categoryFilters';
 import initCheckboxFilters from './listing-page/checkboxFilters';
-import $ui from './externals/jquery-ui.min.js';
 
 $(document).ready(function() {
   const initSlider = () => {
@@ -35,6 +33,9 @@ $(document).ready(function() {
   }
 
   initSlider();
+
+  $('#snippet-productsList-products-filter, #snippet-productsList-products')
+    .wrapAll('<div class="products-listing-wrapper" />');
 
   initSortByFilters();
   initCheckboxFilters();
