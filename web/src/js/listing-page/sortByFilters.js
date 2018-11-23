@@ -6,18 +6,11 @@ import addQueryString from '../utils/addQueryString';
 import getProducts from './getProducts';
 
 export const SORT_BY_FILTERS_KEY = 'sortBy';
-const PRICE_ASC = 'price-asc';
 const ACTIVE_CLASSNAME = 'product-form-sort--active';
 const sortByFilters = $('.filters__sort-by-list .product-form-sort');
 
 const initSortByFilters = () => {
   const activeFilter = getFilter();
-
-  // MOCK
-  const values = ['price-asc', 'price-desc', 'latest']
-  sortByFilters.each(function(index) {
-    $(this).attr('data-filter-value', values[index]);
-  });
 
   sortByFilters.each(function() {
     const self = $(this);
@@ -51,19 +44,23 @@ const initSortByFilters = () => {
       oldActiveElement.addClass(ACTIVE_CLASSNAME);
     }
 
-    getProducts(() => {}, onGetProductsError);
+    getProducts(
+      queryString.parse(location.search),
+      () => {},
+      onGetProductsError
+    );
   });
 }
 
 function getFilter() {
-  return queryString.parse(location.search).sortBy || PRICE_ASC;
+  return queryString.parse(location.search).sortBy || null;
 }
 
 function addFilterValueToQueryString(val) {
   const newQueryString = queryString.stringify({
     ...queryString.parse(location.search),
     sortBy: val
-  });
+  }, { encode: false });
 
   addQueryString(newQueryString);
 }

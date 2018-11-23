@@ -22,20 +22,24 @@ const initCheckboxFilters = () => {
     if (active) {
       addFilterValueToQueryString(currentValue, undefined);
     } else {
-      addFilterValueToQueryString(currentValue, true);
+      addFilterValueToQueryString(currentValue, 1);
     }
 
     const onGetProductsError = () => {
       if (active) {
         $(this).prop('checked', true);
-        addFilterValueToQueryString(currentValue, true);
+        addFilterValueToQueryString(currentValue, 1);
       } else {
         $(this).prop('checked', false);
         addFilterValueToQueryString(currentValue, undefined);
       }
     }
 
-    getProducts(() => {}, onGetProductsError);
+    getProducts(
+      queryString.parse(location.search),
+      () => {},
+      onGetProductsError
+    );
   });
 }
 
@@ -50,7 +54,7 @@ function getInitialFilters() {
       (
         filters[key] !== SORT_BY_FILTERS_KEY ||
         filters[key] !== CATEGORY_FILTERS_KEY
-      ) && queryStringValue === 'true'
+      ) && queryStringValue === '1'
     ) {
       checkboxFilters.push(key);
     }

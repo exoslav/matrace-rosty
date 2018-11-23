@@ -4,6 +4,7 @@ import $ui from './externals/jquery-ui.min.js';
 import initSortByFilters from './listing-page/sortByFilters';
 import initCategoryFilters from './listing-page/categoryFilters';
 import initCheckboxFilters from './listing-page/checkboxFilters';
+import { normalizePagination, renderPagination } from './listing-page/pagination';
 
 $(document).ready(function() {
   const initSlider = () => {
@@ -32,10 +33,14 @@ $(document).ready(function() {
     })
   }
 
-  initSlider();
+  const initPagination = {
+    page: parseInt($('[data-current-page]').attr('data-current-page')),
+    pageCount: parseInt($('[data-pages-count]').attr('data-pages-count'))
+  };
 
-  $('#snippet-productsList-products-filter, #snippet-productsList-products')
-    .wrapAll('<div class="products-listing-wrapper" />');
+  renderPagination(normalizePagination(initPagination));
+
+  initSlider();
 
   initSortByFilters();
   initCheckboxFilters();
