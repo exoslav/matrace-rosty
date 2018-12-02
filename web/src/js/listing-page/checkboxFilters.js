@@ -7,15 +7,37 @@ import addQueryString from '../utils/addQueryString';
 
 import getProducts from './getProducts';
 
+export const setValuesToCheckboxFilters = (filters, val) => {
+  filters.map(f => $(`[data-filter-value="${f}"]`).prop('checked', val));
+}
+
+export const getCheckboxFilters = () => {
+  const checkboxFilters = [];
+  const filters = queryString.parse(location.search);
+
+  Object.keys(filters).forEach((key) => {
+    const queryStringValue = filters[key];
+
+    if (
+      (
+        filters[key] !== SORT_BY_FILTERS_KEY ||
+        filters[key] !== CATEGORY_FILTERS_KEY
+      ) && queryStringValue === '1'
+    ) {
+      checkboxFilters.push(key);
+    }
+  });
+
+  return checkboxFilters;
+}
+
 const initCheckboxFilters = () => {
-  const initialFilters = getInitialFilters();
   const checkboxFilters = $('.filters__checkbox-filters .checkbox__element');
 
-  initialFilters
-    .map(f => $(`[data-filter-value="${f}"]`).prop('checked', true));
+  setValuesToCheckboxFilters(getCheckboxFilters(), true);
 
   checkboxFilters.on('change', function() {
-    const activeFilters = getInitialFilters();
+    const activeFilters = getCheckboxFilters();
     const currentValue = $(this).attr('data-filter-value');
     const active = !!activeFilters.find(i => i === currentValue);
 
@@ -41,26 +63,6 @@ const initCheckboxFilters = () => {
       onGetProductsError
     );
   });
-}
-
-function getInitialFilters() {
-  const checkboxFilters = [];
-  const filters = queryString.parse(location.search);
-
-  Object.keys(filters).forEach((key) => {
-    const queryStringValue = filters[key];
-
-    if (
-      (
-        filters[key] !== SORT_BY_FILTERS_KEY ||
-        filters[key] !== CATEGORY_FILTERS_KEY
-      ) && queryStringValue === '1'
-    ) {
-      checkboxFilters.push(key);
-    }
-  });
-
-  return checkboxFilters;
 }
 
 function addFilterValueToQueryString(key, val) {

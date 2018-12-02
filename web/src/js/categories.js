@@ -4,6 +4,7 @@ import $ui from './externals/jquery-ui.min.js';
 import initSortByFilters from './listing-page/sortByFilters';
 import initCategoryFilters from './listing-page/categoryFilters';
 import initCheckboxFilters from './listing-page/checkboxFilters';
+import initRemoveAllFilters from './listing-page/removeAllFilters';
 import { normalizePagination, renderPagination } from './listing-page/pagination';
 
 $(document).ready(function() {
@@ -45,4 +46,5 @@ $(document).ready(function() {
   initSortByFilters();
   initCheckboxFilters();
   initCategoryFilters();
+  initRemoveAllFilters();
 })

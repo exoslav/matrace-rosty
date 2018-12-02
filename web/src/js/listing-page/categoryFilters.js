@@ -6,6 +6,20 @@ import addQueryString from '../utils/addQueryString'
 
 export const CATEGORY_FILTERS_KEY = 'filtersValues';
 
+export const deactivateCategoryFilters = () => {
+  $(`.filters__category`)
+    .find(`input[data-filter-value]`)
+    .prop('checked', false);
+}
+
+export const hideActiveFilters = () => {
+  $('.filters__active-filters').addClass('filters__active-filters--hidden');
+}
+
+export const emptyActiveFiltersElement = () => {
+  $('.filters__active-filters__list-wrapper').empty();
+}
+
 const initCategoryFilters = () => {
   const DEFAULT_FILTER_VALUE = 'default';
   let currentFilterCategory = DEFAULT_FILTER_VALUE;
@@ -24,9 +38,7 @@ const initCategoryFilters = () => {
 
   function setValuesOnLoad() {
     const filters = arrayifyFilters(queryString.parse(location.search).filters);
-
-    filters
-      .map(i => $(`[data-filter-value="${i.value}"]`).prop('checked', true));
+    filters.map(f => $(`[data-filter-value="${f}"]`).prop('checked', true));
   }
 
   function filteringLogicFuntion() {
@@ -56,7 +68,7 @@ const initCategoryFilters = () => {
           .find(i => i === filterValue) || false;
 
         if (active) {
-          removeCategoryValueToQueryString(filterValue);
+          removeCategoryValueFromQueryString(filterValue);
         } else {
           addCategoryValueToQueryString(filterValue);
         }
@@ -96,7 +108,7 @@ const initCategoryFilters = () => {
       `)
       .on('click', function() {
         getProducts(queryString.parse(location.search));
-        removeCategoryValueToQueryString(value);
+        removeCategoryValueFromQueryString(value);
         emptyActiveFiltersElement();
         renderActiveFilters();
 
@@ -112,21 +124,6 @@ const initCategoryFilters = () => {
     }
 
     $(content).appendTo($('.filters__active-filters__list-wrapper'));
-  }
-
-  function emptyActiveFiltersElement() {
-    $('.filters__active-filters__list-wrapper').empty();
-  }
-
-  function showHideActiveFilters() {
-    const filters = arrayifyFilters(queryString.parse(location.search).filters);
-    const filtersElement = $('.filters__active-filters');
-
-    if (filters.length > 0) {
-      filtersElement.removeClass('filters__active-filters--hidden');
-    } else {
-      filtersElement.addClass('filters__active-filters--hidden');
-    }
   }
 
   function onClose() {
@@ -147,12 +144,22 @@ function arrayifyFilters(filters) {
     return filters;
   }
 
-
   return filters.split(',');
 }
 
+function showHideActiveFilters() {
+  const HIDDEN_CLASSNAME = 'filters__active-filters--hidden';
+  const filters = arrayifyFilters(queryString.parse(location.search).filters);
+  const filtersElement = $('.filters__active-filters');
 
-function removeCategoryValueToQueryString(val) {
+  if (filters.length > 0) {
+    filtersElement.removeClass(HIDDEN_CLASSNAME);
+  } else {
+    filtersElement.addClass(HIDDEN_CLASSNAME);
+  }
+}
+
+function removeCategoryValueFromQueryString(val) {
   const queryStr = queryString.parse(location.search);
   const filters = arrayifyFilters(queryStr.filters);
   const newFilters = filters.filter(i => i !== val).join(',');

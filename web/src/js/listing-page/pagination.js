@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import queryString from 'query-string';
 
 import getProducts from './getProducts';

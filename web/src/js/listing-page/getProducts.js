@@ -3,6 +3,7 @@ import { showLoader, hideLoader} from './loader';
 import { showErrorMessage, hideErrorMessage} from './errorMessage';
 import { showNoProductsFoundMessage, hideNoProductsFoundMessage} from './noProductsFoundMessage';
 import { normalizePagination, renderPagination } from './pagination';
+import { showHideRemoveAllFiltersElement } from './removeAllFilters';
 import renderProducts from './renderProducts';
 
 const API_URL = '/api/product/get-list';
@@ -36,7 +37,6 @@ const getProducts = (
 
       if (data.products.length === 0) {
         showNoProductsFoundMessage();
-
         return;
       }
 
@@ -55,6 +55,7 @@ const getProducts = (
     })
     .always(() => {
       hideLoader();
+      showHideRemoveAllFiltersElement();
     })
 }
 

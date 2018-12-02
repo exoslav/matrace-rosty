@@ -9,16 +9,26 @@ export const SORT_BY_FILTERS_KEY = 'sortBy';
 const ACTIVE_CLASSNAME = 'product-form-sort--active';
 const sortByFilters = $('.filters__sort-by-list .product-form-sort');
 
-const initSortByFilters = () => {
-  const activeFilter = getFilter();
+export const getSortByFilter = () => queryString.parse(location.search).sortBy || null;
 
+export const setValueToSortByFilter = (activeFilter, value) => {
   sortByFilters.each(function() {
     const self = $(this);
 
     if (self.attr('data-filter-value') === activeFilter) {
-      self.addClass(ACTIVE_CLASSNAME);
+      if (value) {
+        self.addClass(ACTIVE_CLASSNAME);
+      } else {
+        self.removeClass(ACTIVE_CLASSNAME);
+      }
     }
   });
+}
+
+const initSortByFilters = () => {
+  const activeFilter = getSortByFilter();
+
+  setValueToSortByFilter(activeFilter, true);
 
   sortByFilters.on('click', function(e) {
     e.preventDefault();
@@ -50,10 +60,6 @@ const initSortByFilters = () => {
       onGetProductsError
     );
   });
-}
-
-function getFilter() {
-  return queryString.parse(location.search).sortBy || null;
 }
 
 function addFilterValueToQueryString(val) {
