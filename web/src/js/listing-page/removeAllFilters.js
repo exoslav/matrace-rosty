@@ -11,8 +11,6 @@ import { deactivateCategoryFilters, hideActiveFilters, emptyActiveFiltersElement
 export const CATEGORY_FILTERS_KEY = 'filtersValues';
 
 const initRemoveAllFilters = () => {
-  $('<a href="#" class="filters_remove-all-filters">Zrusit filtry</a>').appendTo('.filters__wrapper');
-
   const element = $('.filters_remove-all-filters');
 
   element.on('click', function(e) {
