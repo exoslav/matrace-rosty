@@ -9,6 +9,7 @@ import ssstyles from 'slick-carousel/slick/slick-theme.css';
 import lightBoxStyles from 'lightBox2/src/css/lightbox.css';
 
 import * as modals from './modals';
+import basketPage from './basket-page';
 import loginForm from './login-form';
 import initConfigurator from './product-detail/configurator/configurator';
 
@@ -240,4 +241,6 @@ $('document').ready(function() {
   }
 
   window.cartStepOneFormFunction();
+
+  basketPage();
 });

@@ -102,7 +102,7 @@
 
 .continue-shopping {
 	float: left;
-	width: calc(100% - 170px);
+	margin-bottom: 20px;
 
 	@media (min-width: 992px) {
 		width: auto;
@@ -142,9 +142,11 @@
 }
 
 .basket-submit-button {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
 	float: right;
 	padding: 10px;
-	width: 170px;
 	font-size: 18px;
 	font-weight: 700;
 	line-height: 120%;
@@ -166,5 +168,31 @@
 
 	&.hidden-refresh-button {
 		display: none;
+	}
+}
+
+.basket-submit-button__loader {
+	margin-left: 15px;
+	border: 3px solid #fff;
+	border-radius: 50%;
+	border-top: 3px solid $mainBlue;
+	width: 27px;
+	height: 27px;
+	-webkit-animation: spin 2s linear infinite;
+	animation: spin 2s linear infinite;
+
+	@-webkit-keyframes spin {
+		0% { -webkit-transform: rotate(0deg); }
+		100% { -webkit-transform: rotate(360deg); }
+	}
+
+	@keyframes spin {
+		0% { transform: rotate(0deg); }
+		50% { transform: rotate(360deg); }
+	}
+
+	@keyframes spin {
+		0% { transform: rotate(0deg); }
+		100% { transform: rotate(720deg); }
 	}
 }
