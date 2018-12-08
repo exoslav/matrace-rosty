@@ -227,6 +227,23 @@ const initConfigurator = () => {
 
   $('.product-detail-hidden-form__submit').attr('type', 'submit')
 
+  window.basketStartsUpdating = function() {
+    const submitButton = $('.product-detail-hidden-form__submit');
+    const loader = $(`
+        <div class="product-detail-hidden-form__add-to-basket-loader"></div>
+    `);
+
+    $(loader).appendTo(submitButton);
+    submitButton.addClass('product-detail-hidden-form__submit--loading');
+  }
+
+  window.basketStopsUpdating = function() {
+    const submitButton = $('.product-detail-hidden-form__submit');
+
+    submitButton.removeClass('product-detail-hidden-form__submit--loading');
+    submitButton.find('.product-detail-hidden-form__add-to-basket-loader').remove();
+  }
+
   window.onConfiguratorFormSubmit = function(requestSettings) {
     if (
       requestSettings.nette &&
@@ -234,6 +251,10 @@ const initConfigurator = () => {
       requestSettings.nette.form[0] &&
       requestSettings.nette.form[0].id === 'product-add-to-basket-form'
     ) {
+      if ($('.product-detail-hidden-form__submit').hasClass('product-detail-hidden-form__submit--loading')) {
+        return false;
+      }
+
       $('.configurator__errors-template').remove()
 
       let isValid = true

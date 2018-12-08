@@ -263,6 +263,31 @@ $imageBorder: 1px solid #e2e2e2;
 				margin-left: 36px;
 			}
 		}
+				.product-detail-hidden-form__add-to-basket-loader {
+          margin-left: 15px;
+					border: 3px solid #fff;
+					border-radius: 50%;
+					border-top: 3px solid $mainBlue;
+					width: 27px;
+					height: 27px;
+					-webkit-animation: spin 2s linear infinite;
+					animation: spin 2s linear infinite;
+
+					@-webkit-keyframes spin {
+						0% { -webkit-transform: rotate(0deg); }
+						100% { -webkit-transform: rotate(360deg); }
+					}
+
+					@keyframes spin {
+						0% { transform: rotate(0deg); }
+						50% { transform: rotate(360deg); }
+					}
+
+					@keyframes spin {
+						0% { transform: rotate(0deg); }
+						100% { transform: rotate(720deg); }
+					}
+				}
 
 .related-products {
 	display: flex;
