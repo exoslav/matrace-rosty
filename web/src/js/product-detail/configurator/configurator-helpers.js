@@ -35,7 +35,6 @@ export const getConfiguratorUrlByType = (type, productId, optionId) => {
     url = createUrl(configuration.api.productConfigurator.attributeUrl, optionId);
   }
 
-  console.log(url);
   return url;
 }
 

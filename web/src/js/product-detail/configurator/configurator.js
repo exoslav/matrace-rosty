@@ -3,7 +3,7 @@ import { oneLineTrim } from 'common-tags';
 import Table from './Table';
 import TableWithCategories from './TableWithCategories';
 import { renderErrorMessage, removeErrorMessages } from './error-messaging';
-import { addItemToCachedData, isDataCached, getCachedDataById } from './configurator-data-cache';
+import { addDataSetToCachedData, isDataCached, getCachedDataById } from './configurator-data-cache';
 import { getOptionItemPosition, getArrowDirection, formatPrice, getConfiguratorUrlByType } from './configurator-helpers';
 import { priceStorage, updatePriceStorage, addItemToPriceStorage, getTotalPrice, updateTotalItems } from './price-storage';
 import { appendLoader, removeLoader, dataLoading, addLoadingClassNameToOption, removeLoadingClassNameFromOption } from './configurator-loader';
@@ -132,10 +132,19 @@ const initConfigurator = () => {
       addLoadingClassNameToOption(self);
       appendLoader(self, optionId);
 
-      const getData = async () => await fetcher(getConfiguratorUrlByType(optionType, productId, optionId));
+      (async () => {
+        let data = null;
 
-      getData()
-        .then(data => {
+        try {
+          data = await fetcher(getConfiguratorUrlByType(optionType, productId, optionId));
+        } catch (error) {
+          removeErrorMessages();
+          removeLoader(optionId);
+          removeLoadingClassNameFromOption(self);
+          renderErrorMessage(self, optionPosition);
+        }
+
+        if (data) {
           removeLoader(optionId);
           removeErrorMessages();
           removeLoadingClassNameFromOption(self);
@@ -150,14 +159,9 @@ const initConfigurator = () => {
             });
           }
 
-          addItemToCachedData(data);
-        })
-        .catch((error) => {
-          removeErrorMessages();
-          removeLoader(optionId);
-          removeLoadingClassNameFromOption(self);
-          renderErrorMessage(self, optionPosition);
-        })
+          addDataSetToCachedData(data);
+        }
+      })();
     }
   })
 
