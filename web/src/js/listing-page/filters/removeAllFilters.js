@@ -1,14 +1,11 @@
 import $ from 'jquery';
 import queryString from 'query-string';
 
-import getProducts from './getProducts';
-import addQueryString from '../utils/addQueryString'
-import { SORT_BY_FILTERS_KEY } from './sortByFilters';
-import { getSortByFilter, setValueToSortByFilter  } from './sortByFilters';
+import getProducts from '../getProducts';
+import addQueryString from '../../utils/addQueryString';
+import { getSortByFilter, setValueToSortByFilter, SORT_BY_FILTERS_KEY  } from './sortByFilters';
 import { getCheckboxFilters, setValuesToCheckboxFilters } from './checkboxFilters';
-import { deactivateCategoryFilters, hideActiveFilters, emptyActiveFiltersElement } from './categoryFilters';
-
-export const CATEGORY_FILTERS_KEY = 'filtersValues';
+import { deactivateCategoryFilters, hideActiveFilters, emptyActiveFiltersElement, CATEGORY_FILTERS_KEY } from './categoryFilters';
 
 const initRemoveAllFilters = () => {
   const element = $('.filters_remove-all-filters');
@@ -39,12 +36,25 @@ export const showHideRemoveAllFiltersElement = () => {
 }
 
 function isSomeFilterActive() {
-  return (
-    queryString.parse(location.search).sortBy ||
-    queryString.parse(location.search).filters ||
-    queryString.parse(location.search).SORT_BY_FILTERS_KEY ||
-    queryString.parse(location.search).CATEGORY_FILTERS_KEY
-  );
+  const queryStringParsed = queryString.parse(location.search);
+
+  let isActive = false;
+
+  if (queryStringParsed[SORT_BY_FILTERS_KEY]) {
+    isActive = true;
+  }
+
+  if (queryStringParsed[CATEGORY_FILTERS_KEY]) {
+    isActive = true;
+  }
+
+  Object.keys(queryStringParsed).forEach((key) => {
+    if (queryStringParsed[key] === '1') {
+      isActive = true;
+    }
+  });
+  
+  return isActive;
 }
 
 function removeAllFromQueryString() {

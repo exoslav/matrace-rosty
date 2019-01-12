@@ -3,7 +3,7 @@ import { showLoader, hideLoader} from './loader';
 import { showErrorMessage, hideErrorMessage} from './errorMessage';
 import { showNoProductsFoundMessage, hideNoProductsFoundMessage} from './noProductsFoundMessage';
 import { normalizePagination, renderPagination } from './pagination';
-import { showHideRemoveAllFiltersElement } from './removeAllFilters';
+import { showHideRemoveAllFiltersElement } from './filters/removeAllFilters';
 import renderProducts from './renderProducts';
 import configuration from '../configuration';
 

@@ -1,10 +1,10 @@
 import $ from 'jquery';
 import queryString from 'query-string';
 
-import getProducts from './getProducts';
-import addQueryString from '../utils/addQueryString'
+import getProducts from '../getProducts';
+import addQueryString from '../../utils/addQueryString'
 
-export const CATEGORY_FILTERS_KEY = 'filtersValues';
+export const CATEGORY_FILTERS_KEY = 'filters';
 
 export const deactivateCategoryFilters = () => {
   $(`.filters__category`)

@@ -240,10 +240,14 @@
                 }
 
     .filters_remove-all-filters {
-      display: inline-block;
+      display: none;
       margin-top: 10px;
       color: #3b3b3b;
       font-size: 16px;
+
+      &.filters_remove-all-filters--visible {
+        display: inline-block;
+      }
     }
 
     .filters__range {

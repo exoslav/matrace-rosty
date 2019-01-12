@@ -3,9 +3,9 @@ import queryString from 'query-string';
 
 import { SORT_BY_FILTERS_KEY } from './sortByFilters';
 import { CATEGORY_FILTERS_KEY } from './categoryFilters';
-import addQueryString from '../utils/addQueryString';
+import addQueryString from '../../utils/addQueryString';
 
-import getProducts from './getProducts';
+import getProducts from '../getProducts';
 
 /*
 - checkBoxFilters are filters with checkbox only

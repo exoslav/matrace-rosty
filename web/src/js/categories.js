@@ -1,10 +1,10 @@
 import $ from 'jquery';
 
 import $ui from './externals/jquery-ui.min.js';
-import initSortByFilters from './listing-page/sortByFilters';
-import initCategoryFilters from './listing-page/categoryFilters';
-import initCheckboxFilters from './listing-page/checkboxFilters';
-import initRemoveAllFilters from './listing-page/removeAllFilters';
+import initSortByFilters from './listing-page/filters/sortByFilters';
+import initCategoryFilters from './listing-page/filters/categoryFilters';
+import initCheckboxFilters from './listing-page/filters/checkboxFilters';
+import initRemoveAllFilters, { showHideRemoveAllFiltersElement } from './listing-page/filters/removeAllFilters';
 import { normalizePagination, renderPagination } from './listing-page/pagination';
 
 $(document).ready(function() {
@@ -47,4 +47,5 @@ $(document).ready(function() {
   initCheckboxFilters();
   initCategoryFilters();
   initRemoveAllFilters();
+  showHideRemoveAllFiltersElement();
 })

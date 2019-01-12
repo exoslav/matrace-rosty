@@ -1,9 +1,9 @@
 import $ from 'jquery';
 import queryString from 'query-string';
 
-import addQueryString from '../utils/addQueryString';
+import addQueryString from '../../utils/addQueryString';
 
-import getProducts from './getProducts';
+import getProducts from '../getProducts';
 
 export const SORT_BY_FILTERS_KEY = 'sortBy';
 const ACTIVE_CLASSNAME = 'product-form-sort--active';
