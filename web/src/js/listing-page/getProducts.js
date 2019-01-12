@@ -5,8 +5,9 @@ import { showNoProductsFoundMessage, hideNoProductsFoundMessage} from './noProdu
 import { normalizePagination, renderPagination } from './pagination';
 import { showHideRemoveAllFiltersElement } from './removeAllFilters';
 import renderProducts from './renderProducts';
+import configuration from '../configuration';
 
-const API_URL = '/api/product/get-list';
+const URL = configuration.api.listingPageUrl;
 
 const defaultFormData = {
   category: $('[data-category]').attr('data-category')
@@ -24,7 +25,7 @@ const getProducts = (
 
   $.ajax({
     method: 'GET',
-    url: API_URL,
+    url: URL,
     dataType: 'json',
     data: {
       ...defaultFormData,

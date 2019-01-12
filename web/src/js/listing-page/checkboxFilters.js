@@ -7,6 +7,12 @@ import addQueryString from '../utils/addQueryString';
 
 import getProducts from './getProducts';
 
+/*
+- checkBoxFilters are filters with checkbox only
+- their value should be always "1"
+- now there are only two checkBoxFilters on listing page: akcni, dostupne
+*/
+
 export const setValuesToCheckboxFilters = (filters, val) => {
   filters.map(f => $(`[data-filter-value="${f}"]`).prop('checked', val));
 }
@@ -19,10 +25,9 @@ export const getCheckboxFilters = () => {
     const queryStringValue = filters[key];
 
     if (
-      (
-        filters[key] !== SORT_BY_FILTERS_KEY ||
-        filters[key] !== CATEGORY_FILTERS_KEY
-      ) && queryStringValue === '1'
+        queryStringValue === '1' &&
+        queryStringValue !== SORT_BY_FILTERS_KEY &&
+        queryStringValue !== CATEGORY_FILTERS_KEY
     ) {
       checkboxFilters.push(key);
     }

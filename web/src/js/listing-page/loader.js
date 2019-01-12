@@ -7,16 +7,16 @@ const loader = $(`
     <strong class="listing-page-loader__text">Načítají se produkty</strong>
   </div>
 `);
-//const listingWrapper = $('.products-listing-wrapper');
+const listingWrapper = $('.products-listing-wrapper');
 const loadingClassName = 'products-listing-wrapper--loading';
 
 export const showLoader = () => {
-  $('.products-listing-wrapper').addClass(loadingClassName);
-  $('.products-listing-wrapper').append(loader);
+  listingWrapper.addClass(loadingClassName);
+  listingWrapper.append(loader);
 }
 
 export const hideLoader = () => {
-  $('.products-listing-wrapper').removeClass(loadingClassName);
+  listingWrapper.removeClass(loadingClassName);
   loader.remove();
 }
 
