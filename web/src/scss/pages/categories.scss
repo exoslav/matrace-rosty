@@ -279,20 +279,24 @@
               font-weight: 900;
             }
 
-
-            .filters__range-min {
-              float: left;
+            .filters__range-inputs {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
             }
-
-            .filters__range-max {
-              float: right;
-            }
+                .filters__range-min,
+                .filters__range-max {
+                  margin: 0;
+                  width: calc(50% - 20px);
+                  min-height: 22px;
+                }
 
             .filters__range-element {
               clear: both;
             }
 
             .ui-widget.ui-widget-content {
+              margin-bottom: 10px;
               font-size: 17px;
               border: none;
               border-radius: 15px;

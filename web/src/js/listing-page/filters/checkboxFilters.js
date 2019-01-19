@@ -46,6 +46,7 @@ const initCheckboxFilters = () => {
     const currentValue = $(this).attr('data-filter-value');
     const active = !!activeFilters.find(i => i === currentValue);
 
+
     if (active) {
       addFilterValueToQueryString(currentValue, undefined);
     } else {
