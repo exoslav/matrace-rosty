@@ -2,6 +2,7 @@ import queryString from 'query-string';
 
 import getProducts from '../getProducts';
 import addQueryString from '../../utils/addQueryString';
+import { setPricesToDefault, MIN_PRICE_FILTER_KEY, MAX_PRICE_FILTER_KEY  } from './priceFilters';
 import { getSortByFilter, setValueToSortByFilter, SORT_BY_FILTERS_KEY  } from './sortByFilters';
 import { getCheckboxFilters, setValuesToCheckboxFilters } from './checkboxFilters';
 import { deactivateCategoryFilters, hideActiveFilters, emptyActiveFiltersElement, CATEGORY_FILTERS_KEY } from './categoryFilters';
@@ -18,6 +19,7 @@ const initRemoveAllFilters = () => {
     deactivateCategoryFilters();
     emptyActiveFiltersElement();
     hideActiveFilters();
+    setPricesToDefault();
 
     removeAllFromQueryString();
     getProducts(queryString.parse(location.search));
@@ -39,11 +41,12 @@ function isSomeFilterActive() {
 
   let isActive = false;
 
-  if (queryStringParsed[SORT_BY_FILTERS_KEY]) {
-    isActive = true;
-  }
-
-  if (queryStringParsed[CATEGORY_FILTERS_KEY]) {
+  if (
+    queryStringParsed[SORT_BY_FILTERS_KEY] ||
+    queryStringParsed[CATEGORY_FILTERS_KEY] ||
+    queryStringParsed[MIN_PRICE_FILTER_KEY] ||
+    queryStringParsed[MAX_PRICE_FILTER_KEY]
+  ) {
     isActive = true;
   }
 

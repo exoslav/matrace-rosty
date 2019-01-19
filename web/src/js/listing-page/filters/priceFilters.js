@@ -16,15 +16,13 @@ import addQueryString from '../../utils/addQueryString';
 export const MIN_PRICE_FILTER_KEY = 'minPrice';
 export const MAX_PRICE_FILTER_KEY = 'maxPrice';
 
-export const setValuesToCheckboxFilters = (filters, val) => {
-  filters.map(f => $(`[data-filter-value="${f}"]`).prop('checked', val));
-}
-
 export const getFilterPrices = () => {
   const { minPrice, maxPrice } = queryString.parse(location.search);
 
   return [minPrice, maxPrice];
 }
+
+export let setPricesToDefault = () => {};
 
 const initPriceFilters = () => {
   const [ minPriceFromQuery, maxPriceFromQuery ] = getFilterPrices();
@@ -36,6 +34,13 @@ const initPriceFilters = () => {
   const minCurrentPrice = getInitialPriceValue(minPriceFromQuery, minPrice);
   const maxPrice = parseInt(maxInput.data('max-price'));
   const maxCurrentPrice = getInitialPriceValue(maxPriceFromQuery, maxPrice);
+
+  setPricesToDefault = () => {
+    sliderElement.slider('values', 0, minPrice);
+    sliderElement.slider('values', 1, maxPrice);
+    minInput.val(formatePrice(minPrice));
+    maxInput.val(formatePrice(maxPrice));
+  };
 
   minInput.val(formatePrice(minCurrentPrice));
   maxInput.val(formatePrice(maxCurrentPrice));
