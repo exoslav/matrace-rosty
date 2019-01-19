@@ -51,7 +51,7 @@ function isSomeFilterActive() {
   }
 
   Object.keys(queryStringParsed).forEach((key) => {
-    if (queryStringParsed[key] === '1') {
+    if (queryStringParsed[key] === '1' && key !== 'page') {
       isActive = true;
     }
   });
