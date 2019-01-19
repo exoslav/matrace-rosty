@@ -14,7 +14,6 @@
       @extend .clearfix;
 
       &:hover {
-        position: relative;
         box-shadow: 0 0 0 2px $mainBlue;
         z-index: 1;
 
@@ -30,6 +29,10 @@
       }
     }
 
+    .product-item__header-wrapper {
+      position: relative;
+      width: 100%;
+    }
         .product-item__header {
           display: block;
           width: 100%;
@@ -38,6 +41,31 @@
           font-size: 18px;
           line-height: 30px;
         }
+
+        .product-item__action-icons {
+          position: absolute;
+          margin-top: -10px;
+        }
+            .product-item__action-icons__list {
+              display: flex;
+              flex-wrap: wrap;
+            }
+                .product-item__action-icons-item {
+                  display: flex;
+                  margin-bottom: 10px;
+                  align-items: center;
+                  line-height: 120%;
+                  color: #3b3b3b;
+                  font-weight: 700;
+                  text-align: left;
+                }
+                    .product-item__action-icons__icon {
+                      width: 30px;
+                    }
+                    .product-item__action-icons__text {
+                      padding: 0 10px 0 7px;
+                      font-size: 12px;
+                    }
 
         .product-item__img {
           @extend .responsive-img;

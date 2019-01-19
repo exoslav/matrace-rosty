@@ -1,3 +1,4 @@
+import { oneLineTrim } from 'common-tags';
 import productDataMock from './productsMock';
 import formatePrice from '../utils/formatePrice';
 
@@ -13,10 +14,25 @@ const renderProducts = (products = getRandomProducts(productDataMock)) => {
   let newContent = '';
 
   products.map((product) => {
+    /*
+    product.icons = [
+      { type: 'akce', text: 'Akce' },
+      { type: 'doprava_zdarma', text: 'Doprava zdarama' },
+      { type: 'skladem', text: 'Skladem' },
+      { type: 'vyprodej', text: 'Výprodej' },
+      { type: 'novinka', text: 'Novinka' }
+    ];
+    */
+
     newContent += `
       <div class="product-item">
         <a class="product-item__link" href="${product.url}" title="${product.name}">
-          <strong class="product-item__header">${product.name}</strong>
+          <div class="product-item__header-wrapper">
+            <strong class="product-item__header">${product.name}</strong>
+            <div class="product-item__action-icons">
+              ${renderActionIcons(product.icons)}
+            </div>
+          </div>
           <img class="product-item__img" alt="${product.name}" src="${product.image}">
           <p class="product-item__description">${product.annotation}</p>
           <div class="product-item__footer">
@@ -47,6 +63,21 @@ function getRandomProducts(products = []) {
 
 function emptyProducts() {
   productsContainer.empty();
+}
+
+function renderActionIcons(icons = []) {
+  let actionIcons = '<ul class="product-item__action-icons__list">';
+
+  actionIcons += icons.map(icon => (
+    oneLineTrim`
+      <li class="product-item__action-icons-item">
+        <img class="product-item__action-icons__icon" src="./public/data/product-icons/${icon.type}.png" alt="${icon.text}" />
+        <span class="product-item__action-icons__text">${icon.text}</span>
+      </li>
+    `
+  )).join('');
+
+  return actionIcons + '</ul>';
 }
 
 export default renderProducts;
