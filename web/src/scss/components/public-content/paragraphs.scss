@@ -1,6 +1,9 @@
 .public-content {
+  p, h3 {
+    text-align: justify;
+  }
+
 	h3 {
-		text-align: justify;
     margin-bottom: .65em;
     font-size: 22px;
     font-weight: 700;
