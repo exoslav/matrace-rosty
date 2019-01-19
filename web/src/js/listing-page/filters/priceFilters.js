@@ -7,12 +7,6 @@ import getProducts from '../getProducts';
 import formatePrice from '../../utils/formatePrice';
 import addQueryString from '../../utils/addQueryString';
 
-/*
-- checkBoxFilters are filters with checkbox only
-- their value should be always "1"
-- currently only two checkBoxFilters on listing page: akcni, dostupne
-*/
-
 export const MIN_PRICE_FILTER_KEY = 'minPrice';
 export const MAX_PRICE_FILTER_KEY = 'maxPrice';
 
