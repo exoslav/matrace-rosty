@@ -1,6 +1,6 @@
 const errorMessage = $(`
   <div class="listing-page-loader__error">
-    <p class="listing-page-loader__error-text">Nepodařilo se načíst nové produkty. Nastala neočekávaná chyba na serveru.</p>
+    <p class="listing-page-loader__error-text">Nepodařilo se načíst produkty, zkuste to prosím znovu.</p>
   </div>
 `);
 
