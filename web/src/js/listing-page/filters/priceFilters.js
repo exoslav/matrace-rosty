@@ -1,11 +1,11 @@
-import $ from 'jquery';
+import 'jquery-ui/ui/core';
+import 'jquery-ui/ui/widgets/slider';
+import 'jquery-ui-touch-punch';
 import queryString from 'query-string';
 
-import $ui from '../../externals/jquery-ui.min.js';
+import getProducts from '../getProducts';
 import formatePrice from '../../utils/formatePrice';
 import addQueryString from '../../utils/addQueryString';
-
-import getProducts from '../getProducts';
 
 /*
 - checkBoxFilters are filters with checkbox only

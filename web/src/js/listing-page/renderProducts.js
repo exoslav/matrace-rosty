@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import productDataMock from './productsMock';
 import formatePrice from '../utils/formatePrice';
 

@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 const modals = [];
 
 const modalTemplate = $('<div class="modal"><div class="modal__content"></div></div>');

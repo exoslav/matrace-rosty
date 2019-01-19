@@ -1,5 +1,3 @@
-import $ from 'jquery'
-
 const loaders = [];
 const loaderClassName = 'configurator__option-loader';
 const optionLoadingClassName = 'configurator__option--loading';

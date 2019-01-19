@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import { oneLineTrim } from 'common-tags/es';
 import { getArrowDirection } from './configurator-helpers';
 

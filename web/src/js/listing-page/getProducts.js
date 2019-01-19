@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import { showLoader, hideLoader} from './loader';
 import { showErrorMessage, hideErrorMessage} from './errorMessage';
 import { showNoProductsFoundMessage, hideNoProductsFoundMessage} from './noProductsFoundMessage';

@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 import initPriceFilters from './listing-page/filters/priceFilters';
 import initSortByFilters from './listing-page/filters/sortByFilters';
 import initCategoryFilters from './listing-page/filters/categoryFilters';

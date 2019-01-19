@@ -1,4 +1,3 @@
-import $ from 'jquery'
 import { formatPrice } from './configurator-helpers'
 
 export const CATEGORIES_TABLE = 'CATEGORIES_TABLE'

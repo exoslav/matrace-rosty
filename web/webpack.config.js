@@ -23,6 +23,11 @@ module.exports = function (env) {
         filename: '[name].min.css',
         disable: false,
         allChunks: true
+      }),
+      new webpack.ProvidePlugin({
+        jQuery: 'jquery',
+        $: 'jquery',
+        jquery: 'jquery'
       })
     ],
     resolve: {
@@ -48,7 +53,7 @@ module.exports = function (env) {
               {
                 loader: 'css-loader',
                 options: {
-                  minimize: env === 'prod' ? true : false
+                  minimize: env === 'prod'
                 }
               },
               'sass-loader'

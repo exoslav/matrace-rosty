@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 const loadingClassName = 'basket-submit-button--loading';
 
 export default () => {

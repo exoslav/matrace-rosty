@@ -1,4 +1,3 @@
-import $ from 'jquery'
 import { oneLineTrim } from 'common-tags';
 
 import { formatPrice } from './configurator-helpers'

@@ -1,12 +1,12 @@
-import $ from 'jquery';
-import $ui from './externals/jquery-ui.min.js';
+import 'jquery-ui/ui/core';
+import 'jquery-ui/ui/widgets/tabs';
 import 'slick-carousel';
-import lightBox2 from 'lightBox2';
+import 'lightBox2';
 
-import styles from '../scss/main.scss'
-import sstyles from 'slick-carousel/slick/slick.css';
-import ssstyles from 'slick-carousel/slick/slick-theme.css';
-import lightBoxStyles from 'lightBox2/src/css/lightbox.css';
+import '../scss/main.scss'
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import 'lightBox2/src/css/lightbox.css';
 
 import * as modals from './modals';
 import basketPage from './basket-page';

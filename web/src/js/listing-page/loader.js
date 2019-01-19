@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 const loader = $(`
   <div class="listing-page-loader__wrapper">
     <div class="listing-page-loader"></div>

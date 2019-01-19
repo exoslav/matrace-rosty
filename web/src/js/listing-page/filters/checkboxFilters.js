@@ -1,8 +1,8 @@
-import $ from 'jquery';
 import queryString from 'query-string';
 
 import { SORT_BY_FILTERS_KEY } from './sortByFilters';
 import { CATEGORY_FILTERS_KEY } from './categoryFilters';
+import { MIN_PRICE_FILTER_KEY, MAX_PRICE_FILTER_KEY } from './priceFilters';
 import addQueryString from '../../utils/addQueryString';
 
 import getProducts from '../getProducts';
@@ -27,7 +27,9 @@ export const getCheckboxFilters = () => {
     if (
         queryStringValue === '1' &&
         queryStringValue !== SORT_BY_FILTERS_KEY &&
-        queryStringValue !== CATEGORY_FILTERS_KEY
+        queryStringValue !== CATEGORY_FILTERS_KEY &&
+        queryStringValue !== MIN_PRICE_FILTER_KEY &&
+        queryStringValue !== MAX_PRICE_FILTER_KEY
     ) {
       checkboxFilters.push(key);
     }
@@ -46,21 +48,11 @@ const initCheckboxFilters = () => {
     const currentValue = $(this).attr('data-filter-value');
     const active = !!activeFilters.find(i => i === currentValue);
 
-
-    if (active) {
-      addFilterValueToQueryString(currentValue, undefined);
-    } else {
-      addFilterValueToQueryString(currentValue, 1);
-    }
+    addFilterValueToQueryString(currentValue, active ? undefined : 1);
 
     const onGetProductsError = () => {
-      if (active) {
-        $(this).prop('checked', true);
-        addFilterValueToQueryString(currentValue, 1);
-      } else {
-        $(this).prop('checked', false);
-        addFilterValueToQueryString(currentValue, undefined);
-      }
+      $(this).prop('checked', active);
+      addFilterValueToQueryString(currentValue, active ? 1 : undefined);
     }
 
     getProducts(

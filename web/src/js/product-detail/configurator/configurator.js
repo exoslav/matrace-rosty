@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import { oneLineTrim } from 'common-tags';
 import Table from './Table';
 import TableWithCategories from './TableWithCategories';
