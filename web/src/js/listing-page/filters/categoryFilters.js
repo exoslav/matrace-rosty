@@ -26,42 +26,14 @@ const initCategoryFilters = () => {
   mockedTabs.appendTo('.filters__select-category-filter');
   $('.ui-tabs-component').tabs();
 
-  const DEFAULT_FILTER_VALUE = 'default';
-  let currentFilterCategory = DEFAULT_FILTER_VALUE;
-  const filterSelect = $('#categories-filters');
-  const filterWrapper = $('.filters__select-category-filter__select-wrapper');
-  const categoryLists = $('.filters__category');
-  const closeButton = $('.filters__close-category');
-
-  filterSelect.on('change', filteringLogicFuntion);
-
   setValuesOnLoad();
-  filteringLogicFuntion();
-  onClose();
   onCategoryItemChange();
   renderActiveFilters();
+  showHideActiveFilters();
 
   function setValuesOnLoad() {
     const filters = arrayifyFilters(queryString.parse(location.search).filters);
     filters.map(f => $(`[data-filter-value="${f}"]`).prop('checked', true));
-  }
-
-  function filteringLogicFuntion() {
-    showHideActiveFilters();
-    
-    currentFilterCategory = filterSelect.val();
-
-    if (currentFilterCategory === DEFAULT_FILTER_VALUE) {
-      categoryLists.hide();
-      filterWrapper.removeClass('filters__select-category-filter__select-wrapper--open');
-
-      return;
-    }
-
-    categoryLists.hide();
-
-    filterWrapper.addClass('filters__select-category-filter__select-wrapper--open');
-    $(`.filters__category--${currentFilterCategory}`).show();
   }
 
   function onCategoryItemChange() {
@@ -129,14 +101,6 @@ const initCategoryFilters = () => {
     }
 
     $(content).appendTo($('.filters__active-filters__list-wrapper'));
-  }
-
-  function onClose() {
-    closeButton.on('click', () => {
-      filterSelect.val(DEFAULT_FILTER_VALUE);
-      categoryLists.hide();
-      filterWrapper.removeClass('filters__select-category-filter__select-wrapper--open');
-    })
   }
 }
 

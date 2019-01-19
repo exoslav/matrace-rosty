@@ -20,6 +20,12 @@
   border-top-left-radius: 5px;
 }
 
+.ui-tabs-component__title.ui-tabs-component__title--size-s {
+	width: auto;
+	height: auto;
+	padding: 10px 15px;
+}
+
 .ui-tabs-component {
 		&.ui-widget.ui-widget-content {
 		  font-size: inherit;

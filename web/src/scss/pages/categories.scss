@@ -110,22 +110,44 @@
   margin-bottom: 30px;
 }
 
+    .ui-tabs-component__title {
+
+    }
+
+
     .filters__select-category-filter {
       display: flex;
       align-items: center;
-      margin-bottom: 20px;
+
+      & + div {
+        display: none; // remove
+      }
+
+      .ui-tabs-component .ui-tabs-panel {
+        margin: 0;
+        padding: 10px 15px;
+      }
+
+      .ui-tabs-component.ui-widget.ui-widget-content .ui-widget-header {
+        margin-bottom: 0;
+      }
+
+      .ui-tabs-component.ui-widget.ui-widget-content {
+        margin: 0;
+        padding: 0;
+      }
     }
 
-        .filters__select-category-filter__label {
-          margin-right: 10px;
-          font-weight: 700;
+        .filters__select-category-filter__label { // remove
+          display: none;
         }
 
-        .filters__select-category-filter__select-wrapper {
+        .filters__select-category-filter__select-wrapper { // remove
+          display: none;
           position: relative;
         }
 
-        .filters__select-category-filter__select-wrapper--open:before {
+        .filters__select-category-filter__select-wrapper--open:before { // remove
           content: "";
           position: absolute;
           bottom: -20px;
@@ -139,16 +161,7 @@
           border-color: transparent transparent $gray-2;
         }
 
-            .filters__select-category-filter__select {
-              width: 200px;
-            }
-
     .filters__category {
-      display: none;
-      margin-bottom: 20px;
-      padding: 15px 15px 0 15px;
-      background: $gray-2;
-
       > ul {
         display: flex;
         flex: 1;
@@ -159,7 +172,7 @@
 
         .filters__category__item {
           min-width: 100px;
-          padding: 0 15px 15px 0;
+          padding: 8px 0;
           
           .checkbox__decoy {
             background: #fff;
@@ -177,6 +190,7 @@
       @media (min-width: 576px) {
         flex-direction: initial;
         align-items: center;
+        padding: 5px 8px;
       }
     }
 
@@ -242,7 +256,7 @@
 
       @media (min-width: 768px) {
         position: absolute;
-        top: -10px;
+        top: 10px;
         right: 0;
         width: 320px;
       }
@@ -254,6 +268,10 @@
 
         .filters__range-body {
           flex: 1;
+
+          .ui-widget.ui-widget-content {
+            margin-bottom: 15px;
+          }
         }
 
             .filters__range-min,

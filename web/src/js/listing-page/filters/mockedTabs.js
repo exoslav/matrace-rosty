@@ -1,8 +1,8 @@
 const mockedTabs = $(`
-  <div class="ui-tabs-component">
+  <div class="filters__category-filters ui-tabs-component">
     <ul>
-      <li><a href="#tabs-1">Šíka</a></li>
-      <li><a href="#tabs-2">Materiál</a></li>
+      <li><a href="#tabs-1" class="ui-tabs-component__title ui-tabs-component__title--size-s">Šířka</a></li>
+      <li><a href="#tabs-2" class="ui-tabs-component__title ui-tabs-component__title--size-s">Materiál</a></li>
     </ul>
     
     <div id="tabs-1">
