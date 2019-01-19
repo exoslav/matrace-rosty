@@ -21,7 +21,7 @@ $('document').ready(function() {
 	const openCategoryNav = $('.open-category-navigation');
 	const categoryNav = $('#category-navigation > nav');
 
-  $(() => $('.ui-tabs-component').tabs());
+  $('.ui-tabs-component').tabs();
 
   function debounce(func, wait, immediate) {
     var timeout;

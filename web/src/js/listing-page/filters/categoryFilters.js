@@ -1,3 +1,5 @@
+import 'jquery-ui/ui/core';
+import 'jquery-ui/ui/widgets/tabs';
 import queryString from 'query-string';
 
 import getProducts from '../getProducts';
@@ -20,6 +22,12 @@ export const emptyActiveFiltersElement = () => {
 }
 
 const initCategoryFilters = () => {
+
+
+  mockedTabs.appendTo('.filters__select-category-filter');
+
+  $('.ui-tabs-component').tabs();
+
   const DEFAULT_FILTER_VALUE = 'default';
   let currentFilterCategory = DEFAULT_FILTER_VALUE;
   const filterSelect = $('#categories-filters');

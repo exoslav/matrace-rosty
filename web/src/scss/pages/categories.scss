@@ -145,7 +145,6 @@
 
     .filters__category {
       display: none;
-      position: relative;
       margin-bottom: 20px;
       padding: 15px 15px 0 15px;
       background: $gray-2;
@@ -164,21 +163,6 @@
           
           .checkbox__decoy {
             background: #fff;
-          }
-        }
-
-        .filters__close-category {
-          position: absolute;
-          top: 5px;
-          right: 5px;
-          display: flex;
-          padding: 0;
-          color: #3b3b3b;
-          border: none;
-          background: none;
-
-          i {
-            font-size: 18px;
           }
         }
 
