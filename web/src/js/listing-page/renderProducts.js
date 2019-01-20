@@ -7,23 +7,13 @@ const productsContainer = $('.products-listing-wrapper .best-sellers-hp__wrapper
 const renderProducts = (products = getRandomProducts(productDataMock)) => {
   emptyProducts();
 
-  if (!products || !products.length) {
+  if (products.length === 0) {
     return;
   }
 
   let newContent = '';
 
   products.map((product) => {
-    /*
-    product.icons = [
-      { type: 'akce', text: 'Akce' },
-      { type: 'doprava_zdarma', text: 'Doprava zdarama' },
-      { type: 'skladem', text: 'Skladem' },
-      { type: 'vyprodej', text: 'Výprodej' },
-      { type: 'novinka', text: 'Novinka' }
-    ];
-    */
-
     newContent += `
       <div class="product-item">
         <a class="product-item__link" href="${product.url}" title="${product.name}">

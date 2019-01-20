@@ -30,6 +30,7 @@ const initPriceFilters = () => {
   const maxCurrentPrice = getInitialPriceValue(maxPriceFromQuery, maxPrice);
 
   setPricesToDefault = () => {
+    console.log('setPricesToDefault');
     sliderElement.slider('values', 0, minPrice);
     sliderElement.slider('values', 1, maxPrice);
     minInput.val(formatePrice(minPrice));

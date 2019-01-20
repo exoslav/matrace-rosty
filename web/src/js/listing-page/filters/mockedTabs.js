@@ -39,20 +39,20 @@ const mockedTabs = $(`
             <li class="filters__category__item">
               <div class="checkbox">
                 <div class="checkbox__decoy">
-                  <input class="checkbox__element" type="checkbox" name="filter-values[1]" id="filter-value-3" data-label="180 cm" data-filter-value="3">
+                  <input class="checkbox__element" type="checkbox" name="filter-values[1]" id="filter-value-3" data-label="Smrk" data-filter-value="3">
                   <span class="checkbox__icon"></span>
                 </div>
               </div>
-              <label class="checkbox__label" for="filter-value-1">Smrk</label>
+              <label class="checkbox__label" for="filter-value-3">Smrk</label>
             </li>
             <li class="filters__category__item">
               <div class="checkbox">
                 <div class="checkbox__decoy">
-                  <input class="checkbox__element" type="checkbox" name="filter-values[2]" id="filter-value-4" data-label="190 cm" data-filter-value="4">
+                  <input class="checkbox__element" type="checkbox" name="filter-values[2]" id="filter-value-4" data-label="Dub" data-filter-value="4">
                   <span class="checkbox__icon"></span>
                 </div>
               </div>
-              <label class="checkbox__label" for="filter-value-2">Dub</label>
+              <label class="checkbox__label" for="filter-value-4">Dub</label>
             </li>
           </ul>
         </li>

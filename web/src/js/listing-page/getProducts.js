@@ -18,6 +18,7 @@ const getProducts = (
   onError = () => {},
   scroll = false
 ) => {
+  console.log('get products', formData);
   showLoader();
   hideErrorMessage();
   hideNoProductsFoundMessage();

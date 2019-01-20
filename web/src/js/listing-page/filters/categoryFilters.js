@@ -41,8 +41,7 @@ const initCategoryFilters = () => {
       .on('change', function() {
         const filters = arrayifyFilters(queryString.parse(location.search).filters);
         const filterValue = $(this).attr('data-filter-value');
-        const active = filters
-          .find(i => i === filterValue) || false;
+        const active = !!filters.find(i => i === filterValue);
 
         if (active) {
           removeCategoryValueFromQueryString(filterValue);
