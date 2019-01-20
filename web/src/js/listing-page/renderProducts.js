@@ -61,7 +61,7 @@ function renderActionIcons(icons = []) {
   actionIcons += icons.map(icon => (
     oneLineTrim`
       <li class="product-item__action-icons-item">
-        <img class="product-item__action-icons__icon" src="./public/data/product-icons/${icon.type}.png" alt="${icon.text}" />
+        <img class="product-item__action-icons__icon" src="./src/icons/${icon.type}.png" alt="${icon.text}" />
         <span class="product-item__action-icons__text">${icon.text}</span>
       </li>
     `
