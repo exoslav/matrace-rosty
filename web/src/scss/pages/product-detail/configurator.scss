@@ -293,29 +293,45 @@
 											font-weight: 600;
 											line-height: 120%;
 											text-decoration: none;
-
-											&:hover {
-												.configurator__item-img-wrap:after {
-											    content: '';
-											    position: absolute;
-											    top: 0;
-											    left: 0;
-											    width: 100%;
-											    height: 100%;
-											    box-shadow: 0 0 0px 5px $mainBlue inset;
-											    border-radius: 5px;
-												}
-
-												.configurator__item-title {
-													color: $mainBlue;
-												}
-											}
 										}
 
 												.configurator__item-img-wrap {
 													display: inline-block;
 													position: relative;
 												}
+
+                        .configurator__item-img-wrap--preview {
+                          cursor: pointer;
+                          box-shadow: 0 0 1px 1px #c3c3c3;
+                          border-radius: 5px;
+
+                          &:hover {
+                            .configurator__item__preview-icon {
+                              display: block;
+                            }
+
+                            &:after {
+                              content: '';
+                              position: absolute;
+                              top: 0;
+                              left: 0;
+                              width: 100%;
+                              height: 100%;
+                              background: rgba(0, 0, 0, .5);
+                              border-radius: 5px;
+                            }
+                          }
+                        }
+                            .configurator__item__preview-icon {
+                              display: none;
+                              position: absolute;
+                              top: 50%;
+                              left: 50%;
+                              font-size: 25px;
+                              color: #fff;
+                              transform: translate(-50%, -50%);
+                              z-index: 1;
+                            }
 
 														.configurator__item-img {
 															display: block;
@@ -329,8 +345,27 @@
 													color: #1da72d;
 												}
 
+                        .configurator__item-title {
+                          margin-bottom: 5px;
+                        }
+
+												.configurator__item__button {
+                          padding: 5px 10px;
+                          font-size: 14px;
+                          font-weight: 700;
+                          line-height: 120%;
+                          color: #fff;
+                          background: $mainBlue;
+                          border: none;
+
+                          &:hover {
+                            background-color: darken($mainBlue, 5%);
+                          }
+												}
+
 												.configurator__item-availability {
 													display: inline-block;
+                          margin-bottom: 5px;
 													padding: 0px 10px;
 													color: #fff;
 													font-weight: 400;

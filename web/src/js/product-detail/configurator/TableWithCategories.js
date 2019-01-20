@@ -1,4 +1,5 @@
 import { formatPrice } from './configurator-helpers'
+import { oneLineTrim } from 'common-tags/es'
 
 export const CATEGORIES_TABLE = 'CATEGORIES_TABLE'
 
@@ -47,19 +48,19 @@ const TableWithCategories = function({ categories, id, arrowDirection }) {
     this.renderBody()
     this.renderItems()
     this.renderCategories()
-    this.renderFooter()
+//    this.renderFooter()
     this.template.addClass(`configurator__table-arrow configurator__table-arrow--${this.arrowDirection}`)
     this.attachEvents()
   }
 
-  this.updateSelected = (selectedItem) => {
-    this.template.find('.configurator__selected-item').html(`
-      <img class="configurator__selected-item-image" src="${selectedItem.imgSrc}" alt="${selectedItem.title}" />
-      <span class="configurator__selected-item-title">${selectedItem.title}</span>
-    `)
-
-    this.template.find('.configurator__selected-price').html(`+&nbsp;${formatPrice(this.getActiveItem().price)}&nbsp;Kč`)
-  }
+//  this.updateSelected = (selectedItem) => {
+//    this.template.find('.configurator__selected-item').html(`
+//      <img class="configurator__selected-item-image" src="${selectedItem.imgSrc}" alt="${selectedItem.title}" />
+//      <span class="configurator__selected-item-title">${selectedItem.title}</span>
+//    `)
+//
+//    this.template.find('.configurator__selected-price').html(`+&nbsp;${formatPrice(this.getActiveItem().price)}&nbsp;Kč`)
+//  }
 
   this.handleCategoryClick = (e, categoryIndex) => {
     e.preventDefault()
@@ -82,10 +83,8 @@ const TableWithCategories = function({ categories, id, arrowDirection }) {
   }
 
   this.handleItemClick = (e, item) => {
-    e.preventDefault()
-
     this.activeItemId = item.id
-    this.updateSelected(item)
+//    this.updateSelected(item)
 
     this.removeActiveClassFromItems($(`.configurator__table-id-${this.tableId} .configurator__items .${this.ITEM_CLASSNAME_ACTIVE}`))
     this.setActiveClassToItem(e.target)
@@ -113,19 +112,30 @@ const TableWithCategories = function({ categories, id, arrowDirection }) {
     items.map((item) => {
       const listItem = $(`<li class="configurator__item ${item.id === this.activeItemId ? this.ITEM_CLASSNAME_ACTIVE : ''}" />`)
 
+      const imgElement = item.imgSrc
+        ? oneLineTrim`
+          <a data-lightbox="configurator-gallery-${this.tableId}" href="${item.imgSrc}" class="configurator__item-img-wrap ${item.preview ? ' configurator__item-img-wrap--preview' : ''}">
+            ${item.preview ? '<i class="icon icon-zoom configurator__item__preview-icon"></i>' : ''}
+            <img class="configurator__item-img" src="${item.imgSrc}" alt="${item.title}" />
+          </a>
+         `
+        : '';
+
       const itemLink = $(`
         <a class="configurator__item-link" href="#">
-          <div class="configurator__item-img-wrap">
-            <img class="configurator__item-img" src="${item.imgSrc}" alt="${item.title}" />
-          </div>
+          ${imgElement}
           <div class="configurator__item-title">${item.title}</div>
           ${item.price ? '<div class="configurator__item-price">' + formatPrice(item.price) + '&nbsp;Kč</div>' : ''}
           ${item.availability && item.availability.label ? '<span class="configurator__item-availability configurator__item-availability--' + item.availability.class.trim() + '">' + item.availability.label.trim() + '</span>' : ''}
+          <div class="configurator__item__button-wrapper">
+            <button class="configurator__item__button" type="button">Vyberte</button>
+          </div>
         </a>
       `)
 
       itemLink
         .appendTo(listItem)
+        .find('.configurator__item__button')
         .on('click', e => this.handleItemClick(e, item))
 
       listItem
@@ -138,9 +148,9 @@ const TableWithCategories = function({ categories, id, arrowDirection }) {
     $(this.bodyTemplate).appendTo(this.template)
   }
 
-  this.renderFooter = () => {
-    $(this.footerTemplate).appendTo(this.template)
-  }
+//  this.renderFooter = () => {
+//    $(this.footerTemplate).appendTo(this.template)
+//  }
 
   this.bodyTemplate = `
     <div class="configurator__table-body">
@@ -149,16 +159,16 @@ const TableWithCategories = function({ categories, id, arrowDirection }) {
     </div>
   `
 
-  this.footerTemplate = `
-    <div class="configurator__footer">
-      <div class="configurator__selected-block">
-        <span>Vybráno:</span>
-        <div class="configurator__selected-item"></div>
-      </div>
-      <span class="configurator__selected-price"></span>
-      <button class="configurator__submit" type="button">Potvrdit</button>
-    </div>
-  `
+//  this.footerTemplate = `
+//    <div class="configurator__footer">
+//      <div class="configurator__selected-block">
+//        <span>Vybráno:</span>
+//        <div class="configurator__selected-item"></div>
+//      </div>
+//      <span class="configurator__selected-price"></span>
+//      <button class="configurator__submit" type="button">Potvrdit</button>
+//    </div>
+//  `
 }
 
 export default TableWithCategories

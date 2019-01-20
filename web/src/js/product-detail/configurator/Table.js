@@ -31,15 +31,12 @@ const Table = function({ items, id, arrowDirection, isPreselected, preselectedId
   }
 
   this.attachEvents = () => {
-    this.template.find('.configurator__submit').on('click', () => {
-      this.hideTable()
-    })
   }
 
   this.init = () => {
     this.renderBody()
     this.renderItems()
-    this.renderFooter()
+//    this.renderFooter()
     this.template.addClass(`configurator__table-arrow configurator__table-arrow--${this.arrowDirection}`)
     this.attachEvents()
 
@@ -57,6 +54,7 @@ const Table = function({ items, id, arrowDirection, isPreselected, preselectedId
   }
 
   this.updateSelected = (selectedItem) => {
+    /*
     const imgElement = selectedItem.imgSrc
       ? `<img class="configurator__selected-item-image" src="${selectedItem.imgSrc}" alt="${selectedItem.title}" />`
       : ''
@@ -67,6 +65,7 @@ const Table = function({ items, id, arrowDirection, isPreselected, preselectedId
     `)
 
     this.template.find('.configurator__selected-price').html(`+&nbsp;${formatPrice(selectedItem.price)}&nbsp;Kč`)
+    */
   }
 
   this.removeActiveClassFromItems = (items) => {
@@ -78,8 +77,6 @@ const Table = function({ items, id, arrowDirection, isPreselected, preselectedId
   }
 
   this.handleItemClick = (e, item) => {
-    e.preventDefault()
-
     this.activeItemId = item.id
     this.updateSelected(item)
 
@@ -91,29 +88,36 @@ const Table = function({ items, id, arrowDirection, isPreselected, preselectedId
 
   this.renderItems = () => {
     this.items.map((item) => {
+      item.preview = true;
+
       const listItem = $(oneLineTrim
         `<li class="configurator__item ${item.id === this.activeItemId ? this.CLASSNAME_ACTIVE : ''}" />`
       )
 
       const imgElement = item.imgSrc
         ? oneLineTrim`
-          <div class="configurator__item-img-wrap">
+          <a data-lightbox="configurator-gallery-${this.tableId}" href="${item.imgSrc}" class="configurator__item-img-wrap ${item.preview ? ' configurator__item-img-wrap--preview' : ''}">
+            ${item.preview ? '<i class="icon icon-zoom configurator__item__preview-icon"></i>' : ''}
             <img class="configurator__item-img" src="${item.imgSrc}" alt="${item.title}" />
-          </div>
+          </a>
          `
         : ''
 
       const itemLink = $(oneLineTrim`
-        <a class="configurator__item-link" href="#">
+        <div class="configurator__item-link">
           ${imgElement}
           <div class="configurator__item-title">${item.title}</div>
           ${item.price ? '<span class="configurator__item-price">' + formatPrice(item.price) + '&nbspKč</span>' : ''}
           ${item.availability && item.availability.label ? '<span class="configurator__item-availability configurator__item-availability--' + item.availability.class.trim() + '">' + item.availability.label.trim() + '</span>' : ''}
-        </a>
+          <div class="configurator__item__button-wrapper">
+            <button class="configurator__item__button" type="button">Vyberte</button>
+          </div>
+        </div>
       `)
 
       itemLink
         .appendTo(listItem)
+        .find('.configurator__item__button')
         .on('click', e => this.handleItemClick(e, item))
 
       listItem
@@ -143,7 +147,6 @@ const Table = function({ items, id, arrowDirection, isPreselected, preselectedId
         <div class="configurator__selected-item"></div>
       </div>
       <span class="configurator__selected-price"></span>
-      <button class="configurator__submit" type="button">Potvrdit</button>
     </div>
   `
 }
