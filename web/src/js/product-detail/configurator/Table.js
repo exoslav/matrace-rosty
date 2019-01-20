@@ -30,42 +30,14 @@ const Table = function({ items, id, arrowDirection, isPreselected, preselectedId
     this.isVisible = false
   }
 
-  this.attachEvents = () => {
-  }
-
   this.init = () => {
     this.renderBody()
     this.renderItems()
-//    this.renderFooter()
     this.template.addClass(`configurator__table-arrow configurator__table-arrow--${this.arrowDirection}`)
-    this.attachEvents()
-
-    if (this.isPreselected) {
-      this.updateSelected({
-        imgSrc: null,
-        title: preselectedTitle,
-        price: preselectedPrice
-      })
-    }
   }
 
   this.getActiveItem = () => {
     return this.items.filter(item => item.id === this.activeItemId)[0]
-  }
-
-  this.updateSelected = (selectedItem) => {
-    /*
-    const imgElement = selectedItem.imgSrc
-      ? `<img class="configurator__selected-item-image" src="${selectedItem.imgSrc}" alt="${selectedItem.title}" />`
-      : ''
-
-    this.template.find('.configurator__selected-item').html(`
-      ${imgElement}
-      <span class="configurator__selected-item-title">${selectedItem.title}</span>
-    `)
-
-    this.template.find('.configurator__selected-price').html(`+&nbsp;${formatPrice(selectedItem.price)}&nbsp;Kč`)
-    */
   }
 
   this.removeActiveClassFromItems = (items) => {
@@ -78,8 +50,6 @@ const Table = function({ items, id, arrowDirection, isPreselected, preselectedId
 
   this.handleItemClick = (e, item) => {
     this.activeItemId = item.id
-    this.updateSelected(item)
-
     this.removeActiveClassFromItems($(`.configurator__table-id-${this.tableId} .${this.CLASSNAME_ACTIVE}`))
     this.setActiveClassToItem(e.target)
 
@@ -116,7 +86,10 @@ const Table = function({ items, id, arrowDirection, isPreselected, preselectedId
       itemLink
         .appendTo(listItem)
         .find('.configurator__item__button')
-        .on('click', e => this.handleItemClick(e, item))
+        .on('click', e => {
+          this.handleItemClick(e, item);
+          this.hideTable();
+        });
 
       listItem
         .appendTo(this.template.find('.configurator__items'))
@@ -135,16 +108,6 @@ const Table = function({ items, id, arrowDirection, isPreselected, preselectedId
   this.bodyTemplate = `
     <div class="configurator__table-body">
       <ul class="configurator__items"></ul>
-    </div>
-  `
-
-  this.footerTemplate = `
-    <div class="configurator__footer">
-      <div class="configurator__selected-block">
-        <span>Vybráno:</span>
-        <div class="configurator__selected-item"></div>
-      </div>
-      <span class="configurator__selected-price"></span>
     </div>
   `
 }
