@@ -19,6 +19,9 @@ export const getFilterPrices = () => {
 export let setPricesToDefault = () => {};
 
 const initPriceFilters = () => {
+  // shouldMakeRequest - funkce setPricesToDefault totiz spusti slider change event dvakrat
+  // to zpusobi dvakrat zbytecne provolani API
+  let shouldMakeRequest = true;
   const [ minPriceFromQuery, maxPriceFromQuery ] = getFilterPrices();
 
   const sliderElement = $('.filters__range-element');
@@ -30,10 +33,12 @@ const initPriceFilters = () => {
   const maxCurrentPrice = getInitialPriceValue(maxPriceFromQuery, maxPrice);
 
   setPricesToDefault = () => {
+    shouldMakeRequest = false;
     sliderElement.slider('values', 0, minPrice);
     sliderElement.slider('values', 1, maxPrice);
     minInput.val(formatePrice(minPrice));
     maxInput.val(formatePrice(maxPrice));
+    shouldMakeRequest = true;
   };
 
   minInput.val(formatePrice(minCurrentPrice));
@@ -50,7 +55,9 @@ const initPriceFilters = () => {
       addFilterValueToQueryString(MIN_PRICE_FILTER_KEY, currMinPrice !== minPrice ? currMinPrice : undefined);
       addFilterValueToQueryString(MAX_PRICE_FILTER_KEY, currMaxPrice !== maxPrice ? currMaxPrice : undefined);
 
-      getProducts(queryString.parse(location.search), () => {});
+      if (shouldMakeRequest) {
+        getProducts(queryString.parse(location.search), () => {});
+      }
     },
     slide: function( event, ui ) {
       const { values } = ui;
