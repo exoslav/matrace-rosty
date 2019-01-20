@@ -88,16 +88,14 @@ const Table = function({ items, id, arrowDirection, isPreselected, preselectedId
 
   this.renderItems = () => {
     this.items.map((item) => {
-      item.preview = true;
-
       const listItem = $(oneLineTrim
         `<li class="configurator__item ${item.id === this.activeItemId ? this.CLASSNAME_ACTIVE : ''}" />`
       )
 
       const imgElement = item.imgSrc
         ? oneLineTrim`
-          <a data-lightbox="configurator-gallery-${this.tableId}" href="${item.imgSrc}" class="configurator__item-img-wrap ${item.preview ? ' configurator__item-img-wrap--preview' : ''}">
-            ${item.preview ? '<i class="icon icon-zoom configurator__item__preview-icon"></i>' : ''}
+          <a data-lightbox="configurator-gallery-${this.tableId}" href="${item.imgSrcPreview}" class="configurator__item-img-wrap ${item.imgSrcPreview ? ' configurator__item-img-wrap--preview' : ''}">
+            ${item.imgSrcPreview ? '<i class="icon icon-zoom configurator__item__preview-icon"></i>' : ''}
             <img class="configurator__item-img" src="${item.imgSrc}" alt="${item.title}" />
           </a>
          `
