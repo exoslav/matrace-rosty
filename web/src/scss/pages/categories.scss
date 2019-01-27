@@ -109,66 +109,38 @@
 .filters {
   position: relative;
   margin-bottom: 30px;
+
+  .ui-tabs-component .ui-tabs-panel {
+    margin: 0;
+    padding: 10px 15px;
+  }
+
+  .ui-tabs-component.ui-widget.ui-widget-content {
+    margin: 0;
+    padding: 0;
+  }
+
+  .ui-tabs-component.ui-widget.ui-widget-content .ui-widget-header {
+    margin-bottom: 0;
+  }
+
+  .ui-tabs-component.ui-widget.ui-widget-content .ui-widget-header .ui-tabs-tab {
+    margin-right: 5px;
+  }
+
+  .ui-tabs-component__title {
+    padding: 5px 10px;
+    width: auto;
+    height: auto;
+    text-transform: initial;
+    background: #fff;
+  }
 }
-
-    .ui-tabs-component__title {
-
-    }
-
-
-    .filters__select-category-filter {
-      display: flex;
-      align-items: center;
-
-      & + div {
-        display: none; // remove
-      }
-
-      .ui-tabs-component .ui-tabs-panel {
-        margin: 0;
-        padding: 10px 15px;
-      }
-
-      .ui-tabs-component.ui-widget.ui-widget-content .ui-widget-header {
-        margin-bottom: 0;
-      }
-
-      .ui-tabs-component.ui-widget.ui-widget-content {
-        margin: 0;
-        padding: 0;
-      }
-    }
-
-        .filters__select-category-filter__label { // remove
-          display: none;
-        }
-
-        .filters__select-category-filter__select-wrapper { // remove
-          display: none;
-          position: relative;
-        }
-
-        .filters__select-category-filter__select-wrapper--open:before { // remove
-          content: "";
-          position: absolute;
-          bottom: -20px;
-          right: 0;
-          left: 0;
-          margin: auto;
-          width: 0;
-          height: 0;
-          border-style: solid;
-          border-width: 0 20px 15px 20px;
-          border-color: transparent transparent $gray-2;
-        }
-
     .filters__category {
-      > ul {
-        display: flex;
-        flex: 1;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-      }
+      display: flex;
+      flex: 1;
+      flex-wrap: wrap;
+      justify-content: flex-start;
     }
 
         .filters__category__item {
@@ -341,6 +313,7 @@
 
   .filters__active-filters {
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
     margin-bottom: 10px;
 
@@ -358,7 +331,6 @@
 
         @media (min-width: 576px) {
           width: auto;
-          margin-top: 10px;
         }
       }
   
