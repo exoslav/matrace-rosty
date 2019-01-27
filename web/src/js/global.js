@@ -142,7 +142,6 @@ $('document').ready(function() {
       slidesToScroll: 1,
       customPaging: function(slick, i) {
           var thumb = $(slick.$slides[i]).find('.product-detail__slider-item').data('thumb');
-          console.log(slick.$slides[i])
           return '<a><img src="'+thumb+'"></a>';
       },
       arrows: true,
