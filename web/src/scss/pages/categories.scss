@@ -280,10 +280,11 @@
 
             .filters__range-element {
               clear: both;
+
+              .ui-widget-header {
+                background: #e6e6e6;
+              }
             }
-                .ui-widget-header {
-                  background: #e6e6e6;
-                }
 
                 .ui-slider .ui-slider-handle {
                   cursor: pointer;
