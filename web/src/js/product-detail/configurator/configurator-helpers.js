@@ -5,7 +5,7 @@ export const getOptionItemPosition = (optionItems, currentOptionItem) => {
   let position = 0;
 
   optionItems.each((index, item) => {
-    if (item === currentOptionItem) {
+    if ($(item).is(currentOptionItem)) {
       position = index + 1;
     }
   })
