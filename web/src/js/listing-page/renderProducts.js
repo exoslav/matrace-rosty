@@ -7,7 +7,7 @@ const productsContainer = $('.products-listing-wrapper .best-sellers-hp__wrapper
 const renderProducts = (products = getRandomProducts(productDataMock)) => {
   emptyProducts();
 
-  if (!products || !products.length) {
+  if (products.length === 0) {
     return;
   }
 

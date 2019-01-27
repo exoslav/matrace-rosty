@@ -1,5 +1,8 @@
+import 'jquery-ui/ui/core';
+import 'jquery-ui/ui/widgets/tabs';
 import queryString from 'query-string';
 
+import mockedTabs from './mockedTabs';
 import getProducts from '../getProducts';
 import addQueryString from '../../utils/addQueryString'
 
@@ -20,42 +23,17 @@ export const emptyActiveFiltersElement = () => {
 }
 
 const initCategoryFilters = () => {
-  const DEFAULT_FILTER_VALUE = 'default';
-  let currentFilterCategory = DEFAULT_FILTER_VALUE;
-  const filterSelect = $('#categories-filters');
-  const filterWrapper = $('.filters__select-category-filter__select-wrapper');
-  const categoryLists = $('.filters__category');
-  const closeButton = $('.filters__close-category');
-
-  filterSelect.on('change', filteringLogicFuntion);
+  mockedTabs.appendTo('.filters__select-category-filter');
+  $('.ui-tabs-component').tabs();
 
   setValuesOnLoad();
-  filteringLogicFuntion();
-  onClose();
   onCategoryItemChange();
   renderActiveFilters();
+  showHideActiveFilters();
 
   function setValuesOnLoad() {
     const filters = arrayifyFilters(queryString.parse(location.search).filters);
     filters.map(f => $(`[data-filter-value="${f}"]`).prop('checked', true));
-  }
-
-  function filteringLogicFuntion() {
-    showHideActiveFilters();
-    
-    currentFilterCategory = filterSelect.val();
-
-    if (currentFilterCategory === DEFAULT_FILTER_VALUE) {
-      categoryLists.hide();
-      filterWrapper.removeClass('filters__select-category-filter__select-wrapper--open');
-
-      return;
-    }
-
-    categoryLists.hide();
-
-    filterWrapper.addClass('filters__select-category-filter__select-wrapper--open');
-    $(`.filters__category--${currentFilterCategory}`).show();
   }
 
   function onCategoryItemChange() {
@@ -63,8 +41,7 @@ const initCategoryFilters = () => {
       .on('change', function() {
         const filters = arrayifyFilters(queryString.parse(location.search).filters);
         const filterValue = $(this).attr('data-filter-value');
-        const active = filters
-          .find(i => i === filterValue) || false;
+        const active = !!filters.find(i => i === filterValue);
 
         if (active) {
           removeCategoryValueFromQueryString(filterValue);
@@ -123,14 +100,6 @@ const initCategoryFilters = () => {
     }
 
     $(content).appendTo($('.filters__active-filters__list-wrapper'));
-  }
-
-  function onClose() {
-    closeButton.on('click', () => {
-      filterSelect.val(DEFAULT_FILTER_VALUE);
-      categoryLists.hide();
-      filterWrapper.removeClass('filters__select-category-filter__select-wrapper--open');
-    })
   }
 }
 
