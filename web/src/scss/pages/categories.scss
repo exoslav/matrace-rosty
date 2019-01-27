@@ -110,6 +110,14 @@
   position: relative;
   margin-bottom: 30px;
 
+  .ui-tabs-component {
+    display: inline-block;
+
+    @media (min-width: 768px) {
+      max-width: calc(100% - 340px); // 100% - price filter width + 20px
+    }
+  }
+
   .ui-tabs-component .ui-tabs-panel {
     margin: 0;
     padding: 10px 15px;
@@ -244,6 +252,10 @@
 
           .ui-widget.ui-widget-content {
             margin-bottom: 15px;
+            font-size: 17px;
+            border: none;
+            border-radius: 15px;
+            background: #e6e6e6;
           }
         }
 
@@ -268,14 +280,6 @@
 
             .filters__range-element {
               clear: both;
-            }
-
-            .ui-widget.ui-widget-content {
-              margin-bottom: 10px;
-              font-size: 17px;
-              border: none;
-              border-radius: 15px;
-              background: #e6e6e6;
             }
                 .ui-widget-header {
                   background: #e6e6e6;
