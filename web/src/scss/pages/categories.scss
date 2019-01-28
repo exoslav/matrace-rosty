@@ -238,7 +238,9 @@
       padding-right: 15px;
 
       @media (min-width: 768px) {
+        width: 320px;
         float: right;
+        padding-top: 15px;
       }
     }
 
