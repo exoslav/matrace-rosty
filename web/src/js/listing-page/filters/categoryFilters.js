@@ -83,8 +83,8 @@ const initCategoryFilters = () => {
         </button>
       `)
       .on('click', function() {
-        getProducts(queryString.parse(location.search));
         removeCategoryValueFromQueryString(value);
+        getProducts(queryString.parse(location.search));
         emptyActiveFiltersElement();
         renderActiveFilters();
 
