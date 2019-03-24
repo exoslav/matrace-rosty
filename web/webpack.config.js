@@ -1,6 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
-var ExtractText = require('extract-text-webpack-plugin');
+var MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = function (env) {
   console.log('<-- MATRACE-ROSTY startup... -->');
@@ -19,7 +19,7 @@ module.exports = function (env) {
     mode: env === 'prod' ? 'production' : 'development',
     devtool: env === 'prod' ? 'cheap-module-source-map' : 'inline-source-map', // viz.: https://webpack.js.org/configuration/devtool/
     plugins: [
-      new ExtractText({
+      new MiniCssExtractPlugin({
         filename: '[name].min.css',
         disable: false,
         allChunks: true
@@ -47,18 +47,16 @@ module.exports = function (env) {
         },
         {
           test: /\.(css|scss|sass)$/,
-          use: ExtractText.extract({
-            "fallback": "style-loader",
-            use: [
-              {
-                loader: 'css-loader',
-                options: {
-                  minimize: env === 'prod'
-                }
-              },
-              'sass-loader'
-            ]
-          })
+          use: [
+            MiniCssExtractPlugin.loader,
+            {
+              loader: "css-loader",
+              options: {
+                importLoader: 2
+              }
+            },
+            "sass-loader"
+          ]
         },
         {
           test: /\.(png|jpg|svg|gif)$/,
