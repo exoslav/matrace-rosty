@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build:dev": "webpack --env.dev -w",
-    "build:prod": "webpack --env.prod -w"
+    "build:prod": "webpack --env.prod -w",
+    "build:dev:once": "webpack --env.prod",
+    "build:prod:once": "webpack --env.prod"
   },
   "author": "Martin Nikl",
   "license": "ISC",
