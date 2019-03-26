@@ -1,5 +1,5 @@
 import { oneLineTrim } from 'common-tags';
-
+import createTableItem from './createTableItem'
 import { formatPrice } from './configurator-helpers'
 
 export const SIMPLE_TABLE = 'SIMPLE_TABLE'
@@ -62,14 +62,12 @@ const Table = function({ items, id, arrowDirection, isPreselected, preselectedId
         `<li class="configurator__item ${item.id === this.activeItemId ? this.CLASSNAME_ACTIVE : ''}" />`
       )
 
-      const imgElement = item.imgSrc
-        ? oneLineTrim`
-          <a data-lightbox="configurator-gallery-${this.tableId}" href="${item.imgSrcPreview}" class="configurator__item-img-wrap ${item.imgSrcPreview ? ' configurator__item-img-wrap--preview' : ''}">
-            ${item.imgSrcPreview ? '<i class="icon icon-zoom configurator__item__preview-icon"></i>' : ''}
-            <img class="configurator__item-img" src="${item.imgSrc}" alt="${item.title}" />
-          </a>
-         `
-        : ''
+      const imgElement = createTableItem(
+        item.title,
+        item.imgSrc,
+        item.imgSrcPreview,
+        this.tableId
+      );
 
       const itemLink = $(oneLineTrim`
         <div class="configurator__item-link">

@@ -134,8 +134,7 @@
 						.configurator__option-loader {
 								position: absolute;
 								right: 6px;
-								top: auto;
-								bottom: auto;
+								top: calc(50% - 12px);
 								border: 3px solid #ebebeb;
 								border-radius: 50%;
 								border-top: 3px solid $mainBlue;
