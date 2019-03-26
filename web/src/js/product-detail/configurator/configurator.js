@@ -137,6 +137,7 @@ const initConfigurator = () => {
         try {
           data = await fetcher(getConfiguratorUrlByType(optionType, productId, optionId));
         } catch (error) {
+          console.error('Nastala neočekávaná chyba v konfigurátoru.', error);
           removeErrorMessages();
           removeLoader(optionId);
           removeLoadingClassNameFromOption(self);

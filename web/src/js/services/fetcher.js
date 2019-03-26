@@ -1,3 +1,5 @@
+import 'isomorphic-fetch';
+
 export const fetcher = (url) => {
   return new Promise((resolve, reject) => {
     fetch(url)
